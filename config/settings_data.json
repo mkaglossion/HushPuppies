@@ -37,7 +37,7 @@
     "drawer_text_color": "#2a2b2a",
     "blend_bg_color": "#f4f4f4",
     "heading_font": "poppins_n8",
-    "heading_uppercase": false,
+    "heading_uppercase": true,
     "subheading_uppercase": false,
     "button_text_uppercase": false,
     "heading_scale_start": "4",
