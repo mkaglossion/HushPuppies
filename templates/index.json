@@ -41,7 +41,7 @@
             "enlarge_end_text": false,
             "countdown_hide_on_end": false,
             "use_custom_colors": false,
-            "count_color": "#fff",
+            "count_color": "#ffffff",
             "bg_color": "#070707",
             "bg_grad": ""
           }
@@ -75,7 +75,41 @@
             "enlarge_end_text": false,
             "countdown_hide_on_end": false,
             "use_custom_colors": false,
-            "count_color": "#fff",
+            "count_color": "#ffffff",
+            "bg_color": "#070707",
+            "bg_grad": ""
+          }
+        },
+        "slide_ezE6Ck": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/OWN_WEB_BANNER_SEPT_bags_2.jpg",
+            "image_mobile": "shopify://shop_images/OWN_WEB_BANNER_MOBILE_MARCH_cf1b51b0-9609-4043-ad55-7bdea40dbaba.jpg",
+            "url": "shopify://collections/bags",
+            "overlay_position": "justify-center items-center",
+            "overlay_text_align": "text-center",
+            "mob_center_text": false,
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h0",
+            "heading_h1": false,
+            "text": "",
+            "enlarge_text": false,
+            "button_1_label": "",
+            "button_1_link": "",
+            "button_1_style": "btn btn--primary",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": "btn btn--primary",
+            "transparent_content_color": "#ffffff",
+            "countdown_show": false,
+            "countdown_end_date": "",
+            "countdown_end_time": "",
+            "countdown_end_text": "",
+            "enlarge_end_text": false,
+            "countdown_hide_on_end": false,
+            "use_custom_colors": false,
+            "count_color": "#ffffff",
             "bg_color": "#070707",
             "bg_grad": ""
           }
@@ -83,7 +117,8 @@
       },
       "block_order": [
         "slide_EVQnfP",
-        "slide_3mUVNK"
+        "slide_3mUVNK",
+        "slide_ezE6Ck"
       ],
       "name": "Slideshow",
       "settings": {
@@ -336,6 +371,7 @@
         "template--17937594614048__8920e5de-3c38-4881-9157-068a30f16121-16768866707e61c625-2",
         "fcfd3bc5-11d0-43b5-8d4b-ca59a170c6dd"
       ],
+      "disabled": true,
       "settings": {
         "height_mode": "fixed",
         "fixed_height_desktop": 600,

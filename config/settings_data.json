@@ -35,6 +35,7 @@
     "panel_heading_color": "#2a2b2a",
     "panel_text_color": "#2a2b2a",
     "drawer_text_color": "#2a2b2a",
+    "blend_collection_images": true,
     "blend_bg_color": "#f4f4f4",
     "heading_font": "poppins_n8",
     "heading_uppercase": true,
