@@ -9,16 +9,18 @@
  */
 {
   "sections": {
-    "bb7588e2-322e-49f2-87bb-8d05dd3697ec": {
-      "type": "navigation-slideshow",
+    "slideshow_fHqWxE": {
+      "type": "slideshow",
       "blocks": {
-        "b9291c89-a91c-4a67-a0d9-bfea1a1d18d0": {
+        "slide_EVQnfP": {
           "type": "slide",
           "settings": {
             "image_desktop": "shopify://shop_images/OWN_WEB_BANNER_MARCH_bags.jpg",
             "image_mobile": "shopify://shop_images/OWN_WEB_BANNER_MOBILE_MARCH_bag.jpg",
-            "overlay_text_align": "text-start",
-            "mob_center_text": true,
+            "url": "shopify://collections/cadeytote-bags",
+            "overlay_position": "justify-center items-center",
+            "overlay_text_align": "text-center",
+            "mob_center_text": false,
             "subheading": "",
             "heading": "",
             "heading_size": "h0",
@@ -30,86 +32,42 @@
             "button_1_style": "btn btn--primary",
             "button_2_label": "",
             "button_2_link": "",
-            "button_2_style": "link",
-            "transparent_content_color": "#ffffff"
-          }
-        },
-        "4944b957-0b7e-4a63-9ab6-f97eecba1b2f": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "overlay_text_align": "text-start",
-            "mob_center_text": true,
-            "subheading": "",
-            "heading": "Top specs. Low prices.",
-            "heading_size": "h0",
-            "heading_h1": false,
-            "text": "<p><strong>Save up to 50%<br/></strong>on over 1,000 products!</p>",
-            "enlarge_text": true,
-            "button_1_label": "Shop Laptops",
-            "button_1_link": "",
-            "button_1_style": "btn btn--primary",
-            "button_2_label": "",
-            "button_2_link": "",
             "button_2_style": "btn btn--primary",
-            "transparent_content_color": "#ffffff"
-          }
-        },
-        "c4fcb261-beb3-4c16-80a3-8584fe04d0f9": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "overlay_text_align": "text-start",
-            "mob_center_text": true,
-            "subheading": "",
-            "heading": "Amazing deals on electricals.",
-            "heading_size": "h0",
-            "heading_h1": false,
-            "text": "<p><strong>Save up to 50%<br/></strong>on over 1,000 products!</p>",
-            "enlarge_text": true,
-            "button_1_label": "Shop Home Tech",
-            "button_1_link": "",
-            "button_1_style": "btn btn--primary",
-            "button_2_label": "",
-            "button_2_link": "",
-            "button_2_style": "btn btn--primary",
-            "transparent_content_color": "#ffffff"
+            "transparent_content_color": "#ffffff",
+            "countdown_show": false,
+            "countdown_end_date": "",
+            "countdown_end_time": "",
+            "countdown_end_text": "",
+            "enlarge_end_text": false,
+            "countdown_hide_on_end": false,
+            "use_custom_colors": false,
+            "count_color": "#fff",
+            "bg_color": "#070707",
+            "bg_grad": ""
           }
         }
       },
       "block_order": [
-        "b9291c89-a91c-4a67-a0d9-bfea1a1d18d0",
-        "4944b957-0b7e-4a63-9ab6-f97eecba1b2f",
-        "c4fcb261-beb3-4c16-80a3-8584fe04d0f9"
+        "slide_EVQnfP"
       ],
+      "name": "Slideshow",
       "settings": {
         "height_mode": "auto",
-        "fixed_height_desktop": 620,
-        "fixed_height_mobile": 360,
-        "quick_nav_menu": "",
-        "quick_nav_title": "Shop our range",
-        "quick_nav_image_ratio": "1",
-        "quick_nav_image_fit": "cover",
-        "quick_nav_use_product_image": true,
-        "quick_nav_color_scheme": "default",
-        "quick_nav_show_price": true,
-        "menu_1_text": "Choose a department...",
-        "menu_1_display": "large_text",
-        "menu_2_text": "Choose a category...",
-        "menu_2_display": "large_image_text",
-        "menu_3_text": "Choose a product type...",
-        "menu_3_display": "large_image_text",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "mobile_stacked": false,
         "nav_style": "slideshow_nav_lines",
         "pagination_color": "#ffffff",
+        "nav_position": "justify-center",
         "transition": "slide-fade",
         "autoplay": true,
         "slider_pause": false,
-        "autoplay_speed": 6,
+        "autoplay_speed": 5,
         "color_scheme": "white",
         "full_width": true,
         "tint_color": "#000000",
-        "tint_opacity": 25,
-        "accessibility_info": "Featured collections and new arrivals",
+        "tint_opacity": 40,
+        "accessibility_info": "",
         "prevent_animation": true
       }
     },
@@ -987,7 +945,7 @@
     }
   },
   "order": [
-    "bb7588e2-322e-49f2-87bb-8d05dd3697ec",
+    "slideshow_fHqWxE",
     "b7c18b78-f517-4220-a6c6-ff4ab88b41ff",
     "2cfe881f-8ca3-4df7-95e4-f5b39015d791",
     "8920e5de-3c38-4881-9157-068a30f16121",
