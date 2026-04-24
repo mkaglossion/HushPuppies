@@ -154,6 +154,7 @@
         "80501b44-f33e-44b5-90cb-a4c5cea7553e",
         "92ac9a91-a3c3-477c-8a27-ccae7d6e59a1"
       ],
+      "disabled": true,
       "settings": {
         "title": "Shop Deals",
         "heading_align": "text-center",
@@ -274,6 +275,7 @@
         "template--17646024294688__2cfe881f-8ca3-4df7-95e4-f5b39015d791-16750976533d9e79c5-2",
         "template--17646024294688__2cfe881f-8ca3-4df7-95e4-f5b39015d791-16750976533d9e79c5-3"
       ],
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_align": "text-start",
