@@ -65,57 +65,51 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "text": {
-          "type": "text",
+        "link_list_e3WgVr": {
+          "type": "link_list",
           "settings": {
-            "image_width": 150,
-            "heading": "Talk about your store",
-            "text": "<p>Share store details, promotions, or brand content with your customers.</p>",
-            "button_label": "",
-            "button_link": "",
-            "enable_follow_on_shop": false,
-            "show_social": false,
-            "text_align": "text-start"
+            "heading": "Popular Links",
+            "menu": "popular-links"
           }
         },
         "link-list-1": {
           "type": "link_list",
           "settings": {
-            "heading": "Footer links",
-            "menu": "footer"
+            "heading": "My Account",
+            "menu": "my-account"
           }
         },
         "link-list-2": {
           "type": "link_list",
           "settings": {
-            "heading": "Footer links",
-            "menu": "footer"
+            "heading": "Customer Service",
+            "menu": "customer-service"
           }
         },
         "newsletter": {
           "type": "newsletter",
           "settings": {
-            "heading": "Newsletter",
-            "text": "<p>Sign up for exclusive offers, original stories, events and more.</p>",
+            "heading": "Join us on the bright side.",
+            "text": "<p><strong>Sign up for our email list.</strong></p><p></p><p>You'll be the first to know about the latest styles and promotions.</p><p><a href=\"https://hush-puppies-philippines.myshopify.com/pages/privacy-policy\"><span style=\"text-decoration:underline\">Privacy Policy</span></a></p>",
             "collapse_mobile": true
           }
         }
       },
       "block_order": [
-        "text",
+        "link_list_e3WgVr",
         "link-list-1",
         "link-list-2",
         "newsletter"
       ],
       "settings": {
         "show_back_to_top": true,
-        "show_payment_icons": true,
-        "show_powered_by": true,
+        "show_payment_icons": false,
+        "show_powered_by": false,
         "enable_country_selector": true,
         "enable_language_selector": true,
         "secondary_menu": "",
-        "bg_color": "#141414",
-        "text_color": "#ffffff"
+        "bg_color": "#ffffff",
+        "text_color": "#000000"
       }
     }
   },
