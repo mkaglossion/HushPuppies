@@ -105,8 +105,8 @@
         "show_back_to_top": true,
         "show_payment_icons": false,
         "show_powered_by": false,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
         "secondary_menu": "",
         "bg_color": "#ffffff",
         "text_color": "#000000"
