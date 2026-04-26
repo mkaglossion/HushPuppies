@@ -632,6 +632,122 @@
         "transparent_content_color": "#ffffff"
       }
     },
+    "media_grid_Y6qgnk": {
+      "type": "media-grid",
+      "blocks": {
+        "media_qmQrDU": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 2,
+            "rows": 2,
+            "subheading": "",
+            "title": "<p>Kids</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-start",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_3KAAa4": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU1</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_G8zidt": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU2</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_nyzrmd": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU3</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_pR7bnb": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU4</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "media_qmQrDU",
+        "media_3KAAa4",
+        "media_G8zidt",
+        "media_nyzrmd",
+        "media_pR7bnb"
+      ],
+      "settings": {
+        "title": "",
+        "heading_align": "text-center",
+        "button_label": "",
+        "button_link": "",
+        "gallery_cols_max": 4,
+        "mobile_carousel": true,
+        "gallery_cols_min": "1",
+        "fixed_height_desktop": 230,
+        "fixed_height_mobile": 260,
+        "section_color_scheme": "none",
+        "color_scheme": "white",
+        "transparent_content_color": "#ffffff"
+      }
+    },
     "e831b750-ff21-4703-99e1-64199126c484": {
       "type": "scrolling-banner",
       "blocks": {
@@ -686,6 +802,7 @@
         "64452c59-f584-463f-8bc2-96e2f2510a6b",
         "585b584c-4345-4423-84bd-98f28b65bd17"
       ],
+      "disabled": true,
       "settings": {
         "section_height": "default",
         "spacing": 72,
@@ -750,6 +867,7 @@
         "40a0618c-3032-4176-83aa-fad669149506",
         "template--17646024294688__bd2edc13-1805-4c10-b227-152a54f95ead-1674140552ec466fc1-2"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Which camera is the right one for you?",
         "text": "",
@@ -798,6 +916,7 @@
         "template--17646024294688__d1557094-e1ff-483a-a831-ec47e3ac8583-16751824192893615f-1",
         "template--17646024294688__d1557094-e1ff-483a-a831-ec47e3ac8583-16751824192893615f-2"
       ],
+      "disabled": true,
       "settings": {
         "layout": "image_first",
         "show_vendor": true,
@@ -847,6 +966,7 @@
         "template--17646024294688__53337ab6-3f88-45e9-8fe2-7d55ee55a74a-16752469146a26910e-1",
         "template--17646024294688__53337ab6-3f88-45e9-8fe2-7d55ee55a74a-16752469146a26910e-2"
       ],
+      "disabled": true,
       "settings": {
         "url": "",
         "height_mode": "fixed",
@@ -869,6 +989,7 @@
       "blocks": {
         "template--17937594614048__c0877401-bf18-4a0d-a970-4846075a4d6f-1676478505ce30ce84-0": {
           "type": "feature",
+          "disabled": true,
           "settings": {
             "heading": "Pixel perfect",
             "text": "<p>Immerse yourself in crystal-clear images and movies with the stunning 27\" 2560 x 1400 backlit LED screen.</p>",
@@ -903,6 +1024,7 @@
         "template--17937594614048__c0877401-bf18-4a0d-a970-4846075a4d6f-1676478505ce30ce84-1",
         "template--17937594614048__c0877401-bf18-4a0d-a970-4846075a4d6f-1676478505ce30ce84-2"
       ],
+      "disabled": true,
       "settings": {
         "product": "",
         "show_content": true,
@@ -947,6 +1069,7 @@
         "template--17646024294688__44b64c8e-4ea7-4c35-96f3-42d82b3c2069-167517588875579705-1",
         "template--17646024294688__44b64c8e-4ea7-4c35-96f3-42d82b3c2069-167517588875579705-2"
       ],
+      "disabled": true,
       "settings": {
         "overlay_position": "justify-center",
         "text_align": "text-center",
@@ -959,6 +1082,7 @@
     },
     "ff1b6812-c849-43f7-a4b7-6244fdb1f8d7": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_align": "text-center",
@@ -1033,6 +1157,7 @@
         "template--17646024294688__badaf8ee-9f48-44d6-8bb1-2853448d1112-16751805018cd7f25c-2",
         "b1587b2c-7619-4d47-bc2f-4a1b495a8476"
       ],
+      "disabled": true,
       "settings": {
         "title": "Popular departments",
         "heading_align": "text-center",
@@ -1102,6 +1227,7 @@
         "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-4",
         "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-5"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Help & Advice",
         "heading_align": "text-center",
@@ -1111,6 +1237,7 @@
     },
     "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Featured products for you",
         "heading_align": "text-start",
@@ -1141,6 +1268,7 @@
     "2b6638e0-7b54-4420-a891-39abab8a2a2b",
     "aab03c2f-0b18-4a62-9280-a2026f9819a7",
     "eb683620-4832-4859-a362-dfff515f867c",
+    "media_grid_Y6qgnk",
     "e831b750-ff21-4703-99e1-64199126c484",
     "bd2edc13-1805-4c10-b227-152a54f95ead",
     "d1557094-e1ff-483a-a831-ec47e3ac8583",
