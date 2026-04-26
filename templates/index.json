@@ -1015,6 +1015,63 @@
         "color_scheme": "none",
         "button_style": "btn btn--secondary"
       }
+    },
+    "multi_column_pTHAid": {
+      "type": "multi-column",
+      "blocks": {
+        "column_iKrDg9": {
+          "type": "column",
+          "settings": {
+            "enable_media": true,
+            "media_scale": 100,
+            "heading": "MEN",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_NMGWCN": {
+          "type": "column",
+          "settings": {
+            "enable_media": true,
+            "media_scale": 100,
+            "heading": "WOMEN",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_Cc4gfV": {
+          "type": "column",
+          "settings": {
+            "enable_media": true,
+            "media_scale": 100,
+            "heading": "WOMEN",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_iKrDg9",
+        "column_NMGWCN",
+        "column_Cc4gfV"
+      ],
+      "name": "Multi-column",
+      "settings": {
+        "title": "SHOP BY CATEGORY",
+        "heading_align": "text-start",
+        "button_label": "",
+        "button_link": "",
+        "layout": "carousel",
+        "column_size": "medium",
+        "column_align": "left",
+        "media_align": "text-center",
+        "image_ratio": "1",
+        "color_scheme": "1",
+        "button_style": "btn btn--secondary"
+      }
     }
   },
   "order": [
@@ -1034,6 +1091,7 @@
     "ff1b6812-c849-43f7-a4b7-6244fdb1f8d7",
     "badaf8ee-9f48-44d6-8bb1-2853448d1112",
     "7ff2d165-a729-4f5c-a6dc-805d6957f606",
-    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39"
+    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39",
+    "multi_column_pTHAid"
   ]
 }
