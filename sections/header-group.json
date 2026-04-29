@@ -370,7 +370,7 @@
             "collection_use_product_image": false,
             "collection_circle_image": false,
             "show_underline": true,
-            "promo_position": "bottom",
+            "promo_position": "right",
             "promo_min_height": 200,
             "promo_text_color": "#ffffff",
             "promo_tint_color": "#000000",
