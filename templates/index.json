@@ -194,7 +194,6 @@
           "type": "column",
           "settings": {
             "enable_media": true,
-            "image": "shopify://shop_images/MENS_CATEG.jpg",
             "media_scale": 100,
             "heading": "",
             "text": "",
@@ -1409,6 +1408,69 @@
         "color_scheme": "none",
         "button_style": "btn btn--secondary"
       }
+    },
+    "grid_banner_EkVkbm": {
+      "type": "grid-banner",
+      "blocks": {
+        "banner_6LmizN": {
+          "type": "banner",
+          "settings": {
+            "width": "6",
+            "description": "<h3 class=\"mb-2\">Banner title</h3><p>Lorem ipsum dolor sit amet</p>",
+            "bg_color": "#fefefe",
+            "colordef": "#ffffff",
+            "opacity_bg": 0,
+            "style_btn": "btn-underline btn-underline-white",
+            "button_text": "View more",
+            "button_icon": "",
+            "button_link": "",
+            "vertical": "bottom",
+            "horizontal": "center",
+            "text_align": "center"
+          }
+        },
+        "banner_grYMgH": {
+          "type": "banner",
+          "settings": {
+            "width": "6",
+            "description": "<h3 class=\"mb-2\">Banner title</h3><p>Lorem ipsum dolor sit amet</p>",
+            "bg_color": "#fefefe",
+            "colordef": "#ffffff",
+            "opacity_bg": 0,
+            "style_btn": "btn-underline btn-underline-white",
+            "button_text": "View more",
+            "button_icon": "",
+            "button_link": "",
+            "vertical": "bottom",
+            "horizontal": "center",
+            "text_align": "center"
+          }
+        }
+      },
+      "block_order": [
+        "banner_6LmizN",
+        "banner_grYMgH"
+      ],
+      "name": "Grid banner",
+      "settings": {
+        "animation": "",
+        "paddingsection": "0px 0px 0px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px",
+        "bgsection": "#fefefe",
+        "bgstyle": false,
+        "bgbefore": "#E3C9B8",
+        "title_top": "Sub Title Top",
+        "title": "Grid banner",
+        "des": "",
+        "setwidth": "container",
+        "no_gutter": false,
+        "show_overlay": true,
+        "gradient_overlay": true,
+        "bg_overlay": "#000",
+        "opacity_overlay": 0.4
+      }
     }
   },
   "order": [
@@ -1431,6 +1493,7 @@
     "ff1b6812-c849-43f7-a4b7-6244fdb1f8d7",
     "badaf8ee-9f48-44d6-8bb1-2853448d1112",
     "7ff2d165-a729-4f5c-a6dc-805d6957f606",
-    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39"
+    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39",
+    "grid_banner_EkVkbm"
   ]
 }
