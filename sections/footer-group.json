@@ -11,42 +11,6 @@
   "type": "footer",
   "name": "Footer Group",
   "sections": {
-    "footer": {
-      "type": "footer",
-      "blocks": {
-        "text": {
-          "type": "text",
-          "settings": {}
-        },
-        "link-list-1": {
-          "type": "link_list",
-          "settings": {}
-        },
-        "link-list-2": {
-          "type": "link_list",
-          "settings": {}
-        },
-        "newsletter": {
-          "type": "newsletter",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "text",
-        "link-list-1",
-        "link-list-2",
-        "newsletter"
-      ],
-      "settings": {
-        "show_back_to_top": false,
-        "show_payment_icons": true,
-        "show_powered_by": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "bg_color": "#141414",
-        "text_color": "#ffffff"
-      }
-    },
     "icons-with-text": {
       "type": "icons-with-text",
       "blocks": {
@@ -55,7 +19,8 @@
           "settings": {
             "icon": "chat_bubble",
             "heading": "Visit our support center",
-            "text": "<p>Expert help & advice</p>"
+            "text": "<p>Expert help & advice</p>",
+            "link": ""
           }
         },
         "icons-with-text-2": {
@@ -63,7 +28,8 @@
           "settings": {
             "icon": "box",
             "heading": "Check your order status",
-            "text": "<p>Updates & tracking</p>"
+            "text": "<p>Updates & tracking</p>",
+            "link": ""
           }
         },
         "icons-with-text-3": {
@@ -71,23 +37,15 @@
           "settings": {
             "icon": "return",
             "heading": "Returns & exchanges",
-            "text": "<p>All you need to know</p>"
-          }
-        },
-        "icons-with-text-4": {
-          "type": "item",
-          "settings": {
-            "icon": "dollar_sign",
-            "heading": "Price-match guarantee",
-            "text": "<p>Our promise to you</p>"
+            "text": "<p>All you need to know</p>",
+            "link": ""
           }
         }
       },
       "block_order": [
         "icons-with-text-1",
         "icons-with-text-2",
-        "icons-with-text-3",
-        "icons-with-text-4"
+        "icons-with-text-3"
       ],
       "settings": {
         "heading": "",
@@ -98,10 +56,60 @@
         "icon_position": "beside",
         "mobile_stack": false,
         "section_height": "medium",
-        "color_scheme": "3",
+        "color_scheme": "1",
         "full_width": true,
         "dividers": "none",
         "prevent_animation": false
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_e3WgVr": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Popular Links",
+            "menu": "popular-links"
+          }
+        },
+        "link-list-1": {
+          "type": "link_list",
+          "settings": {
+            "heading": "My Account",
+            "menu": "my-account"
+          }
+        },
+        "link-list-2": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Customer Service",
+            "menu": "customer-service"
+          }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "heading": "Join us on the bright side.",
+            "text": "<p><strong>Sign up for our email list.</strong></p><p></p><p>You'll be the first to know about the latest styles and promotions.</p><p><a href=\"https://hush-puppies-philippines.myshopify.com/pages/privacy-policy\"><span style=\"text-decoration:underline\">Privacy Policy</span></a></p>",
+            "collapse_mobile": true
+          }
+        }
+      },
+      "block_order": [
+        "link_list_e3WgVr",
+        "link-list-1",
+        "link-list-2",
+        "newsletter"
+      ],
+      "settings": {
+        "show_back_to_top": true,
+        "show_payment_icons": false,
+        "show_powered_by": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "secondary_menu": "",
+        "bg_color": "#ffffff",
+        "text_color": "#000000"
       }
     }
   },

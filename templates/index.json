@@ -9,16 +9,18 @@
  */
 {
   "sections": {
-    "bb7588e2-322e-49f2-87bb-8d05dd3697ec": {
-      "type": "navigation-slideshow",
+    "slideshow_fHqWxE": {
+      "type": "slideshow",
       "blocks": {
-        "b9291c89-a91c-4a67-a0d9-bfea1a1d18d0": {
+        "slide_EVQnfP": {
           "type": "slide",
           "settings": {
-            "image_desktop": "shopify://shop_images/OWN_WEB_BANNER_MARCH_bags.jpg",
-            "image_mobile": "shopify://shop_images/OWN_WEB_BANNER_MOBILE_MARCH_bag.jpg",
-            "overlay_text_align": "text-start",
-            "mob_center_text": true,
+            "image_desktop": "shopify://shop_images/BTS_MAIN_BANNER.png",
+            "image_mobile": "shopify://shop_images/MOBILE-_SKU_HIGHLIGHT_BANNER.png",
+            "url": "shopify://collections/all-back-to-school-shoes",
+            "overlay_position": "justify-center items-center",
+            "overlay_text_align": "text-center",
+            "mob_center_text": false,
             "subheading": "",
             "heading": "",
             "heading_size": "h0",
@@ -30,87 +32,205 @@
             "button_1_style": "btn btn--primary",
             "button_2_label": "",
             "button_2_link": "",
-            "button_2_style": "link",
-            "transparent_content_color": "#ffffff"
+            "button_2_style": "btn btn--primary",
+            "transparent_content_color": "#ffffff",
+            "countdown_show": false,
+            "countdown_end_date": "",
+            "countdown_end_time": "",
+            "countdown_end_text": "",
+            "enlarge_end_text": false,
+            "countdown_hide_on_end": false,
+            "use_custom_colors": false,
+            "count_color": "#ffffff",
+            "bg_color": "#070707",
+            "bg_grad": ""
           }
         },
-        "4944b957-0b7e-4a63-9ab6-f97eecba1b2f": {
+        "slide_UNkcHG": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "overlay_text_align": "text-start",
-            "mob_center_text": true,
+            "image_desktop": "shopify://shop_images/OWN_WEB_BANNER_MARCH_bags.jpg",
+            "image_mobile": "shopify://shop_images/OWN_WEB_BANNER_MOBILE_MARCH_bag.jpg",
+            "url": "shopify://collections/cadeytote-bags",
+            "overlay_position": "justify-center items-center",
+            "overlay_text_align": "text-center",
+            "mob_center_text": false,
             "subheading": "",
-            "heading": "Top specs. Low prices.",
+            "heading": "",
             "heading_size": "h0",
             "heading_h1": false,
-            "text": "<p><strong>Save up to 50%<br/></strong>on over 1,000 products!</p>",
-            "enlarge_text": true,
-            "button_1_label": "Shop Laptops",
+            "text": "",
+            "enlarge_text": false,
+            "button_1_label": "",
             "button_1_link": "",
             "button_1_style": "btn btn--primary",
             "button_2_label": "",
             "button_2_link": "",
             "button_2_style": "btn btn--primary",
-            "transparent_content_color": "#ffffff"
+            "transparent_content_color": "#ffffff",
+            "countdown_show": false,
+            "countdown_end_date": "",
+            "countdown_end_time": "",
+            "countdown_end_text": "",
+            "enlarge_end_text": false,
+            "countdown_hide_on_end": false,
+            "use_custom_colors": false,
+            "count_color": "#ffffff",
+            "bg_color": "#070707",
+            "bg_grad": ""
           }
         },
-        "c4fcb261-beb3-4c16-80a3-8584fe04d0f9": {
+        "slide_3mUVNK": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "overlay_text_align": "text-start",
-            "mob_center_text": true,
+            "image_desktop": "shopify://shop_images/OWN_WEB_BANNER_MARCH.jpg",
+            "image_mobile": "shopify://shop_images/OWN_WEB_BANNER_MOBILE_MARCH_cf1b51b0-9609-4043-ad55-7bdea40dbaba.jpg",
+            "url": "shopify://collections/serene-pump-women",
+            "overlay_position": "justify-center items-center",
+            "overlay_text_align": "text-center",
+            "mob_center_text": false,
             "subheading": "",
-            "heading": "Amazing deals on electricals.",
+            "heading": "",
             "heading_size": "h0",
             "heading_h1": false,
-            "text": "<p><strong>Save up to 50%<br/></strong>on over 1,000 products!</p>",
-            "enlarge_text": true,
-            "button_1_label": "Shop Home Tech",
+            "text": "",
+            "enlarge_text": false,
+            "button_1_label": "",
             "button_1_link": "",
             "button_1_style": "btn btn--primary",
             "button_2_label": "",
             "button_2_link": "",
             "button_2_style": "btn btn--primary",
-            "transparent_content_color": "#ffffff"
+            "transparent_content_color": "#ffffff",
+            "countdown_show": false,
+            "countdown_end_date": "",
+            "countdown_end_time": "",
+            "countdown_end_text": "",
+            "enlarge_end_text": false,
+            "countdown_hide_on_end": false,
+            "use_custom_colors": false,
+            "count_color": "#ffffff",
+            "bg_color": "#070707",
+            "bg_grad": ""
+          }
+        },
+        "slide_ezE6Ck": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/OWN_WEB_BANNER_SEPT_bags_2.jpg",
+            "image_mobile": "shopify://shop_images/OWN_WEB_BANNER_MOBILE_SEPT_bags2.jpg",
+            "url": "shopify://collections/bags",
+            "overlay_position": "justify-center items-center",
+            "overlay_text_align": "text-center",
+            "mob_center_text": false,
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h0",
+            "heading_h1": false,
+            "text": "",
+            "enlarge_text": false,
+            "button_1_label": "",
+            "button_1_link": "",
+            "button_1_style": "btn btn--primary",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": "btn btn--primary",
+            "transparent_content_color": "#ffffff",
+            "countdown_show": false,
+            "countdown_end_date": "",
+            "countdown_end_time": "",
+            "countdown_end_text": "",
+            "enlarge_end_text": false,
+            "countdown_hide_on_end": false,
+            "use_custom_colors": false,
+            "count_color": "#ffffff",
+            "bg_color": "#070707",
+            "bg_grad": ""
           }
         }
       },
       "block_order": [
-        "b9291c89-a91c-4a67-a0d9-bfea1a1d18d0",
-        "4944b957-0b7e-4a63-9ab6-f97eecba1b2f",
-        "c4fcb261-beb3-4c16-80a3-8584fe04d0f9"
+        "slide_EVQnfP",
+        "slide_UNkcHG",
+        "slide_3mUVNK",
+        "slide_ezE6Ck"
       ],
+      "name": "Slideshow",
       "settings": {
         "height_mode": "auto",
-        "fixed_height_desktop": 620,
-        "fixed_height_mobile": 360,
-        "quick_nav_menu": "",
-        "quick_nav_title": "Shop our range",
-        "quick_nav_image_ratio": "1",
-        "quick_nav_image_fit": "cover",
-        "quick_nav_use_product_image": true,
-        "quick_nav_color_scheme": "default",
-        "quick_nav_show_price": true,
-        "menu_1_text": "Choose a department...",
-        "menu_1_display": "large_text",
-        "menu_2_text": "Choose a category...",
-        "menu_2_display": "large_image_text",
-        "menu_3_text": "Choose a product type...",
-        "menu_3_display": "large_image_text",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "mobile_stacked": false,
         "nav_style": "slideshow_nav_lines",
         "pagination_color": "#ffffff",
+        "nav_position": "justify-center",
         "transition": "slide-fade",
         "autoplay": true,
         "slider_pause": false,
-        "autoplay_speed": 6,
+        "autoplay_speed": 5,
         "color_scheme": "white",
         "full_width": true,
         "tint_color": "#000000",
-        "tint_opacity": 25,
-        "accessibility_info": "Featured collections and new arrivals",
+        "tint_opacity": 0,
+        "accessibility_info": "",
         "prevent_animation": true
+      }
+    },
+    "multi_column_pTHAid": {
+      "type": "multi-column",
+      "blocks": {
+        "column_iKrDg9": {
+          "type": "column",
+          "settings": {
+            "enable_media": true,
+            "media_scale": 100,
+            "heading": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_NMGWCN": {
+          "type": "column",
+          "settings": {
+            "enable_media": true,
+            "media_scale": 100,
+            "heading": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "column_Cc4gfV": {
+          "type": "column",
+          "settings": {
+            "enable_media": true,
+            "media_scale": 100,
+            "heading": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_iKrDg9",
+        "column_NMGWCN",
+        "column_Cc4gfV"
+      ],
+      "name": "Multi-column",
+      "settings": {
+        "title": "SHOP BY CATEGORY",
+        "heading_align": "text-start",
+        "button_label": "",
+        "button_link": "",
+        "layout": "carousel",
+        "column_size": "medium",
+        "column_align": "left",
+        "media_align": "text-center",
+        "image_ratio": "1",
+        "color_scheme": "1",
+        "button_style": "btn btn--secondary"
       }
     },
     "b7c18b78-f517-4220-a6c6-ff4ab88b41ff": {
@@ -161,6 +281,7 @@
         "80501b44-f33e-44b5-90cb-a4c5cea7553e",
         "92ac9a91-a3c3-477c-8a27-ccae7d6e59a1"
       ],
+      "disabled": true,
       "settings": {
         "title": "Shop Deals",
         "heading_align": "text-center",
@@ -281,6 +402,7 @@
         "template--17646024294688__2cfe881f-8ca3-4df7-95e4-f5b39015d791-16750976533d9e79c5-2",
         "template--17646024294688__2cfe881f-8ca3-4df7-95e4-f5b39015d791-16750976533d9e79c5-3"
       ],
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_align": "text-start",
@@ -341,6 +463,7 @@
         "template--17937594614048__8920e5de-3c38-4881-9157-068a30f16121-16768866707e61c625-2",
         "fcfd3bc5-11d0-43b5-8d4b-ca59a170c6dd"
       ],
+      "disabled": true,
       "settings": {
         "height_mode": "fixed",
         "fixed_height_desktop": 600,
@@ -361,23 +484,23 @@
     "2b6638e0-7b54-4420-a891-39abab8a2a2b": {
       "type": "featured-collection",
       "settings": {
-        "title": "Trending now...",
-        "heading_align": "text-center",
+        "title": "TOP PICKS",
+        "heading_align": "text-start",
         "show_view_all": false,
-        "collection": "all",
-        "layout": "carousel",
+        "collection": "all-products",
+        "layout": "grid",
         "card_size_mobile": "small",
-        "card_size": "small",
-        "products_to_show": 24,
+        "card_size": "medium",
+        "products_to_show": 5,
         "show_highlight_products": false,
         "show_promo_info": false,
-        "image_ratio": "1",
-        "promo_title": "Promotion title",
-        "content": "<p>Promotion text</p>",
+        "image_ratio": "natural",
+        "promo_title": "A headline to grab attention",
+        "content": "",
         "link_url": "",
         "button_label": "Button",
-        "color_scheme": "none",
-        "button_style": "btn btn--secondary"
+        "color_scheme": "2",
+        "button_style": "link"
       }
     },
     "aab03c2f-0b18-4a62-9280-a2026f9819a7": {
@@ -412,6 +535,7 @@
         "6c4e69a1-9cf9-4045-8abb-e3d8ceb30b23",
         "90617dd2-3fd4-4de9-b743-6301d904e700"
       ],
+      "disabled": true,
       "settings": {
         "video_external": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_description": "",
@@ -435,9 +559,9 @@
           "settings": {
             "link_url": "",
             "columns": 2,
-            "rows": 1,
+            "rows": 2,
             "subheading": "",
-            "title": "<p>Brand 1</p>",
+            "title": "<p>Women</p>",
             "heading_size": "h3",
             "button_label": "",
             "button_link": "",
@@ -452,10 +576,64 @@
           "type": "media",
           "settings": {
             "link_url": "",
-            "columns": 2,
+            "columns": 1,
             "rows": 1,
             "subheading": "",
-            "title": "<p>Brand 2</p>",
+            "title": "<p>SKU1</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_YJW7kw": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU2</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_X6XWM7": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU3</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_CP6XnX": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU4</p>",
             "heading_size": "h3",
             "button_label": "",
             "button_link": "",
@@ -469,18 +647,253 @@
       },
       "block_order": [
         "template--17646024294688__eb683620-4832-4859-a362-dfff515f867c-1675184658ddacfe8e-0",
-        "template--17646024294688__eb683620-4832-4859-a362-dfff515f867c-1675184658ddacfe8e-1"
+        "template--17646024294688__eb683620-4832-4859-a362-dfff515f867c-1675184658ddacfe8e-1",
+        "media_YJW7kw",
+        "media_X6XWM7",
+        "media_CP6XnX"
       ],
       "settings": {
-        "title": "Top Brands",
+        "title": "",
         "heading_align": "text-center",
         "button_label": "",
         "button_link": "",
         "gallery_cols_max": 4,
-        "mobile_carousel": false,
+        "mobile_carousel": true,
         "gallery_cols_min": "1",
-        "fixed_height_desktop": 400,
-        "fixed_height_mobile": 280,
+        "fixed_height_desktop": 230,
+        "fixed_height_mobile": 260,
+        "section_color_scheme": "none",
+        "color_scheme": "white",
+        "transparent_content_color": "#ffffff"
+      }
+    },
+    "media_grid_Yp4hAJ": {
+      "type": "media-grid",
+      "blocks": {
+        "media_G7R3xM": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 2,
+            "rows": 2,
+            "subheading": "",
+            "title": "<p>Men</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-start",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_RkVhnr": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU1</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_PANzR4": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU2</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_L8Mczm": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU3</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_hGYaUP": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU4</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "media_G7R3xM",
+        "media_RkVhnr",
+        "media_PANzR4",
+        "media_L8Mczm",
+        "media_hGYaUP"
+      ],
+      "settings": {
+        "title": "",
+        "heading_align": "text-center",
+        "button_label": "",
+        "button_link": "",
+        "gallery_cols_max": 4,
+        "mobile_carousel": true,
+        "gallery_cols_min": "1",
+        "fixed_height_desktop": 230,
+        "fixed_height_mobile": 260,
+        "section_color_scheme": "none",
+        "color_scheme": "white",
+        "transparent_content_color": "#ffffff"
+      }
+    },
+    "media_grid_Y6qgnk": {
+      "type": "media-grid",
+      "blocks": {
+        "media_qmQrDU": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 2,
+            "rows": 2,
+            "subheading": "",
+            "title": "<p>Kids</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-start",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_3KAAa4": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU1</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_G8zidt": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU2</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_nyzrmd": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU3</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_pR7bnb": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "columns": 1,
+            "rows": 1,
+            "subheading": "",
+            "title": "<p>SKU4</p>",
+            "heading_size": "h3",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "link link-inherit",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "media_qmQrDU",
+        "media_3KAAa4",
+        "media_G8zidt",
+        "media_nyzrmd",
+        "media_pR7bnb"
+      ],
+      "settings": {
+        "title": "",
+        "heading_align": "text-center",
+        "button_label": "",
+        "button_link": "",
+        "gallery_cols_max": 4,
+        "mobile_carousel": true,
+        "gallery_cols_min": "1",
+        "fixed_height_desktop": 230,
+        "fixed_height_mobile": 260,
         "section_color_scheme": "none",
         "color_scheme": "white",
         "transparent_content_color": "#ffffff"
@@ -540,6 +953,7 @@
         "64452c59-f584-463f-8bc2-96e2f2510a6b",
         "585b584c-4345-4423-84bd-98f28b65bd17"
       ],
+      "disabled": true,
       "settings": {
         "section_height": "default",
         "spacing": 72,
@@ -604,6 +1018,7 @@
         "40a0618c-3032-4176-83aa-fad669149506",
         "template--17646024294688__bd2edc13-1805-4c10-b227-152a54f95ead-1674140552ec466fc1-2"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Which camera is the right one for you?",
         "text": "",
@@ -652,6 +1067,7 @@
         "template--17646024294688__d1557094-e1ff-483a-a831-ec47e3ac8583-16751824192893615f-1",
         "template--17646024294688__d1557094-e1ff-483a-a831-ec47e3ac8583-16751824192893615f-2"
       ],
+      "disabled": true,
       "settings": {
         "layout": "image_first",
         "show_vendor": true,
@@ -701,6 +1117,7 @@
         "template--17646024294688__53337ab6-3f88-45e9-8fe2-7d55ee55a74a-16752469146a26910e-1",
         "template--17646024294688__53337ab6-3f88-45e9-8fe2-7d55ee55a74a-16752469146a26910e-2"
       ],
+      "disabled": true,
       "settings": {
         "url": "",
         "height_mode": "fixed",
@@ -723,6 +1140,7 @@
       "blocks": {
         "template--17937594614048__c0877401-bf18-4a0d-a970-4846075a4d6f-1676478505ce30ce84-0": {
           "type": "feature",
+          "disabled": true,
           "settings": {
             "heading": "Pixel perfect",
             "text": "<p>Immerse yourself in crystal-clear images and movies with the stunning 27\" 2560 x 1400 backlit LED screen.</p>",
@@ -757,6 +1175,7 @@
         "template--17937594614048__c0877401-bf18-4a0d-a970-4846075a4d6f-1676478505ce30ce84-1",
         "template--17937594614048__c0877401-bf18-4a0d-a970-4846075a4d6f-1676478505ce30ce84-2"
       ],
+      "disabled": true,
       "settings": {
         "product": "",
         "show_content": true,
@@ -801,6 +1220,7 @@
         "template--17646024294688__44b64c8e-4ea7-4c35-96f3-42d82b3c2069-167517588875579705-1",
         "template--17646024294688__44b64c8e-4ea7-4c35-96f3-42d82b3c2069-167517588875579705-2"
       ],
+      "disabled": true,
       "settings": {
         "overlay_position": "justify-center",
         "text_align": "text-center",
@@ -813,6 +1233,7 @@
     },
     "ff1b6812-c849-43f7-a4b7-6244fdb1f8d7": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_align": "text-center",
@@ -887,6 +1308,7 @@
         "template--17646024294688__badaf8ee-9f48-44d6-8bb1-2853448d1112-16751805018cd7f25c-2",
         "b1587b2c-7619-4d47-bc2f-4a1b495a8476"
       ],
+      "disabled": true,
       "settings": {
         "title": "Popular departments",
         "heading_align": "text-center",
@@ -956,6 +1378,7 @@
         "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-4",
         "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-5"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Help & Advice",
         "heading_align": "text-center",
@@ -965,6 +1388,7 @@
     },
     "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Featured products for you",
         "heading_align": "text-start",
@@ -987,13 +1411,16 @@
     }
   },
   "order": [
-    "bb7588e2-322e-49f2-87bb-8d05dd3697ec",
+    "slideshow_fHqWxE",
+    "multi_column_pTHAid",
     "b7c18b78-f517-4220-a6c6-ff4ab88b41ff",
     "2cfe881f-8ca3-4df7-95e4-f5b39015d791",
     "8920e5de-3c38-4881-9157-068a30f16121",
     "2b6638e0-7b54-4420-a891-39abab8a2a2b",
     "aab03c2f-0b18-4a62-9280-a2026f9819a7",
     "eb683620-4832-4859-a362-dfff515f867c",
+    "media_grid_Yp4hAJ",
+    "media_grid_Y6qgnk",
     "e831b750-ff21-4703-99e1-64199126c484",
     "bd2edc13-1805-4c10-b227-152a54f95ead",
     "d1557094-e1ff-483a-a831-ec47e3ac8583",
