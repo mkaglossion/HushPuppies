@@ -412,6 +412,28 @@
         "button_style": "btn btn--secondary"
       }
     },
+    "2b6638e0-7b54-4420-a891-39abab8a2a2b": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "TOP PICKS",
+        "heading_align": "text-start",
+        "show_view_all": false,
+        "collection": "all-products",
+        "layout": "grid",
+        "card_size_mobile": "small",
+        "card_size": "medium",
+        "products_to_show": 5,
+        "show_highlight_products": false,
+        "show_promo_info": false,
+        "image_ratio": "natural",
+        "promo_title": "A headline to grab attention",
+        "content": "",
+        "link_url": "",
+        "button_label": "Button",
+        "color_scheme": "2",
+        "button_style": "link"
+      }
+    },
     "media_grid_2_NcUXVA": {
       "type": "media-grid-2",
       "blocks": {
@@ -698,28 +720,6 @@
         "full_width": true,
         "tint_color": "#000000",
         "tint_opacity": 0
-      }
-    },
-    "2b6638e0-7b54-4420-a891-39abab8a2a2b": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "TOP PICKS",
-        "heading_align": "text-start",
-        "show_view_all": false,
-        "collection": "all-products",
-        "layout": "grid",
-        "card_size_mobile": "small",
-        "card_size": "medium",
-        "products_to_show": 5,
-        "show_highlight_products": false,
-        "show_promo_info": false,
-        "image_ratio": "natural",
-        "promo_title": "A headline to grab attention",
-        "content": "",
-        "link_url": "",
-        "button_label": "Button",
-        "color_scheme": "2",
-        "button_style": "link"
       }
     },
     "aab03c2f-0b18-4a62-9280-a2026f9819a7": {
@@ -1286,10 +1286,10 @@
     "b7c18b78-f517-4220-a6c6-ff4ab88b41ff",
     "2cfe881f-8ca3-4df7-95e4-f5b39015d791",
     "multi_column_2_rkYjL8",
+    "2b6638e0-7b54-4420-a891-39abab8a2a2b",
     "media_grid_2_NcUXVA",
     "media_grid_2_jfpgcy",
     "8920e5de-3c38-4881-9157-068a30f16121",
-    "2b6638e0-7b54-4420-a891-39abab8a2a2b",
     "aab03c2f-0b18-4a62-9280-a2026f9819a7",
     "e831b750-ff21-4703-99e1-64199126c484",
     "bd2edc13-1805-4c10-b227-152a54f95ead",
