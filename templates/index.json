@@ -403,7 +403,7 @@
         "heading_align": "left",
         "button_label": "",
         "button_link": "",
-        "layout": "carousel",
+        "layout": "grid",
         "column_size": "medium",
         "column_align": "center",
         "media_align": "text-center",
