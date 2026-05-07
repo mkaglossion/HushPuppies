@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "slideshow_fHqWxE": {
@@ -165,63 +174,6 @@
         "tint_opacity": 0,
         "accessibility_info": "",
         "prevent_animation": true
-      }
-    },
-    "multi_column_pTHAid": {
-      "type": "multi-column",
-      "blocks": {
-        "column_iKrDg9": {
-          "type": "column",
-          "settings": {
-            "enable_media": true,
-            "media_scale": 100,
-            "heading": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "column_NMGWCN": {
-          "type": "column",
-          "settings": {
-            "enable_media": true,
-            "media_scale": 100,
-            "heading": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "column_Cc4gfV": {
-          "type": "column",
-          "settings": {
-            "enable_media": true,
-            "media_scale": 100,
-            "heading": "",
-            "text": "",
-            "button_label": "",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_iKrDg9",
-        "column_NMGWCN",
-        "column_Cc4gfV"
-      ],
-      "name": "Multi-column",
-      "settings": {
-        "title": "SHOP BY CATEGORY",
-        "heading_align": "text-start",
-        "button_label": "",
-        "button_link": "",
-        "layout": "carousel",
-        "column_size": "medium",
-        "column_align": "left",
-        "media_align": "text-center",
-        "image_ratio": "1",
-        "color_scheme": "1",
-        "button_style": "btn btn--secondary"
       }
     },
     "b7c18b78-f517-4220-a6c6-ff4ab88b41ff": {
@@ -406,6 +358,58 @@
         "fixed_height_mobile": 260,
         "text_overlay_font": "body",
         "color_scheme": "default"
+      }
+    },
+    "multi_column_2_rkYjL8": {
+      "type": "multi-column-2",
+      "blocks": {
+        "column_7zWYdp": {
+          "type": "column",
+          "settings": {
+            "enable_media": true,
+            "image": "shopify://shop_images/MENS_CATEG.jpg",
+            "media_scale": 100,
+            "link": ""
+          }
+        },
+        "column_xQbKxJ": {
+          "type": "column",
+          "settings": {
+            "enable_media": true,
+            "image": "shopify://shop_images/WOMENS_CATEG.jpg",
+            "media_scale": 100,
+            "link": ""
+          }
+        },
+        "column_Wmfn7H": {
+          "type": "column",
+          "settings": {
+            "enable_media": true,
+            "image": "shopify://shop_images/KIDS_CATEG.jpg",
+            "media_scale": 100,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_7zWYdp",
+        "column_xQbKxJ",
+        "column_Wmfn7H"
+      ],
+      "name": "Multicolumn v2",
+      "settings": {
+        "title": "SHOP BY CATEGORY",
+        "text": "",
+        "heading_align": "left",
+        "button_label": "",
+        "button_link": "",
+        "layout": "carousel",
+        "column_size": "medium",
+        "column_align": "center",
+        "media_align": "text-center",
+        "image_ratio": "natural",
+        "color_scheme": "1",
+        "button_style": "btn btn--secondary"
       }
     },
     "8920e5de-3c38-4881-9157-068a30f16121": {
@@ -1400,13 +1404,12 @@
         "button_style": "btn btn--secondary"
       }
     }
-
   },
   "order": [
     "slideshow_fHqWxE",
-    "multi_column_pTHAid",
     "b7c18b78-f517-4220-a6c6-ff4ab88b41ff",
     "2cfe881f-8ca3-4df7-95e4-f5b39015d791",
+    "multi_column_2_rkYjL8",
     "8920e5de-3c38-4881-9157-068a30f16121",
     "2b6638e0-7b54-4420-a891-39abab8a2a2b",
     "aab03c2f-0b18-4a62-9280-a2026f9819a7",
