@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "slideshow_fHqWxE": {
@@ -1395,6 +1404,118 @@
         "color_scheme": "none",
         "button_style": "btn btn--secondary"
       }
+    },
+    "media_grid_2_NcUXVA": {
+      "type": "media-grid-2",
+      "blocks": {
+        "media_PkwVUG": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/WOMENS_BAGS.jpg",
+            "link_url": "",
+            "subheading": "",
+            "title": "<p>Media heading</p>",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_T3jkCD": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "subheading": "",
+            "title": "<p>Media heading</p>",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_bUJaBa": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "subheading": "",
+            "title": "<p>Media heading</p>",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_bMTphH": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "subheading": "",
+            "title": "<p>Media heading</p>",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_ftTWCU": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "subheading": "",
+            "title": "<p>Media heading</p>",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "media_PkwVUG",
+        "media_T3jkCD",
+        "media_bUJaBa",
+        "media_bMTphH",
+        "media_ftTWCU"
+      ],
+      "name": "Media grid featured V2",
+      "settings": {
+        "title": "Media grid",
+        "heading_align": "text-start",
+        "button_label": "",
+        "button_link": "",
+        "gallery_cols_max": 4,
+        "featured_position": "left",
+        "mobile_carousel": true,
+        "gallery_cols_min": "2",
+        "grid_gap": 14,
+        "fixed_height_desktop": 150,
+        "fixed_height_mobile": 280,
+        "image_fit": "cover",
+        "image_ratio": "natural",
+        "section_color_scheme": "none",
+        "color_scheme": "white",
+        "transparent_content_color": "#ffffff"
+      }
     }
   },
   "order": [
@@ -1417,6 +1538,7 @@
     "ff1b6812-c849-43f7-a4b7-6244fdb1f8d7",
     "badaf8ee-9f48-44d6-8bb1-2853448d1112",
     "7ff2d165-a729-4f5c-a6dc-805d6957f606",
-    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39"
+    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39",
+    "media_grid_2_NcUXVA"
   ]
 }
