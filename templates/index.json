@@ -412,6 +412,118 @@
         "button_style": "btn btn--secondary"
       }
     },
+    "media_grid_2_NcUXVA": {
+      "type": "media-grid-2",
+      "blocks": {
+        "media_PkwVUG": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/WOMENS_BAGS.jpg",
+            "link_url": "",
+            "subheading": "",
+            "title": "<p>Media heading</p>",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_T3jkCD": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "subheading": "",
+            "title": "<p>Media heading</p>",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_bUJaBa": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "subheading": "",
+            "title": "<p>Media heading</p>",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_bMTphH": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "subheading": "",
+            "title": "<p>Media heading</p>",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_ftTWCU": {
+          "type": "media",
+          "settings": {
+            "link_url": "",
+            "subheading": "",
+            "title": "<p>Media heading</p>",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "media_PkwVUG",
+        "media_T3jkCD",
+        "media_bUJaBa",
+        "media_bMTphH",
+        "media_ftTWCU"
+      ],
+      "name": "Media grid featured V2",
+      "settings": {
+        "title": "",
+        "heading_align": "text-start",
+        "button_label": "",
+        "button_link": "",
+        "gallery_cols_max": 4,
+        "featured_position": "left",
+        "mobile_carousel": true,
+        "gallery_cols_min": "2",
+        "grid_gap": 14,
+        "fixed_height_desktop": 150,
+        "fixed_height_mobile": 280,
+        "image_fit": "cover",
+        "image_ratio": "natural",
+        "section_color_scheme": "none",
+        "color_scheme": "white",
+        "transparent_content_color": "#ffffff"
+      }
+    },
     "8920e5de-3c38-4881-9157-068a30f16121": {
       "type": "countdown-timer",
       "blocks": {
@@ -544,355 +656,6 @@
         "tint_opacity": 0,
         "lazyload": true,
         "prevent_animation": false
-      }
-    },
-    "eb683620-4832-4859-a362-dfff515f867c": {
-      "type": "media-grid",
-      "blocks": {
-        "template--17646024294688__eb683620-4832-4859-a362-dfff515f867c-1675184658ddacfe8e-0": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/WOMENS_BAGS.jpg",
-            "link_url": "",
-            "columns": 2,
-            "rows": 2,
-            "subheading": "",
-            "title": "<p>Women</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-start",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "template--17646024294688__eb683620-4832-4859-a362-dfff515f867c-1675184658ddacfe8e-1": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU1</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_YJW7kw": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU2</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_X6XWM7": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU3</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_CP6XnX": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU4</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "template--17646024294688__eb683620-4832-4859-a362-dfff515f867c-1675184658ddacfe8e-0",
-        "template--17646024294688__eb683620-4832-4859-a362-dfff515f867c-1675184658ddacfe8e-1",
-        "media_YJW7kw",
-        "media_X6XWM7",
-        "media_CP6XnX"
-      ],
-      "settings": {
-        "title": "",
-        "heading_align": "text-center",
-        "button_label": "",
-        "button_link": "",
-        "gallery_cols_max": 4,
-        "mobile_carousel": true,
-        "gallery_cols_min": "1",
-        "fixed_height_desktop": 230,
-        "fixed_height_mobile": 260,
-        "section_color_scheme": "none",
-        "color_scheme": "white",
-        "transparent_content_color": "#ffffff"
-      }
-    },
-    "media_grid_Yp4hAJ": {
-      "type": "media-grid",
-      "blocks": {
-        "media_G7R3xM": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 2,
-            "rows": 2,
-            "subheading": "",
-            "title": "<p>Men</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-start",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_RkVhnr": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU1</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_PANzR4": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU2</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_L8Mczm": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU3</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_hGYaUP": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU4</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "media_G7R3xM",
-        "media_RkVhnr",
-        "media_PANzR4",
-        "media_L8Mczm",
-        "media_hGYaUP"
-      ],
-      "settings": {
-        "title": "",
-        "heading_align": "text-center",
-        "button_label": "",
-        "button_link": "",
-        "gallery_cols_max": 4,
-        "mobile_carousel": true,
-        "gallery_cols_min": "1",
-        "fixed_height_desktop": 230,
-        "fixed_height_mobile": 260,
-        "section_color_scheme": "none",
-        "color_scheme": "white",
-        "transparent_content_color": "#ffffff"
-      }
-    },
-    "media_grid_Y6qgnk": {
-      "type": "media-grid",
-      "blocks": {
-        "media_qmQrDU": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 2,
-            "rows": 2,
-            "subheading": "",
-            "title": "<p>Kids</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-start",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_3KAAa4": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU1</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_G8zidt": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU2</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_nyzrmd": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU3</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_pR7bnb": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU4</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "media_qmQrDU",
-        "media_3KAAa4",
-        "media_G8zidt",
-        "media_nyzrmd",
-        "media_pR7bnb"
-      ],
-      "settings": {
-        "title": "",
-        "heading_align": "text-center",
-        "button_label": "",
-        "button_link": "",
-        "gallery_cols_max": 4,
-        "mobile_carousel": true,
-        "gallery_cols_min": "1",
-        "fixed_height_desktop": 230,
-        "fixed_height_mobile": 260,
-        "section_color_scheme": "none",
-        "color_scheme": "white",
-        "transparent_content_color": "#ffffff"
       }
     },
     "e831b750-ff21-4703-99e1-64199126c484": {
@@ -1404,118 +1167,6 @@
         "color_scheme": "none",
         "button_style": "btn btn--secondary"
       }
-    },
-    "media_grid_2_NcUXVA": {
-      "type": "media-grid-2",
-      "blocks": {
-        "media_PkwVUG": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/WOMENS_BAGS.jpg",
-            "link_url": "",
-            "subheading": "",
-            "title": "<p>Media heading</p>",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_T3jkCD": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "subheading": "",
-            "title": "<p>Media heading</p>",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_bUJaBa": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "subheading": "",
-            "title": "<p>Media heading</p>",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_bMTphH": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "subheading": "",
-            "title": "<p>Media heading</p>",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_ftTWCU": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "subheading": "",
-            "title": "<p>Media heading</p>",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "media_PkwVUG",
-        "media_T3jkCD",
-        "media_bUJaBa",
-        "media_bMTphH",
-        "media_ftTWCU"
-      ],
-      "name": "Media grid featured V2",
-      "settings": {
-        "title": "Media grid",
-        "heading_align": "text-start",
-        "button_label": "",
-        "button_link": "",
-        "gallery_cols_max": 4,
-        "featured_position": "left",
-        "mobile_carousel": true,
-        "gallery_cols_min": "2",
-        "grid_gap": 14,
-        "fixed_height_desktop": 150,
-        "fixed_height_mobile": 280,
-        "image_fit": "cover",
-        "image_ratio": "natural",
-        "section_color_scheme": "none",
-        "color_scheme": "white",
-        "transparent_content_color": "#ffffff"
-      }
     }
   },
   "order": [
@@ -1523,12 +1174,10 @@
     "b7c18b78-f517-4220-a6c6-ff4ab88b41ff",
     "2cfe881f-8ca3-4df7-95e4-f5b39015d791",
     "multi_column_2_rkYjL8",
+    "media_grid_2_NcUXVA",
     "8920e5de-3c38-4881-9157-068a30f16121",
     "2b6638e0-7b54-4420-a891-39abab8a2a2b",
     "aab03c2f-0b18-4a62-9280-a2026f9819a7",
-    "eb683620-4832-4859-a362-dfff515f867c",
-    "media_grid_Yp4hAJ",
-    "media_grid_Y6qgnk",
     "e831b750-ff21-4703-99e1-64199126c484",
     "bd2edc13-1805-4c10-b227-152a54f95ead",
     "d1557094-e1ff-483a-a831-ec47e3ac8583",
@@ -1538,7 +1187,6 @@
     "ff1b6812-c849-43f7-a4b7-6244fdb1f8d7",
     "badaf8ee-9f48-44d6-8bb1-2853448d1112",
     "7ff2d165-a729-4f5c-a6dc-805d6957f606",
-    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39",
-    "media_grid_2_NcUXVA"
+    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39"
   ]
 }
