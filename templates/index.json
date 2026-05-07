@@ -530,7 +530,7 @@
         "media_x6cdkn": {
           "type": "media",
           "settings": {
-            "image": "shopify://shop_images/WOMENS_BAGS.jpg",
+            "image": "shopify://shop_images/MENS_BAGS_fda7e89e-06b5-42f1-8cec-dc94166965be.jpg",
             "link_url": "",
             "subheading": "",
             "title": "<p>Media heading</p>",
@@ -624,118 +624,6 @@
         "button_link": "",
         "gallery_cols_max": 4,
         "featured_position": "right",
-        "mobile_carousel": true,
-        "gallery_cols_min": "2",
-        "grid_gap": 14,
-        "fixed_height_desktop": 150,
-        "fixed_height_mobile": 280,
-        "image_fit": "cover",
-        "image_ratio": "natural",
-        "section_color_scheme": "none",
-        "color_scheme": "white",
-        "transparent_content_color": "#ffffff"
-      }
-    },
-    "media_grid_2_K3wkpM": {
-      "type": "media-grid-2",
-      "blocks": {
-        "media_iMGXAF": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/WOMENS_BAGS.jpg",
-            "link_url": "",
-            "subheading": "",
-            "title": "<p>Media heading</p>",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_cTVMCj": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "subheading": "",
-            "title": "<p>Media heading</p>",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_e6f4YF": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "subheading": "",
-            "title": "<p>Media heading</p>",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_Q7fAzq": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "subheading": "",
-            "title": "<p>Media heading</p>",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_83FXQU": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "subheading": "",
-            "title": "<p>Media heading</p>",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "media_iMGXAF",
-        "media_cTVMCj",
-        "media_e6f4YF",
-        "media_Q7fAzq",
-        "media_83FXQU"
-      ],
-      "name": "Media grid featured V2",
-      "settings": {
-        "title": "",
-        "heading_align": "text-start",
-        "button_label": "",
-        "button_link": "",
-        "gallery_cols_max": 4,
-        "featured_position": "left",
         "mobile_carousel": true,
         "gallery_cols_min": "2",
         "grid_gap": 14,
@@ -1400,7 +1288,6 @@
     "multi_column_2_rkYjL8",
     "media_grid_2_NcUXVA",
     "media_grid_2_jfpgcy",
-    "media_grid_2_K3wkpM",
     "8920e5de-3c38-4881-9157-068a30f16121",
     "2b6638e0-7b54-4420-a891-39abab8a2a2b",
     "aab03c2f-0b18-4a62-9280-a2026f9819a7",
