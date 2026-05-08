@@ -421,7 +421,7 @@
         "collection": "all-products",
         "layout": "grid",
         "card_size_mobile": "small",
-        "card_size": "medium",
+        "card_size": "small",
         "products_to_show": 5,
         "show_highlight_products": false,
         "show_promo_info": false,
