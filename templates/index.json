@@ -425,7 +425,7 @@
         "products_to_show": 5,
         "show_highlight_products": false,
         "show_promo_info": false,
-        "image_ratio": "natural",
+        "image_ratio": "1",
         "promo_title": "A headline to grab attention",
         "content": "",
         "link_url": "",
