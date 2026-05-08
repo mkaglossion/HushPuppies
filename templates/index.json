@@ -441,9 +441,9 @@
           "type": "media",
           "settings": {
             "image": "shopify://shop_images/WOMENS_BAGS.jpg",
-            "link_url": "",
+            "link_url": "shopify://products/chiara-satchel-womens-bag-black",
             "subheading": "",
-            "title": "<p>Media heading</p>",
+            "title": "",
             "heading_size": "h4",
             "button_label": "",
             "button_link": "",
@@ -457,9 +457,10 @@
         "media_T3jkCD": {
           "type": "media",
           "settings": {
+            "image": "shopify://shop_images/HPLBPFB250701-02_CALIPHONEBAG_TANWeb_1.jpg",
             "link_url": "",
             "subheading": "",
-            "title": "<p>Media heading</p>",
+            "title": "",
             "heading_size": "h4",
             "button_label": "",
             "button_link": "",
@@ -473,9 +474,10 @@
         "media_bUJaBa": {
           "type": "media",
           "settings": {
+            "image": "shopify://shop_images/HPLBPFB250709-03_CADEYHOBO_MULTICOLORBEIGEWeb_1.jpg",
             "link_url": "",
             "subheading": "",
-            "title": "<p>Media heading</p>",
+            "title": "",
             "heading_size": "h4",
             "button_label": "",
             "button_link": "",
@@ -489,9 +491,10 @@
         "media_bMTphH": {
           "type": "media",
           "settings": {
+            "image": "shopify://shop_images/HPLBPFB250713-01_CHIARASATCHEL_BLACKWeb_1.jpg",
             "link_url": "",
             "subheading": "",
-            "title": "<p>Media heading</p>",
+            "title": "",
             "heading_size": "h4",
             "button_label": "",
             "button_link": "",
@@ -505,9 +508,10 @@
         "media_ftTWCU": {
           "type": "media",
           "settings": {
+            "image": "shopify://shop_images/HPLBPFB250706-02_CLEOKNITTOTE_TANWeb_1.jpg",
             "link_url": "",
             "subheading": "",
-            "title": "<p>Media heading</p>",
+            "title": "",
             "heading_size": "h4",
             "button_label": "",
             "button_link": "",
