@@ -557,9 +557,9 @@
           "type": "media",
           "settings": {
             "image": "shopify://shop_images/MENS_BAGS_fda7e89e-06b5-42f1-8cec-dc94166965be.jpg",
-            "link_url": "",
+            "link_url": "shopify://products/anderson-sling-mens-bag-black",
             "subheading": "",
-            "title": "<p>Media heading</p>",
+            "title": "",
             "heading_size": "h4",
             "button_label": "",
             "button_link": "",
@@ -573,9 +573,10 @@
         "media_4wC39y": {
           "type": "media",
           "settings": {
-            "link_url": "",
+            "image": "shopify://shop_images/HPE10477DBR_ADAMCHESTBAG_DARKBROWNWeb_1.jpg",
+            "link_url": "shopify://products/adam-chest-mens-bag-dark-brown",
             "subheading": "",
-            "title": "<p>Media heading</p>",
+            "title": "",
             "heading_size": "h4",
             "button_label": "",
             "button_link": "",
