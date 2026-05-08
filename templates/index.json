@@ -590,9 +590,10 @@
         "media_y8Tr4C": {
           "type": "media",
           "settings": {
-            "link_url": "",
+            "image": "shopify://shop_images/HPF10538KHK_BOBBYMESSENGERBAG_KHAKIWeb_1.jpg",
+            "link_url": "shopify://products/bobby-messenger-mens-bag-khaki",
             "subheading": "",
-            "title": "<p>Media heading</p>",
+            "title": "",
             "heading_size": "h4",
             "button_label": "",
             "button_link": "",
