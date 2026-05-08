@@ -12,12 +12,12 @@
     "slideshow_fHqWxE": {
       "type": "slideshow",
       "blocks": {
-        "slide_EVQnfP": {
+        "slide_QfzgqC": {
           "type": "slide",
           "settings": {
-            "image_desktop": "shopify://shop_images/BTS_MAIN_BANNER.png",
-            "image_mobile": "shopify://shop_images/MOBILE-_SKU_HIGHLIGHT_BANNER.png",
-            "url": "shopify://collections/all-back-to-school-shoes",
+            "image_desktop": "shopify://shop_images/MAY_DTI-_LITTLE_HUSHIES_SMSI_banner.jpg",
+            "image_mobile": "shopify://shop_images/MAY_DTI-_LITTLE_HUSHIES_SMSI_mobile.jpg",
+            "url": "shopify://collections/gwp-little-hushies",
             "overlay_position": "justify-center items-center",
             "overlay_text_align": "text-center",
             "mob_center_text": false,
@@ -46,12 +46,12 @@
             "bg_grad": ""
           }
         },
-        "slide_QfzgqC": {
+        "slide_EVQnfP": {
           "type": "slide",
           "settings": {
-            "image_desktop": "shopify://shop_images/MAY_DTI-_LITTLE_HUSHIES_SMSI_banner.jpg",
-            "image_mobile": "shopify://shop_images/MAY_DTI-_LITTLE_HUSHIES_SMSI_mobile.jpg",
-            "url": "shopify://collections/gwp-little-hushies",
+            "image_desktop": "shopify://shop_images/BTS_MAIN_BANNER.png",
+            "image_mobile": "shopify://shop_images/MOBILE-_SKU_HIGHLIGHT_BANNER.png",
+            "url": "shopify://collections/all-back-to-school-shoes",
             "overlay_position": "justify-center items-center",
             "overlay_text_align": "text-center",
             "mob_center_text": false,
@@ -117,9 +117,9 @@
         "slide_3mUVNK": {
           "type": "slide",
           "settings": {
-            "image_desktop": "shopify://shop_images/OWN_WEB_BANNER_MARCH.jpg",
-            "image_mobile": "shopify://shop_images/OWN_WEB_BANNER_MOBILE_MARCH_cf1b51b0-9609-4043-ad55-7bdea40dbaba.jpg",
-            "url": "shopify://collections/serene-pump-women",
+            "image_desktop": "shopify://shop_images/VALUE_PACK_OWN_WEB_DESKTOP.jpg",
+            "image_mobile": "shopify://shop_images/VALUE_PACK_OWN_WEB_MOBILE.jpg",
+            "url": "shopify://collections/best-value-packs",
             "overlay_position": "justify-center items-center",
             "overlay_text_align": "text-center",
             "mob_center_text": false,
@@ -184,8 +184,8 @@
         }
       },
       "block_order": [
-        "slide_EVQnfP",
         "slide_QfzgqC",
+        "slide_EVQnfP",
         "slide_UNkcHG",
         "slide_3mUVNK",
         "slide_ezE6Ck"
