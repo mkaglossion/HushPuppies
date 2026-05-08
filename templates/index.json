@@ -369,7 +369,7 @@
             "enable_media": true,
             "image": "shopify://shop_images/MENS_CATEG.jpg",
             "media_scale": 100,
-            "link": ""
+            "link": "shopify://collections/mens-shoes"
           }
         },
         "column_xQbKxJ": {
@@ -378,7 +378,7 @@
             "enable_media": true,
             "image": "shopify://shop_images/WOMENS_CATEG.jpg",
             "media_scale": 100,
-            "link": ""
+            "link": "shopify://collections/women"
           }
         },
         "column_Wmfn7H": {
@@ -387,7 +387,7 @@
             "enable_media": true,
             "image": "shopify://shop_images/KIDS_CATEG.jpg",
             "media_scale": 100,
-            "link": ""
+            "link": "shopify://collections/kids-shoes"
           }
         }
       },
