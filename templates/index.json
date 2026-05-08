@@ -607,9 +607,10 @@
         "media_AJ3Xyz": {
           "type": "media",
           "settings": {
-            "link_url": "",
+            "image": "shopify://shop_images/HPE10485BLK_AARONSLINGBAG_BAGWeb_1.jpg",
+            "link_url": "shopify://products/aaron-sling-mens-bag-black",
             "subheading": "",
-            "title": "<p>Media heading</p>",
+            "title": "",
             "heading_size": "h4",
             "button_label": "",
             "button_link": "",
