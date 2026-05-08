@@ -396,6 +396,10 @@
         "column_xQbKxJ",
         "column_Wmfn7H"
       ],
+      "custom_css": [
+        "h2 {font-size: 3.5rem; text-align: left;}",
+        "/* Subukan ang 640px or 480px imbis na 768px */@media (max-width: 640px) {h2 {text-align: center; }}"
+      ],
       "name": "Multicolumn v2",
       "settings": {
         "title": "SHOP BY CATEGORY",
