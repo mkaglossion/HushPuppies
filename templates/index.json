@@ -397,8 +397,8 @@
         "column_Wmfn7H"
       ],
       "custom_css": [
-        "h2 {font-size: 3.5rem; text-align: left;}",
-        " /* Subukan ang 640px or 480px imbis na 768px */@media (max-width: 640px) {h2 {text-align: center; }}"
+        "h2 {font-size: 3.5rem; width: 100%;}",
+        "@media (max-width: 640px) {h2 {text-align: center !important; }}"
       ],
       "name": "Multicolumn v2",
       "settings": {
