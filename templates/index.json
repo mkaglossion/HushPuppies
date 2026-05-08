@@ -458,7 +458,7 @@
           "type": "media",
           "settings": {
             "image": "shopify://shop_images/HPLBPFB250701-02_CALIPHONEBAG_TANWeb_1.jpg",
-            "link_url": "",
+            "link_url": "shopify://products/cali-womens-phone-bag-tan",
             "subheading": "",
             "title": "",
             "heading_size": "h4",
@@ -475,7 +475,7 @@
           "type": "media",
           "settings": {
             "image": "shopify://shop_images/HPLBPFB250709-03_CADEYHOBO_MULTICOLORBEIGEWeb_1.jpg",
-            "link_url": "",
+            "link_url": "shopify://products/cadey-hobo-womens-bag-multicolor-beige",
             "subheading": "",
             "title": "",
             "heading_size": "h4",
@@ -492,7 +492,7 @@
           "type": "media",
           "settings": {
             "image": "shopify://shop_images/HPLBPFB250713-01_CHIARASATCHEL_BLACKWeb_1.jpg",
-            "link_url": "",
+            "link_url": "shopify://products/chiara-satchel-womens-bag-black",
             "subheading": "",
             "title": "",
             "heading_size": "h4",
@@ -509,7 +509,7 @@
           "type": "media",
           "settings": {
             "image": "shopify://shop_images/HPLBPFB250706-02_CLEOKNITTOTE_TANWeb_1.jpg",
-            "link_url": "",
+            "link_url": "shopify://products/cleo-knit-tote-womens-bag-tan",
             "subheading": "",
             "title": "",
             "heading_size": "h4",
