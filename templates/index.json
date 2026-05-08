@@ -624,9 +624,10 @@
         "media_QhAL3f": {
           "type": "media",
           "settings": {
-            "link_url": "",
+            "image": "shopify://shop_images/HPF50517BLK_ADRIANSLINGBAG_BLACKWeb_1.jpg",
+            "link_url": "shopify://products/adrian-sling-mens-bag-black",
             "subheading": "",
-            "title": "<p>Media heading</p>",
+            "title": "",
             "heading_size": "h4",
             "button_label": "",
             "button_link": "",
