@@ -192,7 +192,7 @@
       ],
       "name": "Slideshow",
       "settings": {
-        "height_mode": "fixed",
+        "height_mode": "auto",
         "fixed_height_desktop": 500,
         "fixed_height_mobile": 400,
         "mobile_stacked": false,
