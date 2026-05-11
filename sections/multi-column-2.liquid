@@ -21,11 +21,12 @@
     endif
 
     assign color_scheme = section.settings.color_scheme
+    assign section_width = section.settings.setwidth | default: 'container'
 
     if section.settings.image_ratio == 'shortest'
       assign image_ratio = 0
       for block in section.blocks
-        assign this_image_ratio = block.settings.image.aspect_ratio | default: 1.77
+        assign this_image_ratio = block.settings.image.aspect_ratio | default: block.settings.image_mobile.aspect_ratio | default: 1.77
         if this_image_ratio > image_ratio
           assign image_ratio = this_image_ratio
         endif
@@ -33,7 +34,7 @@
     elsif section.settings.image_ratio == 'tallest'
       assign image_ratio = 99
       for block in section.blocks
-        assign this_image_ratio = block.settings.image.aspect_ratio | default: 1.77
+        assign this_image_ratio = block.settings.image.aspect_ratio | default: block.settings.image_mobile.aspect_ratio | default: 1.77
         if this_image_ratio < image_ratio
           assign image_ratio = this_image_ratio
         endif
@@ -86,10 +87,28 @@
       {% endif %}
     {% endstyle %}
   {%- endif -%}
+  {% style %}
+    #{{ section.id }} > .container-fluid,
+    #{{ section.id }} .container-fluid {
+      max-width: 100%;
+    }
+
+    #{{ section.id }} > .full,
+    #{{ section.id }} .full {
+      width: 100%;
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    #{{ section.id }} .full .img-fit {
+      object-fit: cover;
+    }
+  {% endstyle %}
 
   <div class="section" id="{{ section.id }}">
     {%- if section.settings.title != blank or section.settings.button_label != blank -%}
-      <div class="container">
+      <div class="{{ section_width }}">
         <div class="section__header items-center flex{% if heading_align_class == 'text-center' %} flex-col text-center{% elsif heading_align_class == 'text-end' %} flex-row-reverse flex-wrap{% else %} flex-row flex-wrap{% endif %} gap-x-theme"{% if settings.animations_enabled != "disabled" %} data-cc-animate{% endif %}>
           {%- if section.settings.title != blank -%}
             <h2 class="h4 section__heading mb-0 flex-auto {{ heading_align_class }}">
@@ -110,11 +129,11 @@
 
     {%- if carousel -%}
     <carousel-slider class="carousel block" inactive>
-      <div class="container relative">
+      <div class="{{ section_width }} relative">
         <div class="slider" id="slider-{{ section.id }}">
     {%- endif -%}
 
-      <div class="container">
+      <div class="{{ section_width }}">
         <ul class="{% if carousel %}slider__grid grid {{ grid_classes }}{% else %} flex flex-wrap{% endif %} gap-x-theme{% if color_scheme == 'none' and carousel == false %} gap-y-12 md:gap-y-6{% else %} gap-y-6{% endif %}" role="list">
           {%- for block in section.blocks -%}
             {%- liquid
@@ -124,6 +143,8 @@
               if section.settings.image_ratio == "natural"
                 if block.settings.image != blank
                   assign image_ratio = block.settings.image.aspect_ratio
+                elsif block.settings.image_mobile != blank
+                  assign image_ratio = block.settings.image_mobile.aspect_ratio
                 else
                   assign image_ratio = 1.77
                 endif
@@ -148,7 +169,7 @@
                       <a href="{{ block.settings.link }}">
                     {%- endif -%}
                     <div class="card__media media relative w-full{% if section.settings.image_ratio == "natural" %} {{ section.settings.media_align }}{% endif %}" style="{% unless section.settings.image_ratio == "natural" %}padding-top: {{ 1 | divided_by: image_ratio | times: 100 }}%;{% endunless %}{% if section.settings.image_ratio == "natural" and block.settings.video_shopify %}padding-top: 56.25%;{% endif %}{% if block.settings.media_scale < 100 %} transform: scale({{ block.settings.media_scale | divided_by: 100.0 }});{% endif %}">
-                      {%- if block.settings.image != blank or block.settings.video_shopify != blank -%}
+                      {%- if block.settings.image != blank or block.settings.image_mobile != blank or block.settings.video_shopify != blank -%}
                         {%- if block.settings.video_shopify != blank -%}
                           <deferred-media class="media absolute top-0 left-0 w-full h-full">
                             <template>
@@ -161,7 +182,7 @@
                           </deferred-media>
                         {%- endif -%}
 
-                        {%- if block.settings.image != blank %}
+                        {%- if block.settings.image != blank or block.settings.image_mobile != blank -%}
                           {%- liquid
                             assign image_class = "video-played-hidden"
                             unless section.settings.image_ratio == "natural"
@@ -171,13 +192,16 @@
                               assign image_class = image_class | append: " img-fit"
                             endif
                           -%}
-                          {% render 'image',
-                            image: block.settings.image,
-                            widths: '460, 700, 860, 1296',
-                            src_width: 700,
+                          {% render 'image-desktop-and-mobile',
+                            desktop_image: block.settings.image | default: block.settings.image_mobile,
+                            mobile_image: block.settings.image_mobile,
+                            src_width_desktop: 700,
+                            widths_desktop: '460, 700, 860, 1296',
+                            src_width_mobile: 460,
+                            widths_mobile: '360, 460, 700',
                             sizes: sizes,
-                            section_index: section.index,
-                            class: image_class
+                            class: image_class,
+                            block: block
                           %}
                         {%- endif -%}
                       {%- else -%}
@@ -276,6 +300,26 @@
     {
       "type": "header",
       "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Section width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
     },
     {
       "type": "select",
@@ -442,6 +486,11 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image mobile"
         },
         {
           "type": "video",

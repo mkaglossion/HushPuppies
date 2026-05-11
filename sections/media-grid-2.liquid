@@ -34,7 +34,12 @@
 
 {%- liquid
   assign breakpoint_md = 769
+  assign section_width = section.settings.setwidth | default: 'container'
   assign text_color_scheme = section.settings.color_scheme
+  assign use_featured_mobile_layout = false
+  if section.settings.mobile_carousel and section.settings.mobile_layout_style == 'featured_cards'
+    assign use_featured_mobile_layout = true
+  endif
 
   if text_color_scheme == 'white'
     assign brightness = section.settings.transparent_content_color | color_brightness
@@ -100,7 +105,7 @@
   # Grid classes for mobile carousel support
   assign grid_classes = 'gallery grid'
   
-  if section.settings.mobile_carousel
+  if section.settings.mobile_carousel and use_featured_mobile_layout == false
     assign grid_classes = grid_classes | append: ' slider--mobile'
   else
     if section.settings.gallery_cols_min == '1'
@@ -204,6 +209,108 @@
       grid-column: span 1 !important;
     }
   }
+
+  #shopify-section-{{ section.id }} > .container-fluid,
+  #shopify-section-{{ section.id }} .container-fluid {
+    max-width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} > .full,
+  #shopify-section-{{ section.id }} .full {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #shopify-section-{{ section.id }} .full .img-fit {
+    object-fit: cover;
+  }
+
+  /* Mobile layout: featured banner + cards slider */
+  #shopify-section-{{ section.id }} .mg2-mobile-layout {
+    display: none;
+  }
+
+  @media (max-width: {{ breakpoint_md | minus: 1 }}px) {
+    #shopify-section-{{ section.id }} .mg2-desktop-grid--with-mobile-layout {
+      display: none !important;
+    }
+
+    #shopify-section-{{ section.id }} .mg2-mobile-layout--active {
+      display: block;
+    }
+
+    #shopify-section-{{ section.id }} .mg2-mobile-featured .gallery-block {
+      width: 100%;
+      margin-bottom: var(--smg-gap);
+    }
+
+    #shopify-section-{{ section.id }} .mg2-mobile-cards {
+      display: flex;
+      gap: var(--smg-gap);
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: var(--gutter);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    #shopify-section-{{ section.id }} .mg2-mobile-cards.is-dragging {
+      cursor: grabbing;
+      user-select: none;
+    }
+
+    #shopify-section-{{ section.id }} .mg2-mobile-cards::-webkit-scrollbar {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .mg2-mobile-cards .gallery-block {
+      flex: 0 0 calc(50% - (var(--smg-gap) / 2));
+      min-width: 240px;
+      scroll-snap-align: start;
+    }
+
+    {% if section.settings.image_ratio == "natural" %}
+      /* Natural ratio mobile: show full image content and one card per view */
+      #shopify-section-{{ section.id }} .mg2-mobile-cards .gallery-block {
+        flex: 0 0 100%;
+        min-width: 100%;
+      }
+
+      #shopify-section-{{ section.id }} .mg2-mobile-layout .media img.img-fit {
+        position: static !important;
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+      }
+    {% endif %}
+
+    #shopify-section-{{ section.id }} .mg2-mobile-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .mg2-mobile-dot {
+      width: 10px;
+      height: 10px;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      background: transparent;
+      padding: 0;
+      opacity: 0.6;
+    }
+
+    #shopify-section-{{ section.id }} .mg2-mobile-dot.is-active {
+      background: currentColor;
+      opacity: 1;
+    }
+
+  }
 {%- endstyle -%}
 
 <div class="section{% unless section_color_scheme == 'none' %} color-scheme color-scheme--{{ section_color_scheme }} section--padded section--full-width{% endunless %}" 
@@ -211,7 +318,7 @@
      data-featured-position="{{ section.settings.featured_position }}">
   
   {%- if section.settings.title != blank or section.settings.button_label != blank -%}
-    <div class="container">
+    <div class="{{ section_width }}">
       <div class="section__header items-center flex{% if section.settings.heading_align == 'text-center' %} flex-col text-center{% elsif section.settings.heading_align == 'text-end' %} flex-row-reverse flex-wrap{% else %} flex-row flex-wrap{% endif %} gap-x-theme"{% if settings.animations_enabled != 'disabled' %} data-cc-animate{% endif %}>
         {%- if section.settings.title != blank -%}
           <h2 class="h4 section__heading mb-0 flex-auto {{ section.settings.heading_align }}">
@@ -226,10 +333,157 @@
     </div>
   {%- endif -%}
 
-  {% if section.settings.mobile_carousel %}<div class="gallery-mobile-carousel">{% endif %}
+  {% if section.settings.mobile_carousel and use_featured_mobile_layout == false %}<div class="gallery-mobile-carousel">{% endif %}
 
-  <div class="container">
-    <div class="featured-grid {{ grid_classes }}" style="gap: {{ section.settings.grid_gap }}px;">
+  <div class="{{ section_width }}">
+    <div class="mg2-mobile-layout{% if use_featured_mobile_layout %} mg2-mobile-layout--active{% endif %}">
+      {%- if use_featured_mobile_layout and section.blocks.size > 0 -%}
+        {%- assign featured_block = section.blocks.first -%}
+        {%- liquid
+          assign featured_img = featured_block.settings.image
+          assign featured_overlay_position = featured_block.settings.overlay_position | split: ' '
+          assign featured_is_link = true
+          if featured_block.settings.title contains '<a' or featured_block.settings.button_link != blank or featured_block.settings.link_url == blank
+            assign featured_is_link = false
+          endif
+          assign featured_image_class = 'img-fit'
+          if section.settings.image_fit == 'contain'
+            assign featured_image_class = featured_image_class | append: ' img-fit--contain'
+          endif
+        -%}
+
+        <div class="mg2-mobile-featured">
+          {% if featured_is_link %}<a href="{{ featured_block.settings.link_url }}" {% else %}<div {% endif %}class="block-{{ featured_block.id }} block relative flex flex-col gallery-block h-full{% if featured_is_link %} card__media{% endif %}">
+            <div class="gallery-block__image{% if featured_block.settings.video_shopify != blank %} video-section{% endif %} overflow-hidden flex relative w-full h-full {{ featured_overlay_position | first }} {{ featured_overlay_position | last }}{% if featured_is_link %} card__media{% endif %}">
+              <div class="media media--has-overlay flex absolute top-0 left-0 w-full h-full has-motion"{% unless section.settings.image_ratio == "natural" %} style="padding-top: {{ 1 | divided_by: image_ratio | times: 100 }}%;"{% endunless %}>
+                {%- if featured_img != blank -%}
+                  {% render 'image',
+                    image: featured_img,
+                    widths: '480, 800, 980, 1200, 1440, 1920',
+                    src_width: 1200,
+                    sizes: '100vw',
+                    quality: 1,
+                    section_index: section.index,
+                    class: featured_image_class
+                  %}
+                {%- else -%}
+                  {{ 'lifestyle-2' | placeholder_svg_tag: 'media__placeholder img-fit' }}
+                {%- endif -%}
+              </div>
+
+              {%- if featured_block.settings.video_shopify != blank -%}
+                <deferred-media class="video-section__media media media--has-overlay overflow-hidden absolute top-0 left-0 w-full h-full">
+                  <template>
+                    <video-component class="has-iframe absolute top-0 left-0 w-full h-full no-js-hidden" data-autoplay="true" data-background="true">
+                      {{ featured_block.settings.video_shopify | video_tag: class: 'img-fit pointer-events-none', playsinline: true, autoplay: true, muted: true, loop: true, controls: false, poster: '' | replace: '<img ', '<img loading="lazy" hidden ' }}
+                    </video-component>
+                  </template>
+                </deferred-media>
+              {%- endif -%}
+
+              {%- if featured_block.settings.title != blank or featured_block.settings.subheading != blank or featured_block.settings.button_label != blank -%}
+                <div class="gallery-block__image-text{% if text_color_scheme == 'white' %} gallery-block__image-text--transparent{% endif %} color-scheme color-scheme--{{ text_color_scheme }} text-overlay text-overlay--grow {{ featured_block.settings.text_alignment }} relative">
+                  {%- if featured_block.settings.subheading != blank -%}
+                    <p class="text-overlay__block subheading text-current">
+                      {{- featured_block.settings.subheading | escape -}}
+                    </p>
+                  {%- endif -%}
+                  {%- if featured_block.settings.title != blank -%}
+                    <h3 class="text-current mb-0 rte {{ featured_block.settings.heading_size }}">
+                      {{- featured_block.settings.title | newline_to_br -}}
+                    </h3>
+                  {%- endif -%}
+                  {%- if featured_block.settings.button_label != blank -%}
+                    <div class="text-overlay__block text-overlay__buttons inline-flex flex-wrap mt-4{% if featured_block.settings.text_alignment == 'text-start' %} justify-start{% elsif featured_block.settings.text_alignment == 'text-end' %} justify-end{% else %} justify-center{% endif %}">
+                      <{% if featured_block.settings.button_link == blank %}button{% else %}a{% endif %} class="{{ featured_block.settings.button_style }}" {% if featured_block.settings.button_link == blank and featured_is_link == false %}role="link" aria-disabled="true"{% else %}href="{{ featured_block.settings.button_link }}"{% endif %}>
+                        {{- featured_block.settings.button_label | escape -}}
+                      </{% if featured_block.settings.button_link == blank %}button{% else %}a{% endif %}>
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          {% if featured_is_link %}</a>{% else %}</div>{% endif %}
+        </div>
+
+        {%- if section.blocks.size > 1 -%}
+          <div class="mg2-mobile-cards" data-mg2-cards>
+            {%- for block in section.blocks offset: 1 -%}
+              {%- liquid
+                assign img = block.settings.image
+                assign overlay_position = block.settings.overlay_position | split: ' '
+                assign is_link = true
+                if block.settings.title contains '<a' or block.settings.button_link != blank or block.settings.link_url == blank
+                  assign is_link = false
+                endif
+                assign block_image_class = 'img-fit'
+                if section.settings.image_fit == 'contain'
+                  assign block_image_class = block_image_class | append: ' img-fit--contain'
+                endif
+              -%}
+
+              {% if is_link %}<a href="{{ block.settings.link_url }}" {% else %}<div {% endif %}class="block-{{ block.id }} block relative flex flex-col gallery-block h-full{% if is_link %} card__media{% endif %}">
+                <div class="gallery-block__image{% if block.settings.video_shopify != blank %} video-section{% endif %} overflow-hidden flex relative w-full h-full {{ overlay_position | first }} {{ overlay_position | last }}{% if is_link %} card__media{% endif %}">
+                  <div class="media media--has-overlay flex absolute top-0 left-0 w-full h-full has-motion"{% unless section.settings.image_ratio == "natural" %} style="padding-top: {{ 1 | divided_by: image_ratio | times: 100 }}%;"{% endunless %}>
+                    {%- if img != blank -%}
+                      {% render 'image',
+                        image: img,
+                        widths: '480, 800, 980, 1200, 1440',
+                        src_width: 980,
+                        sizes: '(max-width: 768px) 50vw, 25vw',
+                        quality: 1,
+                        section_index: section.index,
+                        class: block_image_class
+                      %}
+                    {%- else -%}
+                      {{ 'lifestyle-2' | placeholder_svg_tag: 'media__placeholder img-fit' }}
+                    {%- endif -%}
+                  </div>
+                  {%- if block.settings.video_shopify != blank -%}
+                    <deferred-media class="video-section__media media media--has-overlay overflow-hidden absolute top-0 left-0 w-full h-full">
+                      <template>
+                        <video-component class="has-iframe absolute top-0 left-0 w-full h-full no-js-hidden" data-autoplay="true" data-background="true">
+                          {{ block.settings.video_shopify | video_tag: class: 'img-fit pointer-events-none', playsinline: true, autoplay: true, muted: true, loop: true, controls: false, poster: '' | replace: '<img ', '<img loading="lazy" hidden ' }}
+                        </video-component>
+                      </template>
+                    </deferred-media>
+                  {%- endif -%}
+                  {%- if block.settings.title != blank or block.settings.subheading != blank or block.settings.button_label != blank -%}
+                    <div class="gallery-block__image-text{% if text_color_scheme == 'white' %} gallery-block__image-text--transparent{% endif %} color-scheme color-scheme--{{ text_color_scheme }} text-overlay text-overlay--grow {{ block.settings.text_alignment }} relative">
+                      {%- if block.settings.subheading != blank -%}
+                        <p class="text-overlay__block subheading text-current">
+                          {{- block.settings.subheading | escape -}}
+                        </p>
+                      {%- endif -%}
+                      {%- if block.settings.title != blank -%}
+                        <h3 class="text-current mb-0 rte {{ block.settings.heading_size }}">
+                          {{- block.settings.title | newline_to_br -}}
+                        </h3>
+                      {%- endif -%}
+                      {%- if block.settings.button_label != blank -%}
+                        <div class="text-overlay__block text-overlay__buttons inline-flex flex-wrap mt-4{% if block.settings.text_alignment == 'text-start' %} justify-start{% elsif block.settings.text_alignment == 'text-end' %} justify-end{% else %} justify-center{% endif %}">
+                          <{% if block.settings.button_link == blank %}button{% else %}a{% endif %} class="{{ block.settings.button_style }}" {% if block.settings.button_link == blank and is_link == false %}role="link" aria-disabled="true"{% else %}href="{{ block.settings.button_link }}"{% endif %}>
+                            {{- block.settings.button_label | escape -}}
+                          </{% if block.settings.button_link == blank %}button{% else %}a{% endif %}>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              {% if is_link %}</a>{% else %}</div>{% endif %}
+            {%- endfor -%}
+          </div>
+
+          <div class="mg2-mobile-dots" data-mg2-dots>
+            {%- for block in section.blocks offset: 1 -%}
+              <button type="button" class="mg2-mobile-dot{% if forloop.first %} is-active{% endif %}" data-mg2-dot="{{ forloop.index0 }}" aria-label="Go to card {{ forloop.index }}"></button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    <div class="featured-grid {{ grid_classes }}{% if use_featured_mobile_layout %} mg2-desktop-grid--with-mobile-layout{% endif %}" style="gap: {{ section.settings.grid_gap }}px;">
       {%- for block in section.blocks -%}
         {%- liquid
           assign img = block.settings.image
@@ -272,7 +526,7 @@
           endif
         -%}
 
-        {% if is_link %}<a href="{{ block.settings.link_url }}" {% else %}<div {% endif %}class="block-{{ block.id }} block relative flex flex-col gallery-block h-full {{ item_class }} {{ col_span_class }} {% if is_link %} hover:grow-media card__media{% endif %}" {%- unless forloop.first %}tabindex="-1"{% endunless %} {{ block.shopify_attributes }}>
+        {% if is_link %}<a href="{{ block.settings.link_url }}" {% else %}<div {% endif %}class="block-{{ block.id }} block relative flex flex-col gallery-block h-full {{ item_class }} {{ col_span_class }} {% if is_link %} card__media{% endif %}" {%- unless forloop.first %}tabindex="-1"{% endunless %} {{ block.shopify_attributes }}>
 
           <div class="gallery-block__image{% if block.settings.video_shopify != blank %} video-section{% endif %} overflow-hidden flex relative w-full h-full {{ overlay_position | first }} {{ overlay_position | last }}{% if is_link %} card__media{% endif %}">
             <div class="media media--has-overlay flex absolute top-0 left-0 w-full h-full has-motion"{% unless section.settings.image_ratio == "natural" %} style="padding-top: {{ 1 | divided_by: image_ratio | times: 100 }}%;"{% endunless %}>
@@ -284,6 +538,12 @@
                     (min-width: 1024px) 25vw, (min-width: 769px) 25vw, {% if section.settings.gallery_cols_min == '1' %}100vw{% else %}50vw{% endif %}
                   {%- endif -%}
                 {%- endcapture -%}
+                {%- liquid
+                  assign block_image_class = 'img-fit'
+                  if section.settings.image_fit == 'contain'
+                    assign block_image_class = block_image_class | append: ' img-fit--contain'
+                  endif
+                -%}
                 {% render 'image',
                   image: img,
                   widths: '480, 800, 980, 1200, 1440, 1920',
@@ -291,7 +551,7 @@
                   sizes: sizes,
                   quality: 1,
                   section_index: section.index,
-                  class: 'img-fit'
+                  class: block_image_class
                 %}
               {%- else -%}
                 {{ 'lifestyle-2' | placeholder_svg_tag: 'media__placeholder img-fit' }}
@@ -339,8 +599,127 @@
     </div>
   </div>
 
-  {% if section.settings.mobile_carousel %}</div>{% endif %}
+  {% if section.settings.mobile_carousel and use_featured_mobile_layout == false %}</div>{% endif %}
 </div>
+
+<script>
+  (function initMediaGrid2MobileDots() {
+    var sectionId = 'shopify-section-{{ section.id }}';
+    var useFeaturedMobileLayout = {{ use_featured_mobile_layout | json }};
+    if (!useFeaturedMobileLayout) return;
+
+    function initDots() {
+      var root = document.getElementById(sectionId);
+      if (!root) return;
+
+      var cardsWrap = root.querySelector('[data-mg2-cards]');
+      var dotsWrap = root.querySelector('[data-mg2-dots]');
+      if (!cardsWrap || !dotsWrap) return;
+
+      var cards = Array.prototype.slice.call(cardsWrap.querySelectorAll('.gallery-block'));
+      var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('[data-mg2-dot]'));
+      if (!cards.length || !dots.length) return;
+
+      function setActiveDot() {
+        var trackRect = cardsWrap.getBoundingClientRect();
+        var trackCenter = trackRect.left + (trackRect.width / 2);
+        var activeIndex = 0;
+        var bestDistance = Infinity;
+
+        cards.forEach(function(card, index) {
+          var rect = card.getBoundingClientRect();
+          var center = rect.left + (rect.width / 2);
+          var distance = Math.abs(trackCenter - center);
+          if (distance < bestDistance) {
+            bestDistance = distance;
+            activeIndex = index;
+          }
+        });
+
+        dots.forEach(function(dot, index) {
+          dot.classList.toggle('is-active', index === activeIndex);
+        });
+      }
+
+      function enableDragToScroll(container) {
+        var pointerDown = false;
+        var dragging = false;
+        var suppressClick = false;
+        var startX = 0;
+        var startY = 0;
+        var startScrollLeft = 0;
+
+        function onPointerDown(event) {
+          if (event.pointerType === 'mouse' && event.button !== 0) return;
+          pointerDown = true;
+          dragging = false;
+          startX = event.clientX;
+          startY = event.clientY;
+          startScrollLeft = container.scrollLeft;
+        }
+
+        function onPointerMove(event) {
+          if (!pointerDown) return;
+          var dx = event.clientX - startX;
+          var dy = event.clientY - startY;
+
+          if (!dragging) {
+            if (Math.abs(dx) < 6) return;
+            if (Math.abs(dx) <= Math.abs(dy)) return;
+            dragging = true;
+            suppressClick = true;
+            container.classList.add('is-dragging');
+          }
+
+          container.scrollLeft = startScrollLeft - dx;
+          if (event.cancelable) event.preventDefault();
+        }
+
+        function onPointerUp() {
+          pointerDown = false;
+          if (dragging) {
+            container.classList.remove('is-dragging');
+          }
+          dragging = false;
+        }
+
+        function onClickCapture(event) {
+          if (!suppressClick) return;
+          event.preventDefault();
+          event.stopPropagation();
+          suppressClick = false;
+        }
+
+        container.addEventListener('pointerdown', onPointerDown);
+        container.addEventListener('pointermove', onPointerMove, { passive: false });
+        container.addEventListener('pointerup', onPointerUp);
+        container.addEventListener('pointercancel', onPointerUp);
+        container.addEventListener('mouseleave', onPointerUp);
+        container.addEventListener('click', onClickCapture, true);
+      }
+
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+          var index = parseInt(dot.getAttribute('data-mg2-dot'), 10) || 0;
+          if (cards[index]) {
+            cards[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+          }
+        });
+      });
+
+      cardsWrap.addEventListener('scroll', setActiveDot, { passive: true });
+      window.addEventListener('resize', setActiveDot);
+      enableDragToScroll(cardsWrap);
+      setActiveDot();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initDots);
+    } else {
+      initDots();
+    }
+  })();
+</script>
 
 {% schema %}
 {
@@ -384,6 +763,17 @@
       "content": "Layout"
     },
     {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Section width",
+      "default": "container",
+      "options": [
+        { "value": "container", "label": "Box" },
+        { "value": "container-fluid", "label": "Container fluid" },
+        { "value": "full", "label": "Full" }
+      ]
+    },
+    {
       "type": "range",
       "id": "gallery_cols_max",
       "min": 2,
@@ -407,6 +797,16 @@
       "id": "mobile_carousel",
       "label": "Show as a carousel on mobile",
       "default": false
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout_style",
+      "label": "Mobile layout style",
+      "options": [
+        { "value": "default", "label": "Default mobile grid/carousel" },
+        { "value": "featured_cards", "label": "Featured banner + cards slider" }
+      ],
+      "default": "default"
     },
     {
       "type": "select",

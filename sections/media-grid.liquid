@@ -31,6 +31,7 @@
 {%- liquid
   # constants
   assign breakpoint_md = 769
+  assign section_width = section.settings.setwidth | default: 'container'
 
   if section.settings.gallery_cols_min == '1'
     assign grid_classes = 'sm:grid-cols-2'
@@ -104,11 +105,28 @@
     #{{ section.id }} .gallery-block.row-span-2 { min-height: calc(calc({{ section.settings.fixed_height_desktop }}px + 8vw) * 2); }
     #{{ section.id }} .gallery-block.row-span-3 { min-height: calc(calc({{ section.settings.fixed_height_desktop }}px + 8vw) * 3); }
   }
+
+  .media-grid-section-{{ section.id }} > .container-fluid,
+  .media-grid-section-{{ section.id }} .container-fluid {
+    max-width: 100%;
+  }
+
+  .media-grid-section-{{ section.id }} > .full,
+  .media-grid-section-{{ section.id }} .full {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .media-grid-section-{{ section.id }} .full .img-fit {
+    object-fit: cover;
+  }
 {%- endstyle -%}
 
-<div class="section{% unless section_color_scheme == 'none' %} color-scheme color-scheme--{{ section_color_scheme }} section--padded section--full-width{% endunless %}">
+<div class="section media-grid-section-{{ section.id }}{% unless section_color_scheme == 'none' %} color-scheme color-scheme--{{ section_color_scheme }} section--padded section--full-width{% endunless %}">
   {%- if section.settings.title != blank or section.settings.button_label != blank -%}
-    <div class="container">
+    <div class="{{ section_width }}">
       <div class="section__header items-center flex{% if section.settings.heading_align == 'text-center' %} flex-col text-center{% elsif section.settings.heading_align == 'text-end' %} flex-row-reverse flex-wrap{% else %} flex-row flex-wrap{% endif %} gap-x-theme"{% if settings.animations_enabled != "disabled" %} data-cc-animate{% endif %}>
         {%- if section.settings.title != blank -%}
           <h2 class="h4 section__heading mb-0 flex-auto {{ section.settings.heading_align }}">
@@ -125,7 +143,7 @@
 
   {% if section.settings.mobile_carousel %}<div class="gallery-mobile-carousel">{% endif %}
 
-  <div class="container" id="{{ section.id }}">
+  <div class="{{ section_width }}" id="{{ section.id }}">
     <div class="gallery grid {{ grid_classes }}{% if section.settings.mobile_carousel %} slider--mobile{% endif %}">
       {%- for block in section.blocks -%}
         {%- liquid
@@ -252,6 +270,26 @@
     {
       "type": "header",
       "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Section width",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Box"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Container fluid"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ]
     },
     {
       "type": "range",

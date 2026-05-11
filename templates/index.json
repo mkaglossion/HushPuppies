@@ -1,8 +1,51 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "slideshow_fHqWxE": {
       "type": "slideshow",
       "blocks": {
+        "slide_QfzgqC": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/MAY_DTI-_LITTLE_HUSHIES_SMSI_banner.jpg",
+            "image_mobile": "shopify://shop_images/MAY_DTI-_LITTLE_HUSHIES_SMSI_mobile.jpg",
+            "url": "shopify://collections/gwp-little-hushies",
+            "overlay_position": "justify-center items-center",
+            "overlay_text_align": "text-center",
+            "mob_center_text": false,
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h0",
+            "heading_h1": false,
+            "text": "",
+            "enlarge_text": false,
+            "button_1_label": "",
+            "button_1_link": "",
+            "button_1_style": "btn btn--primary",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": "btn btn--primary",
+            "transparent_content_color": "#ffffff",
+            "countdown_show": false,
+            "countdown_end_date": "",
+            "countdown_end_time": "",
+            "countdown_end_text": "",
+            "enlarge_end_text": false,
+            "countdown_hide_on_end": false,
+            "use_custom_colors": false,
+            "count_color": "#ffffff",
+            "bg_color": "#070707",
+            "bg_grad": ""
+          }
+        },
         "slide_EVQnfP": {
           "type": "slide",
           "settings": {
@@ -74,9 +117,9 @@
         "slide_3mUVNK": {
           "type": "slide",
           "settings": {
-            "image_desktop": "shopify://shop_images/OWN_WEB_BANNER_MARCH.jpg",
-            "image_mobile": "shopify://shop_images/OWN_WEB_BANNER_MOBILE_MARCH_cf1b51b0-9609-4043-ad55-7bdea40dbaba.jpg",
-            "url": "shopify://collections/serene-pump-women",
+            "image_desktop": "shopify://shop_images/VALUE_PACK_OWN_WEB_DESKTOP.jpg",
+            "image_mobile": "shopify://shop_images/VALUE_PACK_OWN_WEB_MOBILE.jpg",
+            "url": "shopify://collections/best-value-packs",
             "overlay_position": "justify-center items-center",
             "overlay_text_align": "text-center",
             "mob_center_text": false,
@@ -141,6 +184,7 @@
         }
       },
       "block_order": [
+        "slide_QfzgqC",
         "slide_EVQnfP",
         "slide_UNkcHG",
         "slide_3mUVNK",
@@ -148,9 +192,9 @@
       ],
       "name": "Slideshow",
       "settings": {
-        "height_mode": "auto",
-        "fixed_height_desktop": 600,
-        "fixed_height_mobile": 350,
+        "height_mode": "fixed",
+        "fixed_height_desktop": 500,
+        "fixed_height_mobile": 400,
         "mobile_stacked": false,
         "nav_style": "slideshow_nav_lines",
         "pagination_color": "#ffffff",
@@ -360,7 +404,7 @@
             "enable_media": true,
             "image": "shopify://shop_images/MENS_CATEG.jpg",
             "media_scale": 100,
-            "link": ""
+            "link": "shopify://collections/men"
           }
         },
         "column_xQbKxJ": {
@@ -369,7 +413,7 @@
             "enable_media": true,
             "image": "shopify://shop_images/WOMENS_CATEG.jpg",
             "media_scale": 100,
-            "link": ""
+            "link": "shopify://collections/women"
           }
         },
         "column_Wmfn7H": {
@@ -378,7 +422,7 @@
             "enable_media": true,
             "image": "shopify://shop_images/KIDS_CATEG.jpg",
             "media_scale": 100,
-            "link": ""
+            "link": "shopify://collections/kids-shoes"
           }
         }
       },
@@ -386,6 +430,10 @@
         "column_7zWYdp",
         "column_xQbKxJ",
         "column_Wmfn7H"
+      ],
+      "custom_css": [
+        "h2 {font-size: 4rem; width: 100%;}",
+        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; }}"
       ],
       "name": "Multicolumn v2",
       "settings": {
@@ -401,6 +449,264 @@
         "image_ratio": "natural",
         "color_scheme": "1",
         "button_style": "btn btn--secondary"
+      }
+    },
+    "2b6638e0-7b54-4420-a891-39abab8a2a2b": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {font-size: 4rem; width: 100%;}",
+        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; }}"
+      ],
+      "settings": {
+        "title": "TOP PICKS",
+        "heading_align": "text-start",
+        "show_view_all": false,
+        "collection": "all-products",
+        "layout": "grid",
+        "card_size_mobile": "small",
+        "card_size": "small",
+        "products_to_show": 5,
+        "show_highlight_products": false,
+        "show_promo_info": false,
+        "image_ratio": "1",
+        "promo_title": "A headline to grab attention",
+        "content": "",
+        "link_url": "",
+        "button_label": "Button",
+        "color_scheme": "2",
+        "button_style": "link"
+      }
+    },
+    "media_grid_2_NcUXVA": {
+      "type": "media-grid-2",
+      "blocks": {
+        "media_PkwVUG": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/WOMENS_BAGS.jpg",
+            "link_url": "shopify://products/chiara-satchel-womens-bag-black",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_T3jkCD": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/HPLBPFB250701-02_CALIPHONEBAG_TANWeb_1.jpg",
+            "link_url": "shopify://products/cali-womens-phone-bag-tan",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_bUJaBa": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/HPLBPFB250709-03_CADEYHOBO_MULTICOLORBEIGEWeb_1.jpg",
+            "link_url": "shopify://products/cadey-hobo-womens-bag-multicolor-beige",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_bMTphH": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/HPLBPFB250713-01_CHIARASATCHEL_BLACKWeb_1.jpg",
+            "link_url": "shopify://products/chiara-satchel-womens-bag-black",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_ftTWCU": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/HPLBPFB250706-02_CLEOKNITTOTE_TANWeb_1.jpg",
+            "link_url": "shopify://products/cleo-knit-tote-womens-bag-tan",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "media_PkwVUG",
+        "media_T3jkCD",
+        "media_bUJaBa",
+        "media_bMTphH",
+        "media_ftTWCU"
+      ],
+      "name": "Media grid featured V2",
+      "settings": {
+        "title": "",
+        "heading_align": "text-start",
+        "button_label": "",
+        "button_link": "",
+        "gallery_cols_max": 4,
+        "featured_position": "left",
+        "mobile_carousel": true,
+        "gallery_cols_min": "2",
+        "grid_gap": 14,
+        "fixed_height_desktop": 140,
+        "fixed_height_mobile": 280,
+        "image_fit": "cover",
+        "image_ratio": "natural",
+        "section_color_scheme": "none",
+        "color_scheme": "white",
+        "transparent_content_color": "#ffffff"
+      }
+    },
+    "media_grid_2_jfpgcy": {
+      "type": "media-grid-2",
+      "blocks": {
+        "media_x6cdkn": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/MENS_BAGS_fda7e89e-06b5-42f1-8cec-dc94166965be.jpg",
+            "link_url": "shopify://products/anderson-sling-mens-bag-black",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_4wC39y": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/HPE10477DBR_ADAMCHESTBAG_DARKBROWNWeb_1.jpg",
+            "link_url": "shopify://products/adam-chest-mens-bag-dark-brown",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_y8Tr4C": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/HPF10538KHK_BOBBYMESSENGERBAG_KHAKIWeb_1.jpg",
+            "link_url": "shopify://products/bobby-messenger-mens-bag-khaki",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_AJ3Xyz": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/HPE10485BLK_AARONSLINGBAG_BAGWeb_1.jpg",
+            "link_url": "shopify://products/aaron-sling-mens-bag-black",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_QhAL3f": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/HPF50517BLK_ADRIANSLINGBAG_BLACKWeb_1.jpg",
+            "link_url": "shopify://products/adrian-sling-mens-bag-black",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "media_x6cdkn",
+        "media_4wC39y",
+        "media_y8Tr4C",
+        "media_AJ3Xyz",
+        "media_QhAL3f"
+      ],
+      "name": "Media grid featured V2",
+      "settings": {
+        "title": "",
+        "heading_align": "text-start",
+        "button_label": "",
+        "button_link": "",
+        "gallery_cols_max": 4,
+        "featured_position": "right",
+        "mobile_carousel": true,
+        "gallery_cols_min": "2",
+        "grid_gap": 14,
+        "fixed_height_desktop": 140,
+        "fixed_height_mobile": 280,
+        "image_fit": "cover",
+        "image_ratio": "natural",
+        "section_color_scheme": "none",
+        "color_scheme": "white",
+        "transparent_content_color": "#ffffff"
       }
     },
     "8920e5de-3c38-4881-9157-068a30f16121": {
@@ -467,28 +773,6 @@
         "tint_opacity": 0
       }
     },
-    "2b6638e0-7b54-4420-a891-39abab8a2a2b": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "TOP PICKS",
-        "heading_align": "text-start",
-        "show_view_all": false,
-        "collection": "all-products",
-        "layout": "grid",
-        "card_size_mobile": "small",
-        "card_size": "medium",
-        "products_to_show": 5,
-        "show_highlight_products": false,
-        "show_promo_info": false,
-        "image_ratio": "natural",
-        "promo_title": "A headline to grab attention",
-        "content": "",
-        "link_url": "",
-        "button_label": "Button",
-        "color_scheme": "2",
-        "button_style": "link"
-      }
-    },
     "aab03c2f-0b18-4a62-9280-a2026f9819a7": {
       "type": "background-video",
       "blocks": {
@@ -535,355 +819,6 @@
         "tint_opacity": 0,
         "lazyload": true,
         "prevent_animation": false
-      }
-    },
-    "eb683620-4832-4859-a362-dfff515f867c": {
-      "type": "media-grid",
-      "blocks": {
-        "template--17646024294688__eb683620-4832-4859-a362-dfff515f867c-1675184658ddacfe8e-0": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/WOMENS_BAGS.jpg",
-            "link_url": "",
-            "columns": 2,
-            "rows": 2,
-            "subheading": "",
-            "title": "<p>Women</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-start",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "template--17646024294688__eb683620-4832-4859-a362-dfff515f867c-1675184658ddacfe8e-1": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU1</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_YJW7kw": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU2</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_X6XWM7": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU3</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_CP6XnX": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU4</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "template--17646024294688__eb683620-4832-4859-a362-dfff515f867c-1675184658ddacfe8e-0",
-        "template--17646024294688__eb683620-4832-4859-a362-dfff515f867c-1675184658ddacfe8e-1",
-        "media_YJW7kw",
-        "media_X6XWM7",
-        "media_CP6XnX"
-      ],
-      "settings": {
-        "title": "",
-        "heading_align": "text-center",
-        "button_label": "",
-        "button_link": "",
-        "gallery_cols_max": 4,
-        "mobile_carousel": true,
-        "gallery_cols_min": "1",
-        "fixed_height_desktop": 230,
-        "fixed_height_mobile": 260,
-        "section_color_scheme": "none",
-        "color_scheme": "white",
-        "transparent_content_color": "#ffffff"
-      }
-    },
-    "media_grid_Yp4hAJ": {
-      "type": "media-grid",
-      "blocks": {
-        "media_G7R3xM": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 2,
-            "rows": 2,
-            "subheading": "",
-            "title": "<p>Men</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-start",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_RkVhnr": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU1</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_PANzR4": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU2</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_L8Mczm": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU3</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_hGYaUP": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU4</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "media_G7R3xM",
-        "media_RkVhnr",
-        "media_PANzR4",
-        "media_L8Mczm",
-        "media_hGYaUP"
-      ],
-      "settings": {
-        "title": "",
-        "heading_align": "text-center",
-        "button_label": "",
-        "button_link": "",
-        "gallery_cols_max": 4,
-        "mobile_carousel": true,
-        "gallery_cols_min": "1",
-        "fixed_height_desktop": 230,
-        "fixed_height_mobile": 260,
-        "section_color_scheme": "none",
-        "color_scheme": "white",
-        "transparent_content_color": "#ffffff"
-      }
-    },
-    "media_grid_Y6qgnk": {
-      "type": "media-grid",
-      "blocks": {
-        "media_qmQrDU": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 2,
-            "rows": 2,
-            "subheading": "",
-            "title": "<p>Kids</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-start",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_3KAAa4": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU1</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_G8zidt": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU2</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_nyzrmd": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU3</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        },
-        "media_pR7bnb": {
-          "type": "media",
-          "settings": {
-            "link_url": "",
-            "columns": 1,
-            "rows": 1,
-            "subheading": "",
-            "title": "<p>SKU4</p>",
-            "heading_size": "h3",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "link link-inherit",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "media_qmQrDU",
-        "media_3KAAa4",
-        "media_G8zidt",
-        "media_nyzrmd",
-        "media_pR7bnb"
-      ],
-      "settings": {
-        "title": "",
-        "heading_align": "text-center",
-        "button_label": "",
-        "button_link": "",
-        "gallery_cols_max": 4,
-        "mobile_carousel": true,
-        "gallery_cols_min": "1",
-        "fixed_height_desktop": 230,
-        "fixed_height_mobile": 260,
-        "section_color_scheme": "none",
-        "color_scheme": "white",
-        "transparent_content_color": "#ffffff"
       }
     },
     "e831b750-ff21-4703-99e1-64199126c484": {
@@ -1402,12 +1337,11 @@
     "b7c18b78-f517-4220-a6c6-ff4ab88b41ff",
     "2cfe881f-8ca3-4df7-95e4-f5b39015d791",
     "multi_column_2_rkYjL8",
-    "8920e5de-3c38-4881-9157-068a30f16121",
     "2b6638e0-7b54-4420-a891-39abab8a2a2b",
+    "media_grid_2_NcUXVA",
+    "media_grid_2_jfpgcy",
+    "8920e5de-3c38-4881-9157-068a30f16121",
     "aab03c2f-0b18-4a62-9280-a2026f9819a7",
-    "eb683620-4832-4859-a362-dfff515f867c",
-    "media_grid_Yp4hAJ",
-    "media_grid_Y6qgnk",
     "e831b750-ff21-4703-99e1-64199126c484",
     "bd2edc13-1805-4c10-b227-152a54f95ead",
     "d1557094-e1ff-483a-a831-ec47e3ac8583",

@@ -149,6 +149,38 @@
   endif
 -%}
 
+{%- style -%}
+  #shopify-section-{{ section.id }} .section__header .section__heading {
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1.1;
+  }
+
+  #shopify-section-{{ section.id }} .section__header .link {
+    font-size: clamp(0.95rem, 1vw, 1.1rem);
+  }
+
+  #shopify-section-{{ section.id }} .featured-collection-text .section__heading {
+    font-size: clamp(1.5rem, 2.2vw, 2.25rem);
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .featured-collection-text .rte,
+  #shopify-section-{{ section.id }} .featured-collection-text .rte p {
+    font-size: clamp(1rem, 1.15vw, 1.125rem);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .section__header .section__heading {
+      font-size: clamp(1.5rem, 7vw, 2.2rem);
+    }
+
+    #shopify-section-{{ section.id }} .featured-collection-text .section__heading {
+      font-size: clamp(1.25rem, 5.2vw, 1.7rem);
+    }
+  }
+{%- endstyle -%}
+
 {%- capture slider_arrows -%}
   <div class="slider-nav absolute top-middle end {% if settings.slider_show_arrows == 'hover' %}slider-nav--show-on-hover no-hover-hidden {% endif %}hidden md:block no-js-hidden">
     <button type="button" class="slider-nav__btn tap-target btn {{ settings.slider_button_style }} has-ltr-icon" name="next" aria-controls="slider-{{ section.id }}">
