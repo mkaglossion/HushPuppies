@@ -395,6 +395,25 @@
         "color_scheme": "default"
       }
     },
+    "feature_collection_2_6cwA33": {
+      "type": "feature-collection-2",
+      "custom_css": [
+        "h2 {font-size: 4rem; width: 100%; margin-left: 40px;}",
+        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; margin: 0px; }}"
+      ],
+      "name": "Featured Collection V2",
+      "settings": {
+        "title": "Top picks",
+        "heading_align": "text-start",
+        "show_view_all": false,
+        "collection": "best-value-packs",
+        "products_to_show": 12,
+        "grid_gap": 16,
+        "setwidth": "container",
+        "image_ratio": "natural",
+        "image_fit": "contain"
+      }
+    },
     "multi_column_2_rkYjL8": {
       "type": "multi-column-2",
       "blocks": {
@@ -403,6 +422,7 @@
           "settings": {
             "enable_media": true,
             "image": "shopify://shop_images/MENS_CATEG.jpg",
+            "image_mobile": "shopify://shop_images/CATEGORY_BANNER-_MENS.jpg",
             "media_scale": 100,
             "link": "shopify://collections/men"
           }
@@ -412,6 +432,7 @@
           "settings": {
             "enable_media": true,
             "image": "shopify://shop_images/WOMENS_CATEG.jpg",
+            "image_mobile": "shopify://shop_images/CATEGORY_BANNER-_WOMENS.jpg",
             "media_scale": 100,
             "link": "shopify://collections/women"
           }
@@ -421,6 +442,7 @@
           "settings": {
             "enable_media": true,
             "image": "shopify://shop_images/KIDS_CATEG.jpg",
+            "image_mobile": "shopify://shop_images/CATEGORY_BANNER-_KIDS.jpg",
             "media_scale": 100,
             "link": "shopify://collections/kids-shoes"
           }
@@ -432,8 +454,8 @@
         "column_Wmfn7H"
       ],
       "custom_css": [
-        "h2 {font-size: 4rem; width: 100%;}",
-        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; }}"
+        "h2 {font-size: 4rem; width: 100%; margin-left: 40px;}",
+        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; margin: 0px; }}"
       ],
       "name": "Multicolumn v2",
       "settings": {
@@ -442,6 +464,7 @@
         "heading_align": "left",
         "button_label": "",
         "button_link": "",
+        "setwidth": "full",
         "layout": "grid",
         "column_size": "medium",
         "column_align": "center",
@@ -453,6 +476,7 @@
     },
     "2b6638e0-7b54-4420-a891-39abab8a2a2b": {
       "type": "featured-collection",
+      "disabled": true,
       "custom_css": [
         "h2 {font-size: 4rem; width: 100%;}",
         "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; }}"
@@ -579,14 +603,16 @@
         "heading_align": "text-start",
         "button_label": "",
         "button_link": "",
+        "setwidth": "full",
         "gallery_cols_max": 4,
         "featured_position": "left",
         "mobile_carousel": true,
+        "mobile_layout_style": "featured_cards",
         "gallery_cols_min": "2",
         "grid_gap": 14,
-        "fixed_height_desktop": 140,
-        "fixed_height_mobile": 280,
-        "image_fit": "cover",
+        "fixed_height_desktop": 220,
+        "fixed_height_mobile": 330,
+        "image_fit": "contain",
         "image_ratio": "natural",
         "section_color_scheme": "none",
         "color_scheme": "white",
@@ -695,14 +721,16 @@
         "heading_align": "text-start",
         "button_label": "",
         "button_link": "",
+        "setwidth": "full",
         "gallery_cols_max": 4,
         "featured_position": "right",
         "mobile_carousel": true,
+        "mobile_layout_style": "featured_cards",
         "gallery_cols_min": "2",
         "grid_gap": 14,
-        "fixed_height_desktop": 140,
-        "fixed_height_mobile": 280,
-        "image_fit": "cover",
+        "fixed_height_desktop": 230,
+        "fixed_height_mobile": 330,
+        "image_fit": "contain",
         "image_ratio": "natural",
         "section_color_scheme": "none",
         "color_scheme": "white",
@@ -1338,6 +1366,7 @@
     "2cfe881f-8ca3-4df7-95e4-f5b39015d791",
     "multi_column_2_rkYjL8",
     "2b6638e0-7b54-4420-a891-39abab8a2a2b",
+    "feature_collection_2_6cwA33",
     "media_grid_2_NcUXVA",
     "media_grid_2_jfpgcy",
     "8920e5de-3c38-4881-9157-068a30f16121",
