@@ -1342,6 +1342,10 @@
     },
     "feature_collection_2_6cwA33": {
       "type": "feature-collection-2",
+      "custom_css": [
+        "h2 {font-size: 4rem; width: 100%; margin-left: 40px;}",
+        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; margin: 0px; }}"
+      ],
       "name": "Featured Collection V2",
       "settings": {
         "title": "Top picks",
