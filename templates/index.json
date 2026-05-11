@@ -1346,8 +1346,8 @@
       "settings": {
         "title": "Top picks",
         "heading_align": "text-start",
-        "show_view_all": true,
-        "collection": "",
+        "show_view_all": false,
+        "collection": "best-value-packs",
         "products_to_show": 12,
         "grid_gap": 16,
         "setwidth": "container",
