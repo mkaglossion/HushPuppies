@@ -395,6 +395,25 @@
         "color_scheme": "default"
       }
     },
+    "feature_collection_2_6cwA33": {
+      "type": "feature-collection-2",
+      "custom_css": [
+        "h2 {font-size: 4rem; width: 100%; margin-left: 40px;}",
+        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; margin: 0px; }}"
+      ],
+      "name": "Featured Collection V2",
+      "settings": {
+        "title": "Top picks",
+        "heading_align": "text-start",
+        "show_view_all": false,
+        "collection": "best-value-packs",
+        "products_to_show": 12,
+        "grid_gap": 16,
+        "setwidth": "container",
+        "image_ratio": "natural",
+        "image_fit": "contain"
+      }
+    },
     "multi_column_2_rkYjL8": {
       "type": "multi-column-2",
       "blocks": {
@@ -1339,25 +1358,6 @@
         "color_scheme": "none",
         "button_style": "btn btn--secondary"
       }
-    },
-    "feature_collection_2_6cwA33": {
-      "type": "feature-collection-2",
-      "custom_css": [
-        "h2 {font-size: 4rem; width: 100%; margin-left: 40px;}",
-        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; margin: 0px; }}"
-      ],
-      "name": "Featured Collection V2",
-      "settings": {
-        "title": "Top picks",
-        "heading_align": "text-start",
-        "show_view_all": false,
-        "collection": "best-value-packs",
-        "products_to_show": 12,
-        "grid_gap": 16,
-        "setwidth": "container",
-        "image_ratio": "natural",
-        "image_fit": "contain"
-      }
     }
   },
   "order": [
@@ -1366,6 +1366,7 @@
     "2cfe881f-8ca3-4df7-95e4-f5b39015d791",
     "multi_column_2_rkYjL8",
     "2b6638e0-7b54-4420-a891-39abab8a2a2b",
+    "feature_collection_2_6cwA33",
     "media_grid_2_NcUXVA",
     "media_grid_2_jfpgcy",
     "8920e5de-3c38-4881-9157-068a30f16121",
@@ -1379,7 +1380,6 @@
     "ff1b6812-c849-43f7-a4b7-6244fdb1f8d7",
     "badaf8ee-9f48-44d6-8bb1-2853448d1112",
     "7ff2d165-a729-4f5c-a6dc-805d6957f606",
-    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39",
-    "feature_collection_2_6cwA33"
+    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39"
   ]
 }
