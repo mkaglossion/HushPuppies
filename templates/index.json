@@ -403,6 +403,7 @@
           "settings": {
             "enable_media": true,
             "image": "shopify://shop_images/MENS_CATEG.jpg",
+            "image_mobile": "shopify://shop_images/CATEGORY_BANNER-_MENS.jpg",
             "media_scale": 100,
             "link": "shopify://collections/men"
           }
@@ -412,6 +413,7 @@
           "settings": {
             "enable_media": true,
             "image": "shopify://shop_images/WOMENS_CATEG.jpg",
+            "image_mobile": "shopify://shop_images/CATEGORY_BANNER-_WOMENS.jpg",
             "media_scale": 100,
             "link": "shopify://collections/women"
           }
@@ -421,6 +423,7 @@
           "settings": {
             "enable_media": true,
             "image": "shopify://shop_images/KIDS_CATEG.jpg",
+            "image_mobile": "shopify://shop_images/CATEGORY_BANNER-_KIDS.jpg",
             "media_scale": 100,
             "link": "shopify://collections/kids-shoes"
           }
@@ -432,8 +435,8 @@
         "column_Wmfn7H"
       ],
       "custom_css": [
-        "h2 {font-size: 4rem; width: 100%;}",
-        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; }}"
+        "h2 {font-size: 4rem; width: 100%; margin-left: 40px;}",
+        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; margin: 0px; }}"
       ],
       "name": "Multicolumn v2",
       "settings": {
@@ -442,6 +445,7 @@
         "heading_align": "left",
         "button_label": "",
         "button_link": "",
+        "setwidth": "full",
         "layout": "grid",
         "column_size": "medium",
         "column_align": "center",
@@ -579,9 +583,11 @@
         "heading_align": "text-start",
         "button_label": "",
         "button_link": "",
+        "setwidth": "container",
         "gallery_cols_max": 4,
         "featured_position": "left",
         "mobile_carousel": true,
+        "mobile_layout_style": "default",
         "gallery_cols_min": "2",
         "grid_gap": 14,
         "fixed_height_desktop": 140,
@@ -695,9 +701,11 @@
         "heading_align": "text-start",
         "button_label": "",
         "button_link": "",
+        "setwidth": "container",
         "gallery_cols_max": 4,
         "featured_position": "right",
         "mobile_carousel": true,
+        "mobile_layout_style": "default",
         "gallery_cols_min": "2",
         "grid_gap": 14,
         "fixed_height_desktop": 140,
