@@ -260,6 +260,7 @@
     #shopify-section-{{ section.id }} .mg2-mobile-cards.is-dragging {
       cursor: grabbing;
       user-select: none;
+      scroll-snap-type: none;
     }
 
     #shopify-section-{{ section.id }} .mg2-mobile-cards::-webkit-scrollbar {
@@ -645,6 +646,7 @@
         var pointerDown = false;
         var dragging = false;
         var suppressClick = false;
+        var activePointerId = null;
         var startX = 0;
         var startY = 0;
         var startScrollLeft = 0;
@@ -653,9 +655,13 @@
           if (event.pointerType === 'mouse' && event.button !== 0) return;
           pointerDown = true;
           dragging = false;
+          activePointerId = event.pointerId;
           startX = event.clientX;
           startY = event.clientY;
           startScrollLeft = container.scrollLeft;
+          if (container.setPointerCapture) {
+            try { container.setPointerCapture(event.pointerId); } catch (e) {}
+          }
         }
 
         function onPointerMove(event) {
@@ -676,9 +682,28 @@
         }
 
         function onPointerUp() {
+          if (!pointerDown && !dragging) return;
           pointerDown = false;
           if (dragging) {
             container.classList.remove('is-dragging');
+          }
+          if (activePointerId !== null && container.releasePointerCapture) {
+            try { container.releasePointerCapture(activePointerId); } catch (e) {}
+          }
+          activePointerId = null;
+
+          var nearest = cards[0];
+          var minDistance = Infinity;
+          var currentLeft = container.scrollLeft;
+          cards.forEach(function(card) {
+            var distance = Math.abs(card.offsetLeft - currentLeft);
+            if (distance < minDistance) {
+              minDistance = distance;
+              nearest = card;
+            }
+          });
+          if (nearest) {
+            container.scrollTo({ left: nearest.offsetLeft, behavior: 'smooth' });
           }
           dragging = false;
         }

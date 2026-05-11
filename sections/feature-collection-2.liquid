@@ -7,6 +7,11 @@
 {%- liquid
   assign collection = section.settings.collection
   assign section_width = section.settings.setwidth | default: 'container'
+  assign show_desktop_arrows = section.settings.show_desktop_arrows
+  assign nav_btn_class = 'fc2-nav-btn'
+  if section.settings.desktop_arrow_style == 'theme'
+    assign nav_btn_class = nav_btn_class | append: ' btn ' | append: settings.slider_button_style
+  endif
   assign products_limit = section.settings.products_to_show | plus: 0
   if products_limit < 1
     assign products_limit = 1
@@ -45,6 +50,7 @@
   #shopify-section-{{ section.id }} .fc2-viewport.is-dragging {
     cursor: grabbing;
     user-select: none;
+    scroll-snap-type: none;
   }
 
   #shopify-section-{{ section.id }} .fc2-viewport::-webkit-scrollbar {
@@ -113,6 +119,111 @@
     opacity: 1;
   }
 
+  #shopify-section-{{ section.id }} .fc2-nav {
+    display: none;
+    --fc2-nav-edge-inset: clamp(12px, 2vw, 28px);
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav--outside {
+    --fc2-nav-edge-inset: clamp(8px, 1.25vw, 18px);
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav-btn {
+    --fc2-nav-btn-size: clamp(40px, 4vw, {{ section.settings.desktop_arrow_size | default: 48 }}px);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--fc2-nav-btn-size);
+    height: var(--fc2-nav-btn-size);
+    min-width: var(--fc2-nav-btn-size);
+    min-height: var(--fc2-nav-btn-size);
+    margin: 0;
+    padding: 0;
+    border-radius: 999px;
+    border: 1px solid rgba(17, 17, 17, 0.14);
+    background: rgba(255, 255, 255, 0.96);
+    color: #161616;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav-btn[data-fc2-prev] {
+    left: var(--fc2-nav-edge-inset);
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav-btn[data-fc2-next] {
+    right: var(--fc2-nav-edge-inset);
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav--outside .fc2-nav-btn[data-fc2-prev] {
+    left: calc(var(--fc2-nav-edge-inset) * -1);
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav--outside .fc2-nav-btn[data-fc2-next] {
+    right: calc(var(--fc2-nav-edge-inset) * -1);
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav-btn .icon,
+  #shopify-section-{{ section.id }} .fc2-nav-btn svg {
+    display: none !important;
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav-btn::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav-btn[data-fc2-prev]::after {
+    transform: rotate(135deg);
+    margin-left: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav-btn[data-fc2-next]::after {
+    margin-right: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav-btn:not([disabled]):hover {
+    transform: translateY(-50%) scale(1.04);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.24);
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav-btn:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav--theme .fc2-nav-btn {
+    background: rgb(var(--bg-color));
+    border: 1px solid rgba(var(--text-color) / 0.28);
+    color: rgb(var(--text-color));
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav--theme .fc2-nav-btn:not([disabled]):hover {
+    background: rgba(var(--bg-color) / 0.92);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav--sample .fc2-nav-btn {
+    background: rgba(255, 255, 255, 0.98);
+    border: 0;
+    color: #141416;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  }
+
+  #shopify-section-{{ section.id }} .fc2-nav-btn[disabled] {
+    opacity: 0.38;
+    pointer-events: none;
+  }
+
   #shopify-section-{{ section.id }} > .container-fluid,
   #shopify-section-{{ section.id }} .container-fluid {
     max-width: 100%;
@@ -129,6 +240,28 @@
   @media (min-width: 769px) {
     #shopify-section-{{ section.id }} .fc2-track {
       grid-auto-columns: calc((100% - (var(--fc2-gap) * 1)) / 2);
+    }
+
+    #shopify-section-{{ section.id }} .fc2-nav {
+      display: block;
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    #shopify-section-{{ section.id }} .fc2-nav-btn {
+      pointer-events: auto;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1199px) {
+    #shopify-section-{{ section.id }} .fc2-nav--outside .fc2-nav-btn[data-fc2-prev] {
+      left: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .fc2-nav--outside .fc2-nav-btn[data-fc2-next] {
+      right: 8px;
     }
   }
 
@@ -173,42 +306,53 @@
   {%- endif -%}
 
   <div class="{{ section_width }}">
-    <div class="fc2-viewport" data-fc2-viewport>
-      <ul class="fc2-track" role="list">
-        {%- if collection != blank and collection.products_count > 0 -%}
-          {%- for product in collection.products limit: products_limit -%}
-            <li class="fc2-slide" data-fc2-slide {% if settings.animations_enabled != 'disabled' %}data-cc-animate data-cc-animate-delay="{{ forloop.index | times: 0.06 }}s"{% endif %}>
-              <a href="{{ product.url }}" class="fc2-card" aria-label="{{ product.title | escape }}">
-                <div class="fc2-media{% if image_ratio_natural %} fc2-media--natural{% endif %}">
-                  {%- if product.featured_media != blank -%}
-                    {% render 'image',
-                      image: product.featured_media.preview_image,
-                      widths: '360, 540, 700, 900, 1200',
-                      src_width: 700,
-                      sizes: '(min-width: 1024px) 25vw, (min-width: 769px) 50vw, 82vw',
-                      class: image_class,
-                      section_index: section.index
-                    %}
-                  {%- else -%}
-                    {{ 'product-1' | placeholder_svg_tag: 'media__placeholder img-fit' }}
-                  {%- endif -%}
+    <div class="relative">
+      <div class="fc2-nav no-js-hidden{% if section.settings.desktop_arrow_position == 'outside' %} fc2-nav--outside{% endif %}{% if section.settings.desktop_arrow_style == 'sample' %} fc2-nav--sample{% endif %}{% if section.settings.desktop_arrow_style == 'theme' %} fc2-nav--theme{% endif %}" data-fc2-nav {% unless show_desktop_arrows %}hidden{% endunless %}>
+        <button type="button" class="{{ nav_btn_class }}" data-fc2-prev aria-controls="fc2-viewport-{{ section.id }}" aria-label="{{ 'general.slider.previous' | t }}">
+          {% render 'icon-chevron-left' %}
+        </button>
+        <button type="button" class="{{ nav_btn_class }}" data-fc2-next aria-controls="fc2-viewport-{{ section.id }}" aria-label="{{ 'general.slider.next' | t }}">
+          {% render 'icon-chevron-right' %}
+        </button>
+      </div>
+
+      <div class="fc2-viewport" id="fc2-viewport-{{ section.id }}" data-fc2-viewport>
+        <ul class="fc2-track" role="list">
+          {%- if collection != blank and collection.products_count > 0 -%}
+            {%- for product in collection.products limit: products_limit -%}
+              <li class="fc2-slide" data-fc2-slide {% if settings.animations_enabled != 'disabled' %}data-cc-animate data-cc-animate-delay="{{ forloop.index | times: 0.06 }}s"{% endif %}>
+                <a href="{{ product.url }}" class="fc2-card" aria-label="{{ product.title | escape }}">
+                  <div class="fc2-media{% if image_ratio_natural %} fc2-media--natural{% endif %}">
+                    {%- if product.featured_media != blank -%}
+                      {% render 'image',
+                        image: product.featured_media.preview_image,
+                        widths: '360, 540, 700, 900, 1200',
+                        src_width: 700,
+                        sizes: '(min-width: 1024px) 25vw, (min-width: 769px) 50vw, 82vw',
+                        class: image_class,
+                        section_index: section.index
+                      %}
+                    {%- else -%}
+                      {{ 'product-1' | placeholder_svg_tag: 'media__placeholder img-fit' }}
+                    {%- endif -%}
+                  </div>
+                </a>
+              </li>
+            {%- endfor -%}
+          {%- else -%}
+            {%- for i in (1..products_limit) -%}
+              {%- assign placeholder_index = i | minus: 1 | modulo: 6 | plus: 1 -%}
+              <li class="fc2-slide" data-fc2-slide>
+                <div class="fc2-card" aria-hidden="true">
+                  <div class="fc2-media{% if image_ratio_natural %} fc2-media--natural{% endif %}">
+                    {{ 'product-' | append: placeholder_index | placeholder_svg_tag: 'media__placeholder img-fit' }}
+                  </div>
                 </div>
-              </a>
-            </li>
-          {%- endfor -%}
-        {%- else -%}
-          {%- for i in (1..products_limit) -%}
-            {%- assign placeholder_index = i | minus: 1 | modulo: 6 | plus: 1 -%}
-            <li class="fc2-slide" data-fc2-slide>
-              <div class="fc2-card" aria-hidden="true">
-                <div class="fc2-media{% if image_ratio_natural %} fc2-media--natural{% endif %}">
-                  {{ 'product-' | append: placeholder_index | placeholder_svg_tag: 'media__placeholder img-fit' }}
-                </div>
-              </div>
-            </li>
-          {%- endfor -%}
-        {%- endif -%}
-      </ul>
+              </li>
+            {%- endfor -%}
+          {%- endif -%}
+        </ul>
+      </div>
     </div>
 
     {%- if render_count > 1 -%}
@@ -226,6 +370,10 @@
 
     var viewport = sectionRoot.querySelector('[data-fc2-viewport]');
     var dotsWrap = sectionRoot.querySelector('[data-fc2-dots]');
+    var navWrap = sectionRoot.querySelector('[data-fc2-nav]');
+    var prevBtn = sectionRoot.querySelector('[data-fc2-prev]');
+    var nextBtn = sectionRoot.querySelector('[data-fc2-next]');
+    var showDesktopArrows = {{ show_desktop_arrows | json }};
     if (!viewport || !dotsWrap) return;
 
     var slides = Array.prototype.slice.call(sectionRoot.querySelectorAll('[data-fc2-slide]'));
@@ -281,6 +429,10 @@
         });
         dotsWrap.appendChild(dot);
       }
+
+      if (navWrap) {
+        navWrap.style.display = pageCount > 1 ? '' : 'none';
+      }
     }
 
     function setActiveDot() {
@@ -296,6 +448,10 @@
         dot.classList.toggle('is-active', isActive);
         dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
+
+      var lastPage = dots.length - 1;
+      if (showDesktopArrows && prevBtn) prevBtn.disabled = currentPage <= 0;
+      if (showDesktopArrows && nextBtn) nextBtn.disabled = currentPage >= lastPage;
     }
 
     var resizeTimer;
@@ -319,6 +475,7 @@
       var pointerDown = false;
       var dragging = false;
       var suppressClick = false;
+      var activePointerId = null;
       var startX = 0;
       var startY = 0;
       var startScrollLeft = 0;
@@ -327,9 +484,13 @@
         if (event.pointerType === 'mouse' && event.button !== 0) return;
         pointerDown = true;
         dragging = false;
+        activePointerId = event.pointerId;
         startX = event.clientX;
         startY = event.clientY;
         startScrollLeft = container.scrollLeft;
+        if (container.setPointerCapture) {
+          try { container.setPointerCapture(event.pointerId); } catch (e) {}
+        }
       }
 
       function onPointerMove(event) {
@@ -351,9 +512,28 @@
       }
 
       function onPointerUp() {
+        if (!pointerDown && !dragging) return;
         pointerDown = false;
         if (dragging) {
           container.classList.remove('is-dragging');
+        }
+        if (activePointerId !== null && container.releasePointerCapture) {
+          try { container.releasePointerCapture(activePointerId); } catch (e) {}
+        }
+        activePointerId = null;
+
+        var nearest = slides[0];
+        var minDistance = Infinity;
+        var currentLeft = container.scrollLeft;
+        slides.forEach(function(slide) {
+          var distance = Math.abs(slide.offsetLeft - currentLeft);
+          if (distance < minDistance) {
+            minDistance = distance;
+            nearest = slide;
+          }
+        });
+        if (nearest) {
+          container.scrollTo({ left: nearest.offsetLeft, behavior: 'smooth' });
         }
         dragging = false;
       }
@@ -374,6 +554,22 @@
     }
 
     buildDots();
+    if (showDesktopArrows && prevBtn) {
+      prevBtn.addEventListener('click', function() {
+        var perPage = getSlidesPerPage();
+        var currentPage = Math.floor(getCurrentSlideIndex() / perPage);
+        scrollToPage(Math.max(0, currentPage - 1));
+      });
+    }
+    if (showDesktopArrows && nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        var perPage = getSlidesPerPage();
+        var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('[data-fc2-dot]'));
+        var lastPage = Math.max(0, dots.length - 1);
+        var currentPage = Math.floor(getCurrentSlideIndex() / perPage);
+        scrollToPage(Math.min(lastPage, currentPage + 1));
+      });
+    }
     viewport.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize);
     enableDragToScroll(viewport);
@@ -441,6 +637,46 @@
       "step": 2,
       "unit": "px",
       "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Desktop arrows"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_desktop_arrows",
+      "label": "Show desktop arrows",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "desktop_arrow_style",
+      "label": "Arrow style",
+      "options": [
+        { "value": "sample", "label": "Floating circle (recommended)" },
+        { "value": "theme", "label": "Theme button style" }
+      ],
+      "default": "sample"
+    },
+    {
+      "type": "select",
+      "id": "desktop_arrow_position",
+      "label": "Arrow position",
+      "options": [
+        { "value": "outside", "label": "Outside edges (recommended)" },
+        { "value": "inside", "label": "Inside edges" }
+      ],
+      "default": "outside"
+    },
+    {
+      "type": "range",
+      "id": "desktop_arrow_size",
+      "label": "Arrow size",
+      "min": 36,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 48
     },
     {
       "type": "select",
