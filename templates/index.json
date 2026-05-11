@@ -1339,6 +1339,21 @@
         "color_scheme": "none",
         "button_style": "btn btn--secondary"
       }
+    },
+    "feature_collection_2_6cwA33": {
+      "type": "feature-collection-2",
+      "name": "Featured Collection V2",
+      "settings": {
+        "title": "Top picks",
+        "heading_align": "text-start",
+        "show_view_all": true,
+        "collection": "",
+        "products_to_show": 12,
+        "grid_gap": 16,
+        "setwidth": "container",
+        "image_ratio": "natural",
+        "image_fit": "contain"
+      }
     }
   },
   "order": [
@@ -1360,6 +1375,7 @@
     "ff1b6812-c849-43f7-a4b7-6244fdb1f8d7",
     "badaf8ee-9f48-44d6-8bb1-2853448d1112",
     "7ff2d165-a729-4f5c-a6dc-805d6957f606",
-    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39"
+    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39",
+    "feature_collection_2_6cwA33"
   ]
 }
