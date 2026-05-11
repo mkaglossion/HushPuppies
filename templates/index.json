@@ -457,6 +457,7 @@
     },
     "2b6638e0-7b54-4420-a891-39abab8a2a2b": {
       "type": "featured-collection",
+      "disabled": true,
       "custom_css": [
         "h2 {font-size: 4rem; width: 100%;}",
         "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; }}"
