@@ -47,6 +47,19 @@
     --shake-delay: 4s;
   {% endif %}
   }
+
+  .header .logo__link.logo__link--with-image {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .header .logo__tm {
+    margin-top: 2px;
+    font-size: 0.6rem;
+    line-height: 1;
+    font-weight: 600;
+  }
 {%- endstyle -%}
 
 <store-header class="header bg-theme-bg text-theme-text{% if section.settings.enable_sticky or search_is_minimised %} has-motion{% endif %}{% if search_is_minimised %} search-is-collapsed{% endif %}"
@@ -58,7 +71,7 @@
       {%- if request.page_type == 'index' and section.settings.logo_h1 -%}
         <h1 class="logo__h1 m-0">
       {%- endif -%}
-        <a class="logo__link inline-block" href="{{ routes.root_url }}">
+        <a class="logo__link inline-block{% if section.settings.logo != blank %} logo__link--with-image{% endif %}" href="{{ routes.root_url }}">
           {%- if section.settings.logo != blank -%}
             {%- liquid
               assign logo_width = section.settings.logo_width
@@ -76,6 +89,7 @@
                 alt_text: alt_text
               %}
             </span>
+            <span class="logo__tm" aria-hidden="true">™</span>
           {%- else -%}
             <span class="logo__text h2 text-theme-text m-0">{%- if section.settings.logo_text != blank -%}{{- section.settings.logo_text -}}{%- else -%}{{ shop.name }}{%- endif -%}</span>
           {%- endif -%}

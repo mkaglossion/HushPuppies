@@ -35,6 +35,12 @@
 {%- liquid
   assign breakpoint_md = 769
   assign section_width = section.settings.setwidth | default: 'container'
+  assign section_width_class = 'container'
+  if section_width == 'container-fluid'
+    assign section_width_class = 'hp-width-mode hp-width-mode--fluid'
+  elsif section_width == 'full'
+    assign section_width_class = 'hp-width-mode hp-width-mode--full'
+  endif
   assign text_color_scheme = section.settings.color_scheme
   assign use_featured_mobile_layout = false
   if section.settings.mobile_carousel and section.settings.mobile_layout_style == 'featured_cards'
@@ -146,12 +152,20 @@
   {% endfor %}
 
   #shopify-section-{{ section.id }} .gallery-block {
-    min-height: var(--smg-mobile-height);
+    {% if section.settings.image_ratio == "natural" %}
+      min-height: auto;
+    {% else %}
+      min-height: var(--smg-mobile-height);
+    {% endif %}
   }
 
   @media (min-width: {{ breakpoint_md }}px) {
     #shopify-section-{{ section.id }} .gallery-block {
-      min-height: calc(var(--smg-desktop-height) + 8vw);
+      {% if section.settings.image_ratio == "natural" %}
+        min-height: auto;
+      {% else %}
+        min-height: clamp(var(--smg-desktop-height), calc(var(--smg-desktop-height) + 8vw), 420px);
+      {% endif %}
     }
   }
   
@@ -210,21 +224,21 @@
     }
   }
 
-  #shopify-section-{{ section.id }} > .container-fluid,
-  #shopify-section-{{ section.id }} .container-fluid {
-    max-width: 100%;
-  }
-
-  #shopify-section-{{ section.id }} > .full,
-  #shopify-section-{{ section.id }} .full {
+  #shopify-section-{{ section.id }} .hp-width-mode {
     width: 100%;
     max-width: 100%;
-    padding-left: 0;
-    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  #shopify-section-{{ section.id }} .full .img-fit {
-    object-fit: cover;
+  #shopify-section-{{ section.id }} .hp-width-mode--fluid {
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+
+  #shopify-section-{{ section.id }} .hp-width-mode--full {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   /* Mobile layout: featured banner + cards slider */
@@ -248,11 +262,11 @@
 
     #shopify-section-{{ section.id }} .mg2-mobile-cards {
       display: flex;
-      gap: var(--smg-gap);
+      gap: {% if use_featured_mobile_layout %}0{% else %}var(--smg-gap){% endif %};
       overflow-x: auto;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
-      scroll-padding-left: var(--gutter);
+      scroll-padding-left: 0;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
     }
@@ -267,19 +281,21 @@
       display: none;
     }
 
-    #shopify-section-{{ section.id }} .mg2-mobile-cards .gallery-block {
-      flex: 0 0 calc(50% - (var(--smg-gap) / 2));
-      min-width: 240px;
-      scroll-snap-align: start;
-    }
-
-    {% if section.settings.image_ratio == "natural" %}
-      /* Natural ratio mobile: show full image content and one card per view */
+    {% if use_featured_mobile_layout %}
       #shopify-section-{{ section.id }} .mg2-mobile-cards .gallery-block {
         flex: 0 0 100%;
         min-width: 100%;
+        scroll-snap-align: start;
       }
+    {% else %}
+      #shopify-section-{{ section.id }} .mg2-mobile-cards .gallery-block {
+        flex: 0 0 calc(50% - (var(--smg-gap) / 2));
+        min-width: 240px;
+        scroll-snap-align: start;
+      }
+    {% endif %}
 
+    {% if section.settings.image_ratio == "natural" %}
       #shopify-section-{{ section.id }} .mg2-mobile-layout .media img.img-fit {
         position: static !important;
         width: 100% !important;
@@ -319,7 +335,7 @@
      data-featured-position="{{ section.settings.featured_position }}">
   
   {%- if section.settings.title != blank or section.settings.button_label != blank -%}
-    <div class="{{ section_width }}">
+    <div class="{{ section_width_class }}">
       <div class="section__header items-center flex{% if section.settings.heading_align == 'text-center' %} flex-col text-center{% elsif section.settings.heading_align == 'text-end' %} flex-row-reverse flex-wrap{% else %} flex-row flex-wrap{% endif %} gap-x-theme"{% if settings.animations_enabled != 'disabled' %} data-cc-animate{% endif %}>
         {%- if section.settings.title != blank -%}
           <h2 class="h4 section__heading mb-0 flex-auto {{ section.settings.heading_align }}">
@@ -336,7 +352,7 @@
 
   {% if section.settings.mobile_carousel and use_featured_mobile_layout == false %}<div class="gallery-mobile-carousel">{% endif %}
 
-  <div class="{{ section_width }}">
+  <div class="{{ section_width_class }}">
     <div class="mg2-mobile-layout{% if use_featured_mobile_layout %} mg2-mobile-layout--active{% endif %}">
       {%- if use_featured_mobile_layout and section.blocks.size > 0 -%}
         {%- assign featured_block = section.blocks.first -%}
@@ -621,21 +637,32 @@
       var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('[data-mg2-dot]'));
       if (!cards.length || !dots.length) return;
 
-      function setActiveDot() {
-        var trackRect = cardsWrap.getBoundingClientRect();
-        var trackCenter = trackRect.left + (trackRect.width / 2);
+      function normalizeIndex(index) {
+        return ((index % cards.length) + cards.length) % cards.length;
+      }
+
+      function getClosestIndexByLeft(scrollLeft) {
         var activeIndex = 0;
         var bestDistance = Infinity;
-
         cards.forEach(function(card, index) {
-          var rect = card.getBoundingClientRect();
-          var center = rect.left + (rect.width / 2);
-          var distance = Math.abs(trackCenter - center);
+          var distance = Math.abs(card.offsetLeft - scrollLeft);
           if (distance < bestDistance) {
             bestDistance = distance;
             activeIndex = index;
           }
         });
+        return activeIndex;
+      }
+
+      function scrollToIndex(index) {
+        var safeIndex = normalizeIndex(index);
+        if (cards[safeIndex]) {
+          cardsWrap.scrollTo({ left: cards[safeIndex].offsetLeft, behavior: 'smooth' });
+        }
+      }
+
+      function setActiveDot() {
+        var activeIndex = getClosestIndexByLeft(cardsWrap.scrollLeft);
 
         dots.forEach(function(dot, index) {
           dot.classList.toggle('is-active', index === activeIndex);
@@ -650,6 +677,8 @@
         var startX = 0;
         var startY = 0;
         var startScrollLeft = 0;
+        var startIndex = 0;
+        var lastDx = 0;
 
         function onPointerDown(event) {
           if (event.pointerType === 'mouse' && event.button !== 0) return;
@@ -659,6 +688,8 @@
           startX = event.clientX;
           startY = event.clientY;
           startScrollLeft = container.scrollLeft;
+          startIndex = getClosestIndexByLeft(startScrollLeft);
+          lastDx = 0;
           if (container.setPointerCapture) {
             try { container.setPointerCapture(event.pointerId); } catch (e) {}
           }
@@ -668,6 +699,7 @@
           if (!pointerDown) return;
           var dx = event.clientX - startX;
           var dy = event.clientY - startY;
+          lastDx = dx;
 
           if (!dragging) {
             if (Math.abs(dx) < 6) return;
@@ -692,19 +724,28 @@
           }
           activePointerId = null;
 
-          var nearest = cards[0];
-          var minDistance = Infinity;
           var currentLeft = container.scrollLeft;
-          cards.forEach(function(card) {
-            var distance = Math.abs(card.offsetLeft - currentLeft);
-            if (distance < minDistance) {
-              minDistance = distance;
-              nearest = card;
+          var movedByScroll = currentLeft - startScrollLeft;
+          var isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+          if (isMobile && cards.length > 1) {
+            var swipeThreshold = 14;
+            var deltaIndex = 0;
+
+            if (Math.abs(movedByScroll) >= swipeThreshold) {
+              deltaIndex = movedByScroll > 0 ? 1 : -1;
+            } else if (Math.abs(lastDx) >= swipeThreshold) {
+              deltaIndex = lastDx < 0 ? 1 : -1;
             }
-          });
-          if (nearest) {
-            container.scrollTo({ left: nearest.offsetLeft, behavior: 'smooth' });
+
+            if (deltaIndex !== 0) {
+              scrollToIndex(startIndex + deltaIndex);
+              dragging = false;
+              return;
+            }
           }
+
+          scrollToIndex(getClosestIndexByLeft(currentLeft));
           dragging = false;
         }
 
@@ -721,14 +762,47 @@
         container.addEventListener('pointercancel', onPointerUp);
         container.addEventListener('mouseleave', onPointerUp);
         container.addEventListener('click', onClickCapture, true);
+
+        if (!window.PointerEvent) {
+          var touchStartX = 0;
+          var touchStartY = 0;
+          var touchStartIndex = 0;
+          var touchStartScrollLeft = 0;
+
+          container.addEventListener('touchstart', function(event) {
+            if (!event.touches || !event.touches.length) return;
+            touchStartX = event.touches[0].clientX;
+            touchStartY = event.touches[0].clientY;
+            touchStartScrollLeft = container.scrollLeft;
+            touchStartIndex = getClosestIndexByLeft(touchStartScrollLeft);
+          }, { passive: true });
+
+          container.addEventListener('touchend', function(event) {
+            if (!event.changedTouches || !event.changedTouches.length) return;
+            var dx = event.changedTouches[0].clientX - touchStartX;
+            var dy = event.changedTouches[0].clientY - touchStartY;
+            var moved = container.scrollLeft - touchStartScrollLeft;
+            var threshold = 14;
+
+            if (Math.abs(dx) <= Math.abs(dy)) {
+              setActiveDot();
+              return;
+            }
+
+            if (Math.abs(moved) >= threshold || Math.abs(dx) >= threshold) {
+              var deltaIndex = moved > 0 || dx < 0 ? 1 : -1;
+              scrollToIndex(touchStartIndex + deltaIndex);
+            } else {
+              scrollToIndex(touchStartIndex);
+            }
+          }, { passive: true });
+        }
       }
 
       dots.forEach(function(dot) {
         dot.addEventListener('click', function() {
           var index = parseInt(dot.getAttribute('data-mg2-dot'), 10) || 0;
-          if (cards[index]) {
-            cards[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-          }
+          scrollToIndex(index);
         });
       });
 

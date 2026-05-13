@@ -120,7 +120,11 @@
   }
 
   #shopify-section-{{ section.id }} .fc2-nav {
-    display: none;
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
     --fc2-nav-edge-inset: clamp(12px, 2vw, 28px);
   }
 
@@ -243,11 +247,7 @@
     }
 
     #shopify-section-{{ section.id }} .fc2-nav {
-      display: block;
-      position: absolute;
-      inset: 0;
-      z-index: 5;
-      pointer-events: none;
+      --fc2-nav-edge-inset: clamp(12px, 2vw, 28px);
     }
 
     #shopify-section-{{ section.id }} .fc2-nav-btn {
@@ -272,6 +272,10 @@
   }
 
   @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .fc2-nav {
+      display: none !important;
+    }
+
     {% if image_ratio_natural %}
       #shopify-section-{{ section.id }} .fc2-track {
         grid-auto-columns: 100%;
@@ -379,6 +383,7 @@
     var slides = Array.prototype.slice.call(sectionRoot.querySelectorAll('[data-fc2-slide]'));
     if (!slides.length) return;
     var rafToken = null;
+    var pageAnchors = [];
 
     function getSlidesPerPage() {
       if (window.matchMedia('(min-width: 1024px)').matches) return 4;
@@ -386,33 +391,61 @@
       return 1;
     }
 
-    function getCurrentSlideIndex() {
+    function getPageCount() {
+      var perPage = getSlidesPerPage();
+      return Math.max(1, Math.ceil(slides.length / perPage));
+    }
+
+    function normalizePageIndex(pageIndex) {
+      var pageCount = getPageCount();
+      return ((pageIndex % pageCount) + pageCount) % pageCount;
+    }
+
+    function buildPageAnchors() {
+      var perPage = getSlidesPerPage();
+      var pageCount = getPageCount();
+      var maxScrollLeft = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+      pageAnchors = [];
+
+      for (var page = 0; page < pageCount; page++) {
+        var targetSlideIndex = Math.min(page * perPage, slides.length - 1);
+        var anchor = slides[targetSlideIndex] ? slides[targetSlideIndex].offsetLeft : 0;
+        pageAnchors.push(Math.min(anchor, maxScrollLeft));
+      }
+    }
+
+    function getCurrentPageIndex() {
+      if (!pageAnchors.length) return 0;
       var scrollLeft = viewport.scrollLeft;
-      var activeIndex = 0;
+      return getClosestPageIndexByLeft(scrollLeft);
+    }
+
+    function getClosestPageIndexByLeft(scrollLeft) {
+      if (!pageAnchors.length) return 0;
+      var activePage = 0;
       var minDistance = Infinity;
 
-      slides.forEach(function(slide, index) {
-        var distance = Math.abs(slide.offsetLeft - scrollLeft);
+      pageAnchors.forEach(function(anchor, pageIndex) {
+        var distance = Math.abs(anchor - scrollLeft);
         if (distance < minDistance) {
           minDistance = distance;
-          activeIndex = index;
+          activePage = pageIndex;
         }
       });
 
-      return activeIndex;
+      return activePage;
     }
 
     function scrollToPage(pageIndex) {
-      var perPage = getSlidesPerPage();
-      var targetSlideIndex = Math.min(pageIndex * perPage, slides.length - 1);
-      if (slides[targetSlideIndex]) {
-        viewport.scrollTo({ left: slides[targetSlideIndex].offsetLeft, behavior: 'smooth' });
+      var safePageIndex = normalizePageIndex(pageIndex);
+      if (!pageAnchors.length) buildPageAnchors();
+      if (typeof pageAnchors[safePageIndex] === 'number') {
+        viewport.scrollTo({ left: pageAnchors[safePageIndex], behavior: 'smooth' });
       }
     }
 
     function buildDots() {
-      var perPage = getSlidesPerPage();
-      var pageCount = Math.max(1, Math.ceil(slides.length / perPage));
+      var pageCount = getPageCount();
       dotsWrap.innerHTML = '';
 
       for (var page = 0; page < pageCount; page++) {
@@ -433,15 +466,17 @@
       if (navWrap) {
         navWrap.style.display = pageCount > 1 ? '' : 'none';
       }
+
+      if (showDesktopArrows && prevBtn) prevBtn.disabled = false;
+      if (showDesktopArrows && nextBtn) nextBtn.disabled = false;
     }
 
     function setActiveDot() {
       var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('[data-fc2-dot]'));
       if (!dots.length) return;
 
-      var perPage = getSlidesPerPage();
-      var currentSlide = getCurrentSlideIndex();
-      var currentPage = Math.floor(currentSlide / perPage);
+      if (!pageAnchors.length) buildPageAnchors();
+      var currentPage = getCurrentPageIndex();
 
       dots.forEach(function(dot, index) {
         var isActive = index === currentPage;
@@ -449,15 +484,15 @@
         dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
 
-      var lastPage = dots.length - 1;
-      if (showDesktopArrows && prevBtn) prevBtn.disabled = currentPage <= 0;
-      if (showDesktopArrows && nextBtn) nextBtn.disabled = currentPage >= lastPage;
+      if (showDesktopArrows && prevBtn) prevBtn.disabled = dots.length <= 1;
+      if (showDesktopArrows && nextBtn) nextBtn.disabled = dots.length <= 1;
     }
 
     var resizeTimer;
     function onResize() {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function() {
+        buildPageAnchors();
         buildDots();
         setActiveDot();
       }, 120);
@@ -479,6 +514,8 @@
       var startX = 0;
       var startY = 0;
       var startScrollLeft = 0;
+      var startPageIndex = 0;
+      var lastDx = 0;
 
       function onPointerDown(event) {
         if (event.pointerType === 'mouse' && event.button !== 0) return;
@@ -488,6 +525,9 @@
         startX = event.clientX;
         startY = event.clientY;
         startScrollLeft = container.scrollLeft;
+        if (!pageAnchors.length) buildPageAnchors();
+        startPageIndex = getClosestPageIndexByLeft(startScrollLeft);
+        lastDx = 0;
         if (container.setPointerCapture) {
           try { container.setPointerCapture(event.pointerId); } catch (e) {}
         }
@@ -498,6 +538,7 @@
 
         var dx = event.clientX - startX;
         var dy = event.clientY - startY;
+        lastDx = dx;
 
         if (!dragging) {
           if (Math.abs(dx) < 6) return;
@@ -522,19 +563,38 @@
         }
         activePointerId = null;
 
-        var nearest = slides[0];
+        if (!pageAnchors.length) buildPageAnchors();
+        var nearest = pageAnchors[0] || 0;
         var minDistance = Infinity;
         var currentLeft = container.scrollLeft;
-        slides.forEach(function(slide) {
-          var distance = Math.abs(slide.offsetLeft - currentLeft);
+        var isMobile = window.matchMedia('(max-width: 768px)').matches;
+        var movedByScroll = currentLeft - startScrollLeft;
+
+        if (isMobile && pageAnchors.length > 1) {
+          var swipeThreshold = 14;
+          var deltaPage = 0;
+
+          if (Math.abs(movedByScroll) >= swipeThreshold) {
+            deltaPage = movedByScroll > 0 ? 1 : -1;
+          } else if (Math.abs(lastDx) >= swipeThreshold) {
+            deltaPage = lastDx < 0 ? 1 : -1;
+          }
+
+          if (deltaPage !== 0) {
+            scrollToPage(startPageIndex + deltaPage);
+            dragging = false;
+            return;
+          }
+        }
+
+        pageAnchors.forEach(function(anchor) {
+          var distance = Math.abs(anchor - currentLeft);
           if (distance < minDistance) {
             minDistance = distance;
-            nearest = slide;
+            nearest = anchor;
           }
         });
-        if (nearest) {
-          container.scrollTo({ left: nearest.offsetLeft, behavior: 'smooth' });
-        }
+        container.scrollTo({ left: nearest, behavior: 'smooth' });
         dragging = false;
       }
 
@@ -551,23 +611,56 @@
       container.addEventListener('pointercancel', onPointerUp);
       container.addEventListener('mouseleave', onPointerUp);
       container.addEventListener('click', onClickCapture, true);
+
+      if (!window.PointerEvent) {
+        var touchStartX = 0;
+        var touchStartY = 0;
+        var touchStartPageIndex = 0;
+        var touchStartScrollLeft = 0;
+
+        container.addEventListener('touchstart', function(event) {
+          if (!event.touches || !event.touches.length) return;
+          if (!pageAnchors.length) buildPageAnchors();
+          touchStartX = event.touches[0].clientX;
+          touchStartY = event.touches[0].clientY;
+          touchStartPageIndex = getClosestPageIndexByLeft(container.scrollLeft);
+          touchStartScrollLeft = container.scrollLeft;
+        }, { passive: true });
+
+        container.addEventListener('touchend', function(event) {
+          if (!event.changedTouches || !event.changedTouches.length) return;
+          var dx = event.changedTouches[0].clientX - touchStartX;
+          var dy = event.changedTouches[0].clientY - touchStartY;
+          var moved = container.scrollLeft - touchStartScrollLeft;
+          var threshold = 14;
+
+          if (Math.abs(dx) <= Math.abs(dy)) {
+            setActiveDot();
+            return;
+          }
+
+          if (Math.abs(moved) >= threshold || Math.abs(dx) >= threshold) {
+            var deltaPage = moved > 0 || dx < 0 ? 1 : -1;
+            scrollToPage(touchStartPageIndex + deltaPage);
+          } else {
+            scrollToPage(touchStartPageIndex);
+          }
+        }, { passive: true });
+      }
     }
 
+    buildPageAnchors();
     buildDots();
     if (showDesktopArrows && prevBtn) {
       prevBtn.addEventListener('click', function() {
-        var perPage = getSlidesPerPage();
-        var currentPage = Math.floor(getCurrentSlideIndex() / perPage);
-        scrollToPage(Math.max(0, currentPage - 1));
+        var currentPage = getCurrentPageIndex();
+        scrollToPage(currentPage - 1);
       });
     }
     if (showDesktopArrows && nextBtn) {
       nextBtn.addEventListener('click', function() {
-        var perPage = getSlidesPerPage();
-        var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('[data-fc2-dot]'));
-        var lastPage = Math.max(0, dots.length - 1);
-        var currentPage = Math.floor(getCurrentSlideIndex() / perPage);
-        scrollToPage(Math.min(lastPage, currentPage + 1));
+        var currentPage = getCurrentPageIndex();
+        scrollToPage(currentPage + 1);
       });
     }
     viewport.addEventListener('scroll', onScroll, { passive: true });

@@ -3262,10 +3262,10 @@ details-disclosure + details-disclosure .disclosure--row {
     transition: box-shadow 0.1s;
     line-height: 1.2em;
   }
-  .main-nav__item--primary:hover, .main-nav__item--primary.is-active, .is-open > summary > .main-nav__item--primary,
+  .main-nav__item--primary:hover,
+  .main-nav__item--primary:focus-visible,
   .secondary-nav__item:hover,
-  .secondary-nav__item.is-active,
-  .is-open > summary > .secondary-nav__item {
+  .secondary-nav__item:focus-visible {
     box-shadow: inset 0 -2px 0 0 currentColor;
   }
   .secondary-nav__cta {
