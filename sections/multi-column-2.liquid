@@ -110,6 +110,17 @@
       padding-left: 0;
       padding-right: 0;
     }
+
+    /* Tighter row spacing for stacked banners/cards */
+    #{{ section.id }} .mc2-list {
+      row-gap: 12px;
+    }
+
+    @media (min-width: {{ breakpoint_md }}px) {
+      #{{ section.id }} .mc2-list {
+        row-gap: 16px;
+      }
+    }
   {% endstyle %}
 
   <div class="section" id="{{ section.id }}">
@@ -140,7 +151,7 @@
     {%- endif -%}
 
       <div class="{{ section_width_class }}">
-        <ul class="{% if carousel %}slider__grid grid {{ grid_classes }}{% else %} flex flex-wrap{% endif %} gap-x-theme{% if color_scheme == 'none' and carousel == false %} gap-y-12 md:gap-y-6{% else %} gap-y-6{% endif %}" role="list">
+        <ul class="mc2-list {% if carousel %}slider__grid grid {{ grid_classes }}{% else %} flex flex-wrap{% endif %} gap-x-theme" role="list">
           {%- for block in section.blocks -%}
             {%- liquid
               # Always show banner columns
