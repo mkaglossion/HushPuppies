@@ -440,9 +440,7 @@
       ],
       "custom_css": [
         "h2 {font-size: 4rem; width: 100%; margin-left: 40px;}",
-        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; margin: 0px; }}",
-        ".card,.card__media {border: 0 !important; background: transparent !important;}",
-        "ul[role=\"list\"] {column-gap: clamp(8px, 1.2vw, 16px) !important; row-gap: clamp(8px, 1.2vw, 16px) !important;}"
+        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; margin: 0px; }}"
       ],
       "name": "Multicolumn v2",
       "settings": {
@@ -451,7 +449,7 @@
         "heading_align": "left",
         "button_label": "",
         "button_link": "",
-        "setwidth": "container",
+        "setwidth": "full",
         "layout": "grid",
         "column_size": "medium",
         "column_align": "center",
@@ -507,10 +505,10 @@
         "desktop_arrow_style": "sample",
         "desktop_arrow_position": "outside",
         "desktop_arrow_size": 48,
-        "setwidth": "container",
-        "image_ratio": "natural",
+        "setwidth": "container-fluid",
+        "image_ratio": "1",
         "image_fit": "contain",
-        "section_bg_color": "#f6f6f7",
+        "section_bg_color": "#ffffff",
         "card_bg_color": "#ffffff",
         "media_bg_color": "#ffffff",
         "card_border_color": "#e9e9e9",
