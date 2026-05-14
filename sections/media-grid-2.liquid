@@ -46,6 +46,16 @@
   if section.settings.mobile_carousel and section.settings.mobile_layout_style == 'featured_cards'
     assign use_featured_mobile_layout = true
   endif
+  assign mobile_cards_per_view = section.settings.mobile_cards_per_view | default: '1' | plus: 0
+  if mobile_cards_per_view < 1
+    assign mobile_cards_per_view = 1
+  elsif mobile_cards_per_view > 2
+    assign mobile_cards_per_view = 2
+  endif
+  assign mg2_mobile_card_sizes = '(max-width: 768px) 100vw, 25vw'
+  if mobile_cards_per_view == 2
+    assign mg2_mobile_card_sizes = '(max-width: 768px) 50vw, 25vw'
+  endif
 
   if text_color_scheme == 'white'
     assign brightness = section.settings.transparent_content_color | color_brightness
@@ -338,7 +348,7 @@
 
     #shopify-section-{{ section.id }} .mg2-mobile-cards {
       display: flex;
-      gap: {% if use_featured_mobile_layout %}0{% else %}var(--smg-gap){% endif %};
+      gap: {% if use_featured_mobile_layout and mobile_cards_per_view == 1 %}0{% else %}var(--smg-gap){% endif %};
       overflow-x: auto;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
@@ -359,8 +369,13 @@
 
     {% if use_featured_mobile_layout %}
       #shopify-section-{{ section.id }} .mg2-mobile-cards .gallery-block {
-        flex: 0 0 100%;
-        min-width: 100%;
+        {% if mobile_cards_per_view == 2 %}
+          flex: 0 0 calc((100% - var(--smg-gap)) / 2);
+          min-width: calc((100% - var(--smg-gap)) / 2);
+        {% else %}
+          flex: 0 0 100%;
+          min-width: 100%;
+        {% endif %}
         scroll-snap-align: start;
       }
     {% else %}
@@ -520,7 +535,7 @@
                         image: img,
                         widths: '480, 800, 980, 1200, 1440',
                         src_width: 980,
-                        sizes: '(max-width: 768px) 50vw, 25vw',
+                        sizes: mg2_mobile_card_sizes,
                         quality: 1,
                         section_index: section.index,
                         class: block_image_class
@@ -565,8 +580,18 @@
           </div>
 
           <div class="mg2-mobile-dots" data-mg2-dots>
-            {%- for block in section.blocks offset: 1 -%}
-              <button type="button" class="mg2-mobile-dot{% if forloop.first %} is-active{% endif %}" data-mg2-dot="{{ forloop.index0 }}" aria-label="Go to card {{ forloop.index }}"></button>
+            {%- liquid
+              assign mobile_card_count = section.blocks.size | minus: 1
+              if mobile_card_count < 0
+                assign mobile_card_count = 0
+              endif
+              assign mobile_page_count = mobile_card_count | times: 1.0 | divided_by: mobile_cards_per_view | ceil
+              if mobile_page_count < 1
+                assign mobile_page_count = 1
+              endif
+            -%}
+            {%- for i in (1..mobile_page_count) -%}
+              <button type="button" class="mg2-mobile-dot{% if forloop.first %} is-active{% endif %}" data-mg2-dot="{{ forloop.index0 }}" aria-label="Go to card group {{ forloop.index }}"></button>
             {%- endfor -%}
           </div>
         {%- endif -%}
@@ -696,6 +721,7 @@
   (function initMediaGrid2MobileDots() {
     var sectionId = 'shopify-section-{{ section.id }}';
     var useFeaturedMobileLayout = {{ use_featured_mobile_layout | json }};
+    var mobileCardsPerPage = {{ mobile_cards_per_view | json }};
     if (!useFeaturedMobileLayout) return;
 
     function initDots() {
@@ -710,35 +736,50 @@
       var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('[data-mg2-dot]'));
       if (!cards.length || !dots.length) return;
 
-      function normalizeIndex(index) {
-        return ((index % cards.length) + cards.length) % cards.length;
+      function getPageCount() {
+        return Math.max(1, Math.ceil(cards.length / mobileCardsPerPage));
       }
 
-      function getClosestIndexByLeft(scrollLeft) {
-        var activeIndex = 0;
+      function normalizePageIndex(index) {
+        var pageCount = getPageCount();
+        return ((index % pageCount) + pageCount) % pageCount;
+      }
+
+      function getPageAnchor(pageIndex) {
+        var cardIndex = Math.min(pageIndex * mobileCardsPerPage, cards.length - 1);
+        return cards[cardIndex] ? cards[cardIndex].offsetLeft : 0;
+      }
+
+      function getClosestPageByLeft(scrollLeft) {
+        var pageCount = getPageCount();
+        var activePage = 0;
         var bestDistance = Infinity;
-        cards.forEach(function(card, index) {
-          var distance = Math.abs(card.offsetLeft - scrollLeft);
+
+        for (var page = 0; page < pageCount; page++) {
+          var anchor = getPageAnchor(page);
+          var distance = Math.abs(anchor - scrollLeft);
           if (distance < bestDistance) {
             bestDistance = distance;
-            activeIndex = index;
+            activePage = page;
           }
-        });
-        return activeIndex;
+        }
+
+        return activePage;
       }
 
-      function scrollToIndex(index) {
-        var safeIndex = normalizeIndex(index);
-        if (cards[safeIndex]) {
-          cardsWrap.scrollTo({ left: cards[safeIndex].offsetLeft, behavior: 'smooth' });
+      function scrollToPage(index) {
+        var safePage = normalizePageIndex(index);
+        var anchor = getPageAnchor(safePage);
+        if (typeof anchor === 'number') {
+          cardsWrap.scrollTo({ left: anchor, behavior: 'smooth' });
         }
       }
 
       function setActiveDot() {
-        var activeIndex = getClosestIndexByLeft(cardsWrap.scrollLeft);
+        var activePage = getClosestPageByLeft(cardsWrap.scrollLeft);
 
         dots.forEach(function(dot, index) {
-          dot.classList.toggle('is-active', index === activeIndex);
+          dot.classList.toggle('is-active', index === activePage);
         });
       }
 
@@ -750,7 +791,7 @@
         var startX = 0;
         var startY = 0;
         var startScrollLeft = 0;
-        var startIndex = 0;
+        var startPage = 0;
         var lastDx = 0;
 
         function onPointerDown(event) {
@@ -761,7 +802,7 @@
           startX = event.clientX;
           startY = event.clientY;
           startScrollLeft = container.scrollLeft;
-          startIndex = getClosestIndexByLeft(startScrollLeft);
+          startPage = getClosestPageByLeft(startScrollLeft);
           lastDx = 0;
           if (container.setPointerCapture) {
             try { container.setPointerCapture(event.pointerId); } catch (e) {}
@@ -801,24 +842,24 @@
           var movedByScroll = currentLeft - startScrollLeft;
           var isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-          if (isMobile && cards.length > 1) {
+          if (isMobile && getPageCount() > 1) {
             var swipeThreshold = 14;
-            var deltaIndex = 0;
+            var deltaPage = 0;
 
             if (Math.abs(movedByScroll) >= swipeThreshold) {
-              deltaIndex = movedByScroll > 0 ? 1 : -1;
+              deltaPage = movedByScroll > 0 ? 1 : -1;
             } else if (Math.abs(lastDx) >= swipeThreshold) {
-              deltaIndex = lastDx < 0 ? 1 : -1;
+              deltaPage = lastDx < 0 ? 1 : -1;
             }
 
-            if (deltaIndex !== 0) {
-              scrollToIndex(startIndex + deltaIndex);
+            if (deltaPage !== 0) {
+              scrollToPage(startPage + deltaPage);
               dragging = false;
               return;
             }
           }
 
-          scrollToIndex(getClosestIndexByLeft(currentLeft));
+          scrollToPage(getClosestPageByLeft(currentLeft));
           dragging = false;
         }
 
@@ -839,7 +880,7 @@
         if (!window.PointerEvent) {
           var touchStartX = 0;
           var touchStartY = 0;
-          var touchStartIndex = 0;
+          var touchStartPage = 0;
           var touchStartScrollLeft = 0;
 
           container.addEventListener('touchstart', function(event) {
@@ -847,7 +888,7 @@
             touchStartX = event.touches[0].clientX;
             touchStartY = event.touches[0].clientY;
             touchStartScrollLeft = container.scrollLeft;
-            touchStartIndex = getClosestIndexByLeft(touchStartScrollLeft);
+            touchStartPage = getClosestPageByLeft(touchStartScrollLeft);
           }, { passive: true });
 
           container.addEventListener('touchend', function(event) {
@@ -863,10 +904,10 @@
             }
 
             if (Math.abs(moved) >= threshold || Math.abs(dx) >= threshold) {
-              var deltaIndex = moved > 0 || dx < 0 ? 1 : -1;
-              scrollToIndex(touchStartIndex + deltaIndex);
+              var deltaPage = moved > 0 || dx < 0 ? 1 : -1;
+              scrollToPage(touchStartPage + deltaPage);
             } else {
-              scrollToIndex(touchStartIndex);
+              scrollToPage(touchStartPage);
             }
           }, { passive: true });
         }
@@ -874,8 +915,8 @@
 
       dots.forEach(function(dot) {
         dot.addEventListener('click', function() {
-          var index = parseInt(dot.getAttribute('data-mg2-dot'), 10) || 0;
-          scrollToIndex(index);
+          var page = parseInt(dot.getAttribute('data-mg2-dot'), 10) || 0;
+          scrollToPage(page);
         });
       });
 
@@ -990,6 +1031,17 @@
         { "value": "2", "label": "2 columns" }
       ],
       "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "mobile_cards_per_view",
+      "label": "Cards per view on mobile",
+      "info": "Mobile only. Applies to Featured banner + cards slider layout.",
+      "options": [
+        { "value": "1", "label": "1 card" },
+        { "value": "2", "label": "2 cards" }
+      ],
+      "default": "1"
     },
     {
       "type": "range",

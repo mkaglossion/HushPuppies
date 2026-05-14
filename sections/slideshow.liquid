@@ -55,6 +55,32 @@
     --text-color: {{ section.settings.pagination_color.red }} {{ section.settings.pagination_color.green }} {{ section.settings.pagination_color.blue }};
   }
 
+  {%- if section.settings.height_mode != 'auto' -%}
+    #{{ section.id }} .image-banner__image {
+      background: {{ section.settings.fixed_image_bg }};
+    }
+
+    #{{ section.id }} .image-banner__image .img-fit {
+      object-fit: {{ section.settings.fixed_image_fit }};
+    }
+  {%- endif -%}
+
+  {%- if section.settings.desktop_image_focus != 'focal' -%}
+    @media (min-width: {{ breakpoint_sm }}px) {
+      #{{ section.id }} .image-banner__image .img-fit {
+        object-position: center {{ section.settings.desktop_image_focus }} !important;
+      }
+    }
+  {%- endif -%}
+
+  {%- if section.settings.mobile_image_focus != 'focal' -%}
+    @media (max-width: {{ breakpoint_sm_down }}px) {
+      #{{ section.id }} .image-banner__image .img-fit {
+        object-position: center {{ section.settings.mobile_image_focus }} !important;
+      }
+    }
+  {%- endif -%}
+
   {%- if section.settings.height_mode == 'fixed' -%}
     {%- if section.settings.mobile_stacked -%}
       @media (max-width: {{ breakpoint_sm_down }}px) {
@@ -413,6 +439,78 @@
       "label": "Show text below image on mobile",
       "info": "Does not apply to \"Full screen height\".",
       "default": false
+    },
+    {
+      "type": "select",
+      "id": "fixed_image_fit",
+      "label": "Fixed-height image fit",
+      "info": "Only applies when Image height is Fixed height or Full screen height.",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover (crop to fill)"
+        },
+        {
+          "value": "contain",
+          "label": "Contain (show full image)"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "color",
+      "id": "fixed_image_bg",
+      "label": "Fixed-height frame color",
+      "info": "Only applies when image fit is Contain.",
+      "default": "#f6f6f7"
+    },
+    {
+      "type": "select",
+      "id": "desktop_image_focus",
+      "label": "Desktop image crop focus",
+      "options": [
+        {
+          "value": "focal",
+          "label": "Shopify focal point (recommended)"
+        },
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "focal"
+    },
+    {
+      "type": "select",
+      "id": "mobile_image_focus",
+      "label": "Mobile image crop focus",
+      "options": [
+        {
+          "value": "focal",
+          "label": "Shopify focal point (recommended)"
+        },
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "focal"
     },
     {
       "type": "header",

@@ -8,6 +8,12 @@
   assign collection = section.settings.collection
   assign section_width = section.settings.setwidth | default: 'container'
   assign show_desktop_arrows = section.settings.show_desktop_arrows
+  assign mobile_cards_per_view = section.settings.mobile_cards_per_view | default: '1' | plus: 0
+  if mobile_cards_per_view < 1
+    assign mobile_cards_per_view = 1
+  elsif mobile_cards_per_view > 2
+    assign mobile_cards_per_view = 2
+  endif
   assign nav_btn_class = 'fc2-nav-btn'
   if section.settings.desktop_arrow_style == 'theme'
     assign nav_btn_class = nav_btn_class | append: ' btn ' | append: settings.slider_button_style
@@ -35,6 +41,16 @@
       assign image_class = image_class | append: ' img-fit--contain'
     endif
   endif
+
+  assign mobile_image_size = '82vw'
+  if mobile_cards_per_view == 2
+    assign mobile_image_size = '50vw'
+  endif
+
+  capture fc2_image_sizes
+    echo '(min-width: 1024px) 25vw, (min-width: 769px) 50vw, '
+    echo mobile_image_size
+  endcapture
 -%}
 
 {%- style -%}
@@ -66,7 +82,11 @@
     display: grid;
     grid-auto-flow: column;
     gap: var(--fc2-gap);
-    grid-auto-columns: calc(82% - (var(--fc2-gap) * 0.2));
+    {% if mobile_cards_per_view == 2 %}
+      grid-auto-columns: calc((100% - var(--fc2-gap)) / 2);
+    {% else %}
+      grid-auto-columns: calc(82% - (var(--fc2-gap) * 0.2));
+    {% endif %}
   }
 
   #shopify-section-{{ section.id }} .fc2-slide {
@@ -311,7 +331,7 @@
       display: none !important;
     }
 
-    {% if image_ratio_natural %}
+    {% if image_ratio_natural and mobile_cards_per_view == 1 %}
       #shopify-section-{{ section.id }} .fc2-track {
         grid-auto-columns: 100%;
       }
@@ -367,7 +387,7 @@
                         image: product.featured_media.preview_image,
                         widths: '360, 540, 700, 900, 1200',
                         src_width: 700,
-                        sizes: '(min-width: 1024px) 25vw, (min-width: 769px) 50vw, 82vw',
+                        sizes: fc2_image_sizes,
                         class: image_class,
                         section_index: section.index
                       %}
@@ -413,6 +433,7 @@
     var prevBtn = sectionRoot.querySelector('[data-fc2-prev]');
     var nextBtn = sectionRoot.querySelector('[data-fc2-next]');
     var showDesktopArrows = {{ show_desktop_arrows | json }};
+    var mobileSlidesPerPage = {{ mobile_cards_per_view | json }};
     if (!viewport || !dotsWrap) return;
 
     var slides = Array.prototype.slice.call(sectionRoot.querySelectorAll('[data-fc2-slide]'));
@@ -423,7 +444,7 @@
     function getSlidesPerPage() {
       if (window.matchMedia('(min-width: 1024px)').matches) return 4;
       if (window.matchMedia('(min-width: 769px)').matches) return 2;
-      return 1;
+      return mobileSlidesPerPage;
     }
 
     function getPageCount() {
@@ -765,6 +786,17 @@
       "step": 2,
       "unit": "px",
       "default": 16
+    },
+    {
+      "type": "select",
+      "id": "mobile_cards_per_view",
+      "label": "Cards per view on mobile",
+      "info": "Mobile only. Carousel stays enabled.",
+      "options": [
+        { "value": "1", "label": "1 card" },
+        { "value": "2", "label": "2 cards" }
+      ],
+      "default": "1"
     },
     {
       "type": "header",
