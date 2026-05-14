@@ -626,9 +626,9 @@
         "mobile_cards_per_view": "1",
         "grid_gap": 8,
         "fixed_height_desktop": 190,
-        "fixed_height_mobile": 290,
+        "fixed_height_mobile": 300,
         "image_fit": "contain",
-        "image_ratio": "tallest",
+        "image_ratio": "1",
         "section_color_scheme": "none",
         "color_scheme": "white",
         "transparent_content_color": "#ffffff"
