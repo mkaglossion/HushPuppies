@@ -626,9 +626,9 @@
         "mobile_cards_per_view": "2",
         "grid_gap": 8,
         "fixed_height_desktop": 190,
-        "fixed_height_mobile": 300,
+        "fixed_height_mobile": 290,
         "image_fit": "contain",
-        "image_ratio": "natural",
+        "image_ratio": "tallest",
         "section_color_scheme": "none",
         "color_scheme": "white",
         "transparent_content_color": "#ffffff"
@@ -745,9 +745,9 @@
         "mobile_cards_per_view": "2",
         "grid_gap": 8,
         "fixed_height_desktop": 190,
-        "fixed_height_mobile": 300,
+        "fixed_height_mobile": 290,
         "image_fit": "contain",
-        "image_ratio": "1",
+        "image_ratio": "tallest",
         "section_color_scheme": "none",
         "color_scheme": "white",
         "transparent_content_color": "#ffffff"
