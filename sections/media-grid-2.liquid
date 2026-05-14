@@ -177,6 +177,22 @@
       padding-top: {{ 1 | divided_by: image_ratio | times: 100 }}%;
     {% endif %}
   }
+
+  {% if section.settings.image_ratio == "natural" %}
+    /* Keep natural-ratio media in normal flow so cards keep proper height */
+    #shopify-section-{{ section.id }} .gallery-block__image .media {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      height: auto !important;
+    }
+
+    #shopify-section-{{ section.id }} .gallery-block__image .media img.img-fit {
+      position: static !important;
+      width: 100% !important;
+      height: auto !important;
+    }
+  {% endif %}
   
   /* =========================================
      FEATURED POSITION FIX - DIRECT CLASS APPROACH
@@ -241,6 +257,34 @@
     padding-right: 0;
   }
 
+  {% if section_width == 'full' %}
+    /* Full-width mode: always fill tiles edge-to-edge across breakpoints */
+    #shopify-section-{{ section.id }} .gallery-block__image {
+      padding: 0;
+    }
+
+    {% unless section.settings.image_ratio == "natural" %}
+      #shopify-section-{{ section.id }} .gallery-block__image .media {
+        position: absolute !important;
+        inset: 0 !important;
+        height: 100% !important;
+        padding-top: 0 !important;
+      }
+
+      #shopify-section-{{ section.id }} .gallery-block__image .media img.img-fit {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+      }
+
+      #shopify-section-{{ section.id }} .gallery-block__image .media img.img-fit.img-fit--contain {
+        object-fit: cover !important;
+      }
+    {% endunless %}
+  {% endif %}
+
   /* Mobile layout: featured banner + cards slider */
   #shopify-section-{{ section.id }} .mg2-mobile-layout {
     display: none;
@@ -297,9 +341,6 @@
 
     {% if section.settings.image_ratio == "natural" %}
       #shopify-section-{{ section.id }} .mg2-mobile-layout .media img.img-fit {
-        position: static !important;
-        width: 100% !important;
-        height: auto !important;
         object-fit: contain !important;
       }
     {% endif %}

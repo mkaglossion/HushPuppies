@@ -10,6 +10,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -1578,6 +1579,7 @@ button {
   transform: translateY(-50%);
   transition: background-color 0.2s ease;
   background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke='currentColor' stroke-width='1.5' fill='none'><path d='M4.696 12h14.686m-7.007-7.5 7.5 7.5-7.5 7.5'/></svg>");
   mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke='currentColor' stroke-width='1.5' fill='none'><path d='M4.696 12h14.686m-7.007-7.5 7.5 7.5-7.5 7.5'/></svg>");
 }
 
@@ -1813,6 +1815,7 @@ select {
 input[type=date] {
   min-height: calc((var(--input-padding-y, 11px) + var(--input-border-width)) * 2 + 1.2em);
   -webkit-appearance: none;
+  appearance: none;
 }
 
 .input,
@@ -1873,11 +1876,13 @@ select:-webkit-autofill:focus {
 
 [type=number] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 [type=search] {
   outline-offset: -2px;
   -webkit-appearance: none;
+  appearance: none;
 }
 
 [type=number]::-webkit-inner-spin-button,
@@ -1909,6 +1914,7 @@ select {
   height: 20px;
   background-color: rgb(var(--input-text-color));
   pointer-events: none;
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><path d='M20 8.5 12.5 16 5 8.5' fill='none' stroke='currentColor' stroke-width='1.5'/></svg>");
   mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><path d='M20 8.5 12.5 16 5 8.5' fill='none' stroke='currentColor' stroke-width='1.5'/></svg>");
 }
 [dir=rtl] .select::after {
@@ -4016,8 +4022,8 @@ shopify-account .account-button__fallback {
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: rgb(var(--scrollbar-color, 60 60 60)) rgba(var(--scrollbar-color, 60 60 60)/0.05);
+  /* scrollbar-width: thin; */
+  /* scrollbar-color: rgb(var(--scrollbar-color, 60 60 60)) rgba(var(--scrollbar-color, 60 60 60)/0.05); */
   scroll-behavior: smooth;
 }
 .slider[data-overlayscrollbars-viewport] {
@@ -4080,7 +4086,7 @@ shopify-account .account-button__fallback {
 
 .slider.slider--no-scrollbar {
   padding: 0;
-  scrollbar-width: none;
+  /* scrollbar-width: none; */
 }
 .slider.slider--no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -4755,10 +4761,6 @@ variant-picker:not([data-availability=false]):not(.variant-picker--pre-last-sele
 
 .os-environment, [data-overlayscrollbars-viewport] {
   -ms-overflow-style: scrollbar !important;
-}
-
-.os-environment-scrollbar-hidden, [data-overlayscrollbars-initialize], [data-overlayscrollbars-viewport~=scrollbarHidden], [data-overlayscrollbars~=scrollbarHidden] {
-  scrollbar-width: none !important;
 }
 
 .os-environment-scrollbar-hidden::-webkit-scrollbar, .os-environment-scrollbar-hidden::-webkit-scrollbar-corner, [data-overlayscrollbars-initialize]::-webkit-scrollbar, [data-overlayscrollbars-initialize]::-webkit-scrollbar-corner, [data-overlayscrollbars-viewport~=scrollbarHidden]::-webkit-scrollbar, [data-overlayscrollbars-viewport~=scrollbarHidden]::-webkit-scrollbar-corner, [data-overlayscrollbars~=scrollbarHidden]::-webkit-scrollbar, [data-overlayscrollbars~=scrollbarHidden]::-webkit-scrollbar-corner {
