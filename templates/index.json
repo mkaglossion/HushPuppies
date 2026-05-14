@@ -445,7 +445,7 @@
         "heading_align": "left",
         "button_label": "",
         "button_link": "",
-        "setwidth": "full",
+        "setwidth": "container-fluid",
         "layout": "grid",
         "column_size": "medium",
         "column_align": "center",
@@ -498,9 +498,9 @@
         "grid_gap": 16,
         "show_desktop_arrows": true,
         "desktop_arrow_style": "sample",
-        "desktop_arrow_position": "outside",
+        "desktop_arrow_position": "inside",
         "desktop_arrow_size": 48,
-        "setwidth": "container",
+        "setwidth": "container-fluid",
         "image_ratio": "natural",
         "image_fit": "contain"
       }
