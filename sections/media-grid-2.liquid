@@ -222,6 +222,33 @@
       grid-column: 1 / span 2;
     }
   }
+
+  /* Make small tiles look like clear, visible cards */
+  #shopify-section-{{ section.id }} .featured-grid .gallery-block:not(.featured-item) .gallery-block__image,
+  #shopify-section-{{ section.id }} .mg2-mobile-cards .gallery-block .gallery-block__image {
+    background: #ffffff;
+    border: 1px solid #e9e9e9;
+    border-radius: 4px;
+    padding: clamp(10px, 1.2vw, 16px);
+    box-shadow: 0 2px 6px rgba(16, 24, 40, 0.08), 0 12px 28px rgba(16, 24, 40, 0.12);
+    transition: box-shadow 180ms ease, transform 180ms ease;
+  }
+
+  #shopify-section-{{ section.id }} .featured-grid .gallery-block:not(.featured-item) .gallery-block__image .img-fit,
+  #shopify-section-{{ section.id }} .mg2-mobile-cards .gallery-block .gallery-block__image .img-fit {
+    object-fit: contain !important;
+    object-position: center center;
+  }
+
+  @media (hover: hover) {
+    #shopify-section-{{ section.id }} .featured-grid .gallery-block:not(.featured-item):hover .gallery-block__image,
+    #shopify-section-{{ section.id }} .mg2-mobile-cards .gallery-block:hover .gallery-block__image,
+    #shopify-section-{{ section.id }} .featured-grid .gallery-block:not(.featured-item):focus-within .gallery-block__image,
+    #shopify-section-{{ section.id }} .mg2-mobile-cards .gallery-block:focus-within .gallery-block__image {
+      box-shadow: 0 6px 14px rgba(16, 24, 40, 0.12), 0 20px 40px rgba(16, 24, 40, 0.18);
+      transform: translateY(-1px);
+    }
+  }
   
   /* Mobile reset */
   @media (max-width: {{ breakpoint_md | minus: 1 }}px) {
@@ -255,6 +282,11 @@
   #shopify-section-{{ section.id }} .hp-width-mode--full {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  /* Keep a small, balanced gap when two media-grid-2 sections are consecutive */
+  .shopify-section.cc-gallery + .shopify-section.cc-gallery .section {
+    margin-top: calc((var(--section-gap) * var(--fluid-1-5) * -1) + var(--smg-gap));
   }
 
   {% if section_width == 'full' %}

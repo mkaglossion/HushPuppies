@@ -38,6 +38,10 @@
 -%}
 
 {%- style -%}
+  #shopify-section-{{ section.id }} .section {
+    background: {{ section.settings.section_bg_color }};
+  }
+
   #shopify-section-{{ section.id }} .fc2-viewport {
     overflow-x: auto;
     overflow-y: hidden;
@@ -73,12 +77,18 @@
     display: block;
     position: relative;
     width: 100%;
-    background: rgb(var(--bg-color));
+    background: {{ section.settings.card_bg_color }};
+    border: 1px solid {{ section.settings.card_border_color }};
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(16, 24, 40, 0.08), 0 12px 28px rgba(16, 24, 40, 0.12);
+    transition: box-shadow 180ms ease, transform 180ms ease, border-color 180ms ease;
   }
 
   #shopify-section-{{ section.id }} .fc2-media {
     position: relative;
     width: 100%;
+    background: {{ section.settings.media_bg_color }};
     {%- unless image_ratio_natural -%}
     padding-top: {{ 1 | divided_by: image_ratio | times: 100 }}%;
     {%- endunless -%}
@@ -94,6 +104,15 @@
     width: 100%;
     height: auto;
     object-fit: contain;
+  }
+
+  @media (hover: hover) {
+    #shopify-section-{{ section.id }} .fc2-card:hover,
+    #shopify-section-{{ section.id }} .fc2-card:focus-visible {
+      border-color: {{ section.settings.card_border_hover_color }};
+      box-shadow: 0 6px 14px rgba(16, 24, 40, 0.12), 0 20px 40px rgba(16, 24, 40, 0.18);
+      transform: translateY(-1px);
+    }
   }
 
   #shopify-section-{{ section.id }} .fc2-dots {
@@ -228,20 +247,36 @@
     pointer-events: none;
   }
 
+  /* Section width behavior
+     - container-fluid: full width but keeps side gutters
+     - full: true edge-to-edge (no side gutters) */
   #shopify-section-{{ section.id }} > .container-fluid,
   #shopify-section-{{ section.id }} .container-fluid {
+    width: 100%;
     max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
   }
 
   #shopify-section-{{ section.id }} > .full,
   #shopify-section-{{ section.id }} .full {
     width: 100%;
     max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
     padding-left: 0;
     padding-right: 0;
   }
 
   @media (min-width: 769px) {
+    #shopify-section-{{ section.id }} > .full,
+    #shopify-section-{{ section.id }} .full {
+      padding-left: clamp(10px, 1.25vw, 24px);
+      padding-right: clamp(10px, 1.25vw, 24px);
+    }
+
     #shopify-section-{{ section.id }} .fc2-track {
       grid-auto-columns: calc((100% - (var(--fc2-gap) * 1)) / 2);
     }
@@ -808,6 +843,40 @@
         { "value": "cover", "label": "Cover" }
       ],
       "default": "contain"
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section background",
+      "default": "#f6f6f7"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "media_bg_color",
+      "label": "Image background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "#e9e9e9"
+    },
+    {
+      "type": "color",
+      "id": "card_border_hover_color",
+      "label": "Card border hover",
+      "default": "#dcdcdc"
     }
   ],
   "presets": [
