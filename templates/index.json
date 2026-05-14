@@ -445,7 +445,7 @@
         "heading_align": "left",
         "button_label": "",
         "button_link": "",
-        "setwidth": "container-fluid",
+        "setwidth": "full",
         "layout": "grid",
         "column_size": "medium",
         "column_align": "center",
