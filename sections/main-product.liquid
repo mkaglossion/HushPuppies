@@ -236,8 +236,40 @@
           {%- when 'price' -%}
             <div class="product-info__block product-info__block--sm product-price" {{ block.shopify_attributes }}>
               {%- capture price_content -%}
+                {%- liquid
+                  assign gwp_matches_price_handle_filter = true
+                  assign gwp_target_handles_value = block.settings.gwp_target_handles | downcase | strip
+                  if gwp_target_handles_value == 'all'
+                    assign gwp_target_handles_value = 'hushies_default'
+                  endif
+                  if gwp_target_handles_value == 'hushies_default'
+                    assign gwp_matches_price_handle_filter = false
+                    assign product_title_downcase = product.title | downcase
+                    if product_title_downcase contains 'gwp little hushies'
+                      assign gwp_matches_price_handle_filter = true
+                    endif
+                  elsif gwp_target_handles_value != blank and gwp_target_handles_value != 'all' and gwp_target_handles_value != 'global_all'
+                    assign gwp_matches_price_handle_filter = false
+                    assign target_handles_csv = gwp_target_handles_value | replace: ' ', ''
+                    assign wrapped_target_handles = ',' | append: target_handles_csv | append: ','
+                    assign wrapped_product_handle = ',' | append: product.handle | downcase | append: ','
+                    if wrapped_target_handles contains wrapped_product_handle
+                      assign gwp_matches_price_handle_filter = true
+                    endif
+                  endif
+
+                  assign gwp_free_by_tag = false
+                  if block.settings.enable_gwp_free_price and block.settings.gwp_free_price_tag != blank and gwp_matches_price_handle_filter
+                    assign gwp_free_tag_value = block.settings.gwp_free_price_tag | downcase | strip
+                    assign wrapped_product_tags = ',' | append: product.tags | join: ',' | downcase | append: ','
+                    assign wrapped_gwp_free_tag = ',' | append: gwp_free_tag_value | append: ','
+                    if wrapped_product_tags contains wrapped_gwp_free_tag
+                      assign gwp_free_by_tag = true
+                    endif
+                  endif
+                -%}
                 <div class="product-info__price" data-dynamic-variant-content="{{ section.id }}-{{ block.id }}-price">
-                  {% render 'price', product: product, current_variant: current_variant, use_variant: true %}
+                  {% render 'price', product: product, current_variant: current_variant, use_variant: true, gwp_free_override: gwp_free_by_tag, gwp_free_label: block.settings.gwp_free_price_label, gwp_free_show_compare_at: block.settings.gwp_free_show_compare_at %}
                 </div>
 
                 {%- if block.settings.show_tax_and_shipping -%}
@@ -322,8 +354,39 @@
                         assign gift_card_recipient_feature_active = true
                       endif
 
+                      assign gwp_matches_handle_filter = true
+                      assign gwp_target_handles_value = block.settings.gwp_target_handles | downcase | strip
+                      if gwp_target_handles_value == 'all'
+                        assign gwp_target_handles_value = 'hushies_default'
+                      endif
+                      if gwp_target_handles_value == 'hushies_default'
+                        assign gwp_matches_handle_filter = false
+                        assign product_title_downcase = product.title | downcase
+                        if product_title_downcase contains 'gwp little hushies'
+                          assign gwp_matches_handle_filter = true
+                        endif
+                      elsif gwp_target_handles_value != blank and gwp_target_handles_value != 'all' and gwp_target_handles_value != 'global_all'
+                        assign gwp_matches_handle_filter = false
+                        assign target_handles_csv = gwp_target_handles_value | replace: ' ', ''
+                        assign wrapped_target_handles = ',' | append: target_handles_csv | append: ','
+                        assign wrapped_product_handle = ',' | append: product.handle | downcase | append: ','
+                        if wrapped_target_handles contains wrapped_product_handle
+                          assign gwp_matches_handle_filter = true
+                        endif
+                      endif
+
+                      assign gwp_locked_by_tag = false
+                      if block.settings.enable_gwp_manual_add_lock and block.settings.gwp_lock_tag != blank and gwp_matches_handle_filter
+                        assign gwp_lock_tag_value = block.settings.gwp_lock_tag | downcase | strip
+                        assign wrapped_product_tags = ',' | append: product.tags | join: ',' | downcase | append: ','
+                        assign wrapped_gwp_lock_tag = ',' | append: gwp_lock_tag_value | append: ','
+                        if wrapped_product_tags contains wrapped_gwp_lock_tag
+                          assign gwp_locked_by_tag = true
+                        endif
+                      endif
+
                       assign enable_dynamic_checkout = false
-                      if block.settings.enable_dynamic_checkout and product.selling_plan_groups == empty and gift_card_recipient_feature_active == false
+                      if block.settings.enable_dynamic_checkout and product.selling_plan_groups == empty and gift_card_recipient_feature_active == false and gwp_locked_by_tag == false
                         unless product.template_suffix contains 'preorder'
                           assign enable_dynamic_checkout = true
                         endunless
@@ -338,7 +401,7 @@
 
                     <input type="hidden" name="id" value="{% if current_variant %}{{ current_variant.id }}{% endif %}" data-dynamic-variant-content="{{ section.id }}-{{ block.id }}-input-id" required>
                     <div class="product-info__add-to-cart flex{% if enable_dynamic_checkout %} qty-input--secondary-btn{% endif %}" data-dynamic-variant-content="{{ section.id }}-{{ block.id }}-add-to-cart">
-                      {%- if block.settings.show_qty_selector -%}
+                      {%- if block.settings.show_qty_selector and gwp_locked_by_tag == false -%}
                         {% render 'quantity-input', layout_style: "combined" %}
                       {%- else -%}
                         <input type="hidden" name="quantity" value="1">
@@ -346,7 +409,9 @@
 
                       <div class="product-info__add-button">
                         {%- capture add_to_cart_text -%}
-                          {%- if product.template_suffix contains 'preorder' -%}
+                          {%- if gwp_locked_by_tag -%}
+                            {{- block.settings.gwp_locked_button_text | default: 'UNABLE TO ADD TO CART' -}}
+                          {%- elsif product.template_suffix contains 'preorder' -%}
                             {{- 'products.product.preorder' | t -}}
                           {%- else -%}
                             {{- 'products.product.add_to_cart' | t -}}
@@ -360,8 +425,12 @@
                           name="add"
                           data-preselection-disabled="true"
                           data-preselection-text="{{ 'products.variant.not_selected' | t | escape }}"
-                          {%- unless current_variant.available %} disabled{% endunless %}>
-                          {%- if current_variant.available or current_variant == false -%}
+                          data-manual-lock="{% if gwp_locked_by_tag %}true{% else %}false{% endif %}"
+                          data-manual-lock-text="{{ block.settings.gwp_locked_button_text | default: 'UNABLE TO ADD TO CART' | escape }}"
+                          {%- if gwp_locked_by_tag or current_variant.available == false -%} disabled{% endif %}>
+                          {%- if gwp_locked_by_tag -%}
+                            {{- block.settings.gwp_locked_button_text | default: 'UNABLE TO ADD TO CART' -}}
+                          {%- elsif current_variant.available or current_variant == false -%}
                             {{- add_to_cart_text -}}
                           {%- else -%}
                             {{- 'products.variant.no_stock' | t -}}
@@ -1282,6 +1351,36 @@
           "default": false,
           "label": "Show recipient information form for gift cards",
           "info": "Allow customers to send gift cards to a recipient along with a personal message. When enabled, the dynamic checkout button will be disabled for gift cards. [Learn more](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
+        },
+        {
+          "type": "header",
+          "content": "Gift product lock"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_gwp_manual_add_lock",
+          "label": "Disable Add to cart for tagged gift products",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "gwp_lock_tag",
+          "label": "Gift lock product tag",
+          "default": "gwp_locked",
+          "info": "Products with this tag will show a disabled Add to cart button."
+        },
+        {
+          "type": "text",
+          "id": "gwp_target_handles",
+          "label": "Limit to product handles (comma separated)",
+          "default": "hushies_default",
+          "info": "Default limits to products with title containing \"GWP Little Hushies\". Use \"global_all\" for no filtering, or add comma-separated handles."
+        },
+        {
+          "type": "text",
+          "id": "gwp_locked_button_text",
+          "label": "Disabled button text",
+          "default": "UNABLE TO ADD TO CART"
         }
       ]
     },
@@ -1787,6 +1886,41 @@
           "type": "checkbox",
           "id": "show_tax_and_shipping",
           "label": "Show tax and shipping information",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Gift price override"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_gwp_free_price",
+          "label": "Show FREE price for tagged gift products",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "gwp_free_price_tag",
+          "label": "Gift free-price product tag",
+          "default": "gwp_locked"
+        },
+        {
+          "type": "text",
+          "id": "gwp_target_handles",
+          "label": "Limit to product handles (comma separated)",
+          "default": "hushies_default",
+          "info": "Default limits to products with title containing \"GWP Little Hushies\". Use \"global_all\" for no filtering, or add comma-separated handles."
+        },
+        {
+          "type": "text",
+          "id": "gwp_free_price_label",
+          "label": "Free price label",
+          "default": "FREE"
+        },
+        {
+          "type": "checkbox",
+          "id": "gwp_free_show_compare_at",
+          "label": "Show original price beside FREE",
           "default": true
         }
       ]

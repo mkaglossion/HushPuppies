@@ -382,6 +382,14 @@ if (!customElements.get('variant-picker')) {
       if (!productForm) return;
 
       this.addBtn = productForm.querySelector('[name="add"]');
+      if (!this.addBtn) return;
+
+      // Respect manual add-to-cart locks (e.g. gift products shown but not purchasable).
+      if (this.addBtn.dataset.manualLock === 'true') {
+        this.addBtn.disabled = true;
+        this.addBtn.textContent = this.addBtn.dataset.manualLockText || this.addBtn.dataset.addToCartText;
+        return;
+      }
 
       // Product not available
       if (!this.productAvailable) {

@@ -4,6 +4,9 @@
   - class {String} - CSS Class (optional)
   - use_variant {Boolean} - Use variant price instead of general (optional, default is false).
   - current_variant {Object} - Current variant, if use_variant is true.
+  - gwp_free_override {Boolean} - Show a free label instead of money price (optional).
+  - gwp_free_label {String} - Free label text (optional, default: FREE).
+  - gwp_free_show_compare_at {Boolean} - Show original price as compare-at when free label is active (optional).
 
   Usage:
   {% render 'price', product: product %}
@@ -23,6 +26,22 @@
 
   assign compare_at_price = variant.compare_at_price
   assign price = variant.price | default: 1999
+
+  assign gwp_free_override_active = false
+  if gwp_free_override
+    assign gwp_free_override_active = true
+  endif
+
+  assign gwp_free_label_text = gwp_free_label | default: 'FREE'
+
+  if gwp_free_override_active
+    if gwp_free_show_compare_at
+      assign compare_at_price = variant.price
+    else
+      assign compare_at_price = blank
+    endif
+    assign price = 0
+  endif
 -%}
 
 <div class="price{%- if compare_at_price > price %} price--on-sale{% endif -%}
@@ -44,7 +63,11 @@
         {%- endif -%}
       {%- endif %}
       <span class="js-value">
-        {%- render 'price-as-money', price: price -%}
+        {%- if gwp_free_override_active -%}
+          {{- gwp_free_label_text -}}
+        {%- else -%}
+          {%- render 'price-as-money', price: price -%}
+        {%- endif -%}
       </span>
     </span>
     <span class="price__was{% if settings.superscript_decimals %} price__was--supercents{% endif %}">

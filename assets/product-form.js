@@ -9,6 +9,20 @@ if (!customElements.get('product-form')) {
       this.form = this.querySelector('.js-product-form');
       if (this.form) {
         this.cartDrawer = document.querySelector('cart-drawer');
+        this.submitBtn = this.querySelector('[name="add"]');
+
+        if (this.submitBtn && this.submitBtn.dataset.manualLock === 'true') {
+          this.submitBtn.disabled = true;
+          this.submitBtn.setAttribute('aria-disabled', 'true');
+          if (this.submitBtn.dataset.manualLockText) {
+            this.submitBtn.textContent = this.submitBtn.dataset.manualLockText;
+          }
+
+          const dynamicCheckoutContainer = this.querySelector('.product-info__dynamic-checkout-button');
+          if (dynamicCheckoutContainer) dynamicCheckoutContainer.remove();
+          const paymentButton = this.querySelector('.shopify-payment-button');
+          if (paymentButton) paymentButton.remove();
+        }
 
         if (theme.settings.afterAtc !== 'no-js') {
           this.form.addEventListener('submit', this.handleSubmit.bind(this));
@@ -27,6 +41,7 @@ if (!customElements.get('product-form')) {
 
       this.submitBtn = this.querySelector('[name="add"]');
 
+      if (this.submitBtn && this.submitBtn.dataset.manualLock === 'true') return;
       if (this.submitBtn.getAttribute('aria-disabled') === 'true') return;
 
       if (theme.settings.vibrateOnATC && window.navigator.vibrate) {
