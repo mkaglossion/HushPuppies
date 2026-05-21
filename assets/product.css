@@ -285,6 +285,18 @@ quantity-input + .product-info__add-button {
   margin-inline-start: calc(2 * var(--space-unit));
 }
 
+.btn--gwp-unable,
+.btn--gwp-unable[disabled],
+.btn--gwp-unable[aria-disabled=true],
+.btn--gwp-unable[disabled]:hover,
+.btn--gwp-unable[aria-disabled=true]:hover {
+  border-color: #dc2626;
+  background: #dc2626;
+  color: #fff;
+  opacity: 1;
+  cursor: not-allowed;
+}
+
 .product-info__dynamic-checkout-button shopify-accelerated-checkout {
   --shopify-accelerated-checkout-button-block-size: 45px;
   --shopify-accelerated-checkout-button-border-radius: var(--btn-border-radius, 0);

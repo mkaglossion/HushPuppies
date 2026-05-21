@@ -105,6 +105,18 @@
   if product.metafields.theme.highlight == true and show_highlight_product != false
     assign is_highlighted = true
   endif
+  assign gwp_product_title_downcase = product.title | downcase
+  assign gwp_product_handle_downcase = product.handle | downcase
+  assign is_hidden_gwp = false
+  if product.tags contains 'hidden-gwp'
+    assign is_hidden_gwp = true
+  endif
+  if gwp_product_title_downcase contains 'gwp little hushies'
+    assign is_hidden_gwp = true
+  endif
+  if gwp_product_handle_downcase contains 'gwp-little-hushies'
+    assign is_hidden_gwp = true
+  endif
 -%}
 
 {%- if product and product != empty -%}
@@ -381,18 +393,24 @@
                 <input type="hidden" name="id" value="{{ current_variant.id }}">
 
                 {%- capture button_text -%}
-                  {%- if product_preorder -%}
-                    {{- 'products.product.preorder' | t -}}
-                  {%- else -%}
-                    {{- 'products.product.add_to_cart' | t -}}
-                  {%- endif -%}
-                {%- endcapture -%}
+                   {%- if is_hidden_gwp -%}
+                     UNABLE TO ADD TO CART
+                   {%- elsif product_preorder -%}
+                     {{- 'products.product.preorder' | t -}}
+                   {%- else -%}
+                     {{- 'products.product.add_to_cart' | t -}}
+                   {%- endif -%}
+                 {%- endcapture -%}
 
-                <button class="btn btn--primary w-full"
-                        data-add-to-cart-text="{{- button_text | escape -}}"
-                        name="add"
-                        aria-haspopup="dialog"
-                        {%- if current_variant.available == false %}disabled{% endif %}>
+                 <button class="btn btn--primary w-full{% if is_hidden_gwp %} btn--gwp-unable{% endif %}"
+                         data-add-to-cart-text="{{- button_text | escape -}}"
+                         name="add"
+                         aria-haspopup="dialog"
+                         {% if is_hidden_gwp %}
+                           title="Gift item cannot be added manually"
+                           aria-label="UNABLE TO ADD TO CART. Gift item cannot be added manually."
+                         {% endif %}
+                         {%- if current_variant.available == false or is_hidden_gwp %}disabled{% endif %}>
                   <span class="quick-add-btn-icon">
                     <span class="visually-hidden">{{- button_text -}}</span>
                     {% render 'icon-add-to-cart' %}

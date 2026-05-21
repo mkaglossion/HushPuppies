@@ -263,11 +263,14 @@
                     assign gwp_free_tag_value = block.settings.gwp_free_price_tag | downcase | strip
                     assign wrapped_product_tags = ',' | append: product.tags | join: ',' | downcase | append: ','
                     assign wrapped_gwp_free_tag = ',' | append: gwp_free_tag_value | append: ','
-                    if wrapped_product_tags contains wrapped_gwp_free_tag
-                      assign gwp_free_by_tag = true
-                    endif
-                  endif
-                -%}
+                     if wrapped_product_tags contains wrapped_gwp_free_tag
+                       assign gwp_free_by_tag = true
+                     endif
+                   endif
+                   if is_hidden_gwp
+                     assign gwp_free_by_tag = true
+                   endif
+                 -%}
                 <div class="product-info__price" data-dynamic-variant-content="{{ section.id }}-{{ block.id }}-price">
                   {% render 'price', product: product, current_variant: current_variant, use_variant: true, gwp_free_override: gwp_free_by_tag, gwp_free_label: block.settings.gwp_free_price_label, gwp_free_show_compare_at: block.settings.gwp_free_show_compare_at %}
                 </div>
@@ -354,6 +357,16 @@
                         assign gift_card_recipient_feature_active = true
                       endif
 
+                      assign gwp_product_title_downcase = product.title | downcase
+                      assign gwp_product_handle_downcase = product.handle | downcase
+                      assign gwp_is_little_hushies = false
+                      if gwp_product_title_downcase contains 'gwp little hushies'
+                        assign gwp_is_little_hushies = true
+                      endif
+                      if gwp_product_handle_downcase contains 'gwp-little-hushies'
+                        assign gwp_is_little_hushies = true
+                      endif
+
                       assign gwp_matches_handle_filter = true
                       assign gwp_target_handles_value = block.settings.gwp_target_handles | downcase | strip
                       if gwp_target_handles_value == 'all'
@@ -361,8 +374,7 @@
                       endif
                       if gwp_target_handles_value == 'hushies_default'
                         assign gwp_matches_handle_filter = false
-                        assign product_title_downcase = product.title | downcase
-                        if product_title_downcase contains 'gwp little hushies'
+                        if gwp_is_little_hushies
                           assign gwp_matches_handle_filter = true
                         endif
                       elsif gwp_target_handles_value != blank and gwp_target_handles_value != 'all' and gwp_target_handles_value != 'global_all'
@@ -376,17 +388,21 @@
                       endif
 
                       assign gwp_locked_by_tag = false
-                      if block.settings.enable_gwp_manual_add_lock and block.settings.gwp_lock_tag != blank and gwp_matches_handle_filter
-                        assign gwp_lock_tag_value = block.settings.gwp_lock_tag | downcase | strip
-                        assign wrapped_product_tags = ',' | append: product.tags | join: ',' | downcase | append: ','
-                        assign wrapped_gwp_lock_tag = ',' | append: gwp_lock_tag_value | append: ','
-                        if wrapped_product_tags contains wrapped_gwp_lock_tag
+                      if block.settings.enable_gwp_manual_add_lock and gwp_matches_handle_filter
+                        if gwp_is_little_hushies
                           assign gwp_locked_by_tag = true
+                        elsif block.settings.gwp_lock_tag != blank
+                          assign gwp_lock_tag_value = block.settings.gwp_lock_tag | downcase | strip
+                          assign wrapped_product_tags = ',' | append: product.tags | join: ',' | downcase | append: ','
+                          assign wrapped_gwp_lock_tag = ',' | append: gwp_lock_tag_value | append: ','
+                          if wrapped_product_tags contains wrapped_gwp_lock_tag
+                            assign gwp_locked_by_tag = true
+                          endif
                         endif
                       endif
 
                       assign enable_dynamic_checkout = false
-                      if block.settings.enable_dynamic_checkout and product.selling_plan_groups == empty and gift_card_recipient_feature_active == false and gwp_locked_by_tag == false
+                      if block.settings.enable_dynamic_checkout and product.selling_plan_groups == empty and gift_card_recipient_feature_active == false and gwp_locked_by_tag == false and is_hidden_gwp != true
                         unless product.template_suffix contains 'preorder'
                           assign enable_dynamic_checkout = true
                         endunless
@@ -401,36 +417,44 @@
 
                     <input type="hidden" name="id" value="{% if current_variant %}{{ current_variant.id }}{% endif %}" data-dynamic-variant-content="{{ section.id }}-{{ block.id }}-input-id" required>
                     <div class="product-info__add-to-cart flex{% if enable_dynamic_checkout %} qty-input--secondary-btn{% endif %}" data-dynamic-variant-content="{{ section.id }}-{{ block.id }}-add-to-cart">
-                      {%- if block.settings.show_qty_selector and gwp_locked_by_tag == false -%}
+                      {%- if block.settings.show_qty_selector and gwp_locked_by_tag == false and is_hidden_gwp != true -%}
                         {% render 'quantity-input', layout_style: "combined" %}
                       {%- else -%}
                         <input type="hidden" name="quantity" value="1">
                       {%- endif -%}
 
                       <div class="product-info__add-button">
-                        {%- capture add_to_cart_text -%}
-                          {%- if gwp_locked_by_tag -%}
-                            {{- block.settings.gwp_locked_button_text | default: 'UNABLE TO ADD TO CART' -}}
-                          {%- elsif product.template_suffix contains 'preorder' -%}
-                            {{- 'products.product.preorder' | t -}}
-                          {%- else -%}
-                            {{- 'products.product.add_to_cart' | t -}}
-                          {%- endif -%}
-                        {%- endcapture -%}
+                         {%- capture add_to_cart_text -%}
+                           {%- if is_hidden_gwp -%}
+                             UNABLE TO ADD TO CART
+                           {%- elsif gwp_locked_by_tag -%}
+                             {{- block.settings.gwp_locked_button_text | default: 'UNABLE TO ADD TO CART' -}}
+                           {%- elsif product.template_suffix contains 'preorder' -%}
+                             {{- 'products.product.preorder' | t -}}
+                           {%- else -%}
+                             {{- 'products.product.add_to_cart' | t -}}
+                           {%- endif -%}
+                         {%- endcapture -%}
 
-                        <button
-                          type="submit"
-                          data-add-to-cart-text="{{ add_to_cart_text | escape }}"
-                          class="btn {% if enable_dynamic_checkout %}btn--secondary{% else %}btn--primary{% endif %} w-full"
-                          name="add"
-                          data-preselection-disabled="true"
-                          data-preselection-text="{{ 'products.variant.not_selected' | t | escape }}"
-                          data-manual-lock="{% if gwp_locked_by_tag %}true{% else %}false{% endif %}"
-                          data-manual-lock-text="{{ block.settings.gwp_locked_button_text | default: 'UNABLE TO ADD TO CART' | escape }}"
-                          {%- if gwp_locked_by_tag or current_variant.available == false -%} disabled{% endif %}>
-                          {%- if gwp_locked_by_tag -%}
-                            {{- block.settings.gwp_locked_button_text | default: 'UNABLE TO ADD TO CART' -}}
-                          {%- elsif current_variant.available or current_variant == false -%}
+                         <button
+                           type="submit"
+                           data-add-to-cart-text="{{ add_to_cart_text | escape }}"
+                           class="btn {% if enable_dynamic_checkout %}btn--secondary{% else %}btn--primary{% endif %} w-full{% if is_hidden_gwp or gwp_locked_by_tag %} btn--gwp-unable{% endif %}"
+                           name="add"
+                           data-preselection-disabled="true"
+                           data-preselection-text="{{ 'products.variant.not_selected' | t | escape }}"
+                           data-manual-lock="{% if gwp_locked_by_tag or is_hidden_gwp %}true{% else %}false{% endif %}"
+                           data-manual-lock-text="{{ block.settings.gwp_locked_button_text | default: 'UNABLE TO ADD TO CART' | escape }}"
+                           {% if gwp_locked_by_tag or is_hidden_gwp %}
+                             title="Gift item cannot be added manually"
+                             aria-label="{{ block.settings.gwp_locked_button_text | default: 'UNABLE TO ADD TO CART' | escape }}. Gift item cannot be added manually."
+                           {% endif %}
+                           {%- if gwp_locked_by_tag or is_hidden_gwp or current_variant.available == false -%} disabled{% endif %}>
+                           {%- if is_hidden_gwp -%}
+                             UNABLE TO ADD TO CART
+                           {%- elsif gwp_locked_by_tag -%}
+                             {{- block.settings.gwp_locked_button_text | default: 'UNABLE TO ADD TO CART' -}}
+                           {%- elsif current_variant.available or current_variant == false -%}
                             {{- add_to_cart_text -}}
                           {%- else -%}
                             {{- 'products.variant.no_stock' | t -}}

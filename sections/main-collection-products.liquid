@@ -173,10 +173,16 @@
                   endunless
                 -%}
                 {%- if is_last_position -%}
-                  {%- unless rendered_product_ids contains product.id -%}
-                    {%- assign rendered_product_ids = rendered_product_ids | append: product.id | append: "," -%}
-                    <li class="js-pagination-result">{% render 'product-card', product: product, collection: collection, image_ratio: image_ratio, show_compare: settings.enable_compare %}</li>
-                  {%- endunless -%}
+                   {%- unless rendered_product_ids contains product.id -%}
+                     {%- assign rendered_product_ids = rendered_product_ids | append: product.id | append: "," -%}
+                     {%- if product.tags contains 'hidden-gwp' -%}
+                       {%- if collection.handle contains 'gwp' -%}
+                         <li class="js-pagination-result">{% render 'product-card', product: product, collection: collection, image_ratio: image_ratio, show_compare: settings.enable_compare %}</li>
+                       {%- endif -%}
+                     {%- else -%}
+                       <li class="js-pagination-result">{% render 'product-card', product: product, collection: collection, image_ratio: image_ratio, show_compare: settings.enable_compare %}</li>
+                     {%- endif -%}
+                   {%- endunless -%}
                 {%- endif -%}
 
                 {%- if show_promo -%}
@@ -214,10 +220,16 @@
                 {%- endif -%}
               {%- endfor -%}
 
-              {%- unless is_last_position and rendered_product_ids contains product.id -%}
-                {%- assign rendered_product_ids = rendered_product_ids | append: product.id | append: "," -%}
-                <li class="js-pagination-result">{% render 'product-card', product: product, collection: collection, image_ratio: image_ratio, show_compare: settings.enable_compare %}</li>
-              {%- endunless -%}
+               {%- unless is_last_position and rendered_product_ids contains product.id -%}
+                 {%- assign rendered_product_ids = rendered_product_ids | append: product.id | append: "," -%}
+                 {%- if product.tags contains 'hidden-gwp' -%}
+                   {%- if collection.handle contains 'gwp' -%}
+                     <li class="js-pagination-result">{% render 'product-card', product: product, collection: collection, image_ratio: image_ratio, show_compare: settings.enable_compare %}</li>
+                   {%- endif -%}
+                 {%- else -%}
+                   <li class="js-pagination-result">{% render 'product-card', product: product, collection: collection, image_ratio: image_ratio, show_compare: settings.enable_compare %}</li>
+                 {%- endif -%}
+               {%- endunless -%}
             {%- endfor -%}
 
             {%- comment -%}Process wide promos aligned bottom{%- endcomment -%}
