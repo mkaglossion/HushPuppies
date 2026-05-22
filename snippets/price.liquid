@@ -32,6 +32,15 @@
     assign gwp_free_override_active = true
   endif
 
+  if product != blank
+    assign price_product_title_downcase = product.title | downcase
+    assign price_product_handle_downcase = product.handle | downcase
+    assign price_product_tags_downcase = product.tags | join: ',' | downcase
+    if price_product_title_downcase contains 'gwp' or price_product_handle_downcase contains 'gwp' or price_product_tags_downcase contains 'gwp'
+      assign gwp_free_override_active = true
+    endif
+  endif
+
   assign gwp_free_label_text = gwp_free_label | default: 'FREE'
 
   if gwp_free_override_active
@@ -42,14 +51,23 @@
     endif
     assign price = 0
   endif
+
+  assign price_is_on_sale = false
+  if compare_at_price != blank
+    assign compare_at_price_number = compare_at_price | plus: 0
+    assign price_number = price | plus: 0
+    if compare_at_price_number > price_number
+      assign price_is_on_sale = true
+    endif
+  endif
 -%}
 
-<div class="price{%- if compare_at_price > price %} price--on-sale{% endif -%}
+<div class="price{%- if price_is_on_sale %} price--on-sale{% endif -%}
                  {%- if available == false %} price--sold-out{% endif -%}{% if class %} {{ class }}{% endif %}">
   <div class="price__default">
     <span class="price__current">
       <span class="visually-hidden js-label">
-        {%- if compare_at_price and compare_at_price > price -%}
+        {%- if price_is_on_sale -%}
           {{- 'products.product.price.sale_price' | t -}}
         {%- else -%}
           {{- 'products.product.price.regular_price' | t -}}
@@ -72,12 +90,12 @@
     </span>
     <span class="price__was{% if settings.superscript_decimals %} price__was--supercents{% endif %}">
       <span class="visually-hidden js-label">
-        {%- if compare_at_price and compare_at_price > price -%}
+        {%- if price_is_on_sale -%}
           {{- 'products.product.price.regular_price' | t -}}
         {%- endif -%}
       </span>
       <span class="js-value">
-        {%- if compare_at_price and compare_at_price > price -%}
+        {%- if price_is_on_sale -%}
           {%- render 'price-as-money', price: compare_at_price, show_money_with_currency: false -%}
         {%- endif -%}
       </span>

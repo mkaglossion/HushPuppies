@@ -35,7 +35,12 @@
         "price": {
           "type": "price",
           "settings": {
-            "show_tax_and_shipping": true
+            "show_tax_and_shipping": true,
+            "enable_gwp_free_price": false,
+            "gwp_free_price_tag": "gwp_locked",
+            "gwp_target_handles": "hushies_default",
+            "gwp_free_price_label": "FREE",
+            "gwp_free_show_compare_at": true
           }
         },
         "divider-0": {
@@ -69,7 +74,11 @@
             "show_qty_selector": true,
             "enable_dynamic_checkout": true,
             "show_pickup_availability": true,
-            "show_gift_card_recipient": false
+            "show_gift_card_recipient": false,
+            "enable_gwp_manual_add_lock": true,
+            "gwp_lock_tag": "gwp_locked",
+            "gwp_target_handles": "hushies_default",
+            "gwp_locked_button_text": "UNABLE TO ADD TO CART"
           }
         },
         "message-1": {

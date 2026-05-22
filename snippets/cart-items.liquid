@@ -56,8 +56,21 @@
             else
               assign variant_price_reduced = false
             endif
+
+            assign item_product_title_downcase = item.product.title | downcase
+            assign item_product_handle_downcase = item.product.handle | downcase
+            assign item_product_tags_downcase = item.product.tags | join: ',' | downcase
+            assign item_is_gwp = false
+            if item_product_title_downcase contains 'gwp' or item_product_handle_downcase contains 'gwp' or item_product_tags_downcase contains 'gwp'
+              assign item_is_gwp = true
+            endif
+
+            assign item_is_free = false
+            if item.final_price == 0 or item.final_line_price == 0
+              assign item_is_free = true
+            endif
           -%}
-          <tr class="cart-item grid gap-x-6" id="cart-item-{{ item.index | plus: 1 }}" data-product-id="{{ item.product_id }}" data-variant-id="{{ item.variant_id }}">
+          <tr class="cart-item{% if item_is_gwp %} cart-item--gwp{% endif %} grid gap-x-6" id="cart-item-{{ item.index | plus: 1 }}" data-product-id="{{ item.product_id }}" data-variant-id="{{ item.variant_id }}" data-quantity="{{ item.quantity }}" data-gwp="{% if item_is_gwp %}true{% else %}false{% endif %}">
             <td class="cart-item__image">
               <a href="{{ item.url }}" class="block {% if settings.blend_product_images %} image-blend{% endif %}">
                 {%- if item.image -%}
@@ -90,7 +103,11 @@
               {%- endif -%}
 
               <div class="cart-item__info">
-                {%- if variant_price_reduced or item.original_line_price != item.final_line_price -%}
+                {%- if item_is_free -%}
+                  <strong class="price__current">
+                    FREE
+                  </strong>
+                {%- elsif variant_price_reduced or item.original_line_price != item.final_line_price -%}
                   <dl class="m-0">
                     <dt class="visually-hidden">
                       {{- 'products.product.price.sale_price' | t -}}
@@ -192,7 +209,11 @@
             </td>
             <td class="cart-item__qty">
               <div class="flex items-center mt-4">
-                {% render 'quantity-input', is_cart: true, item: item, layout_style: 'combined' %}
+                {%- unless item_is_gwp -%}
+                  {% render 'quantity-input', is_cart: true, item: item, layout_style: 'combined' %}
+                {%- else -%}
+                  <input type="hidden" name="updates[]" value="{{ item.quantity }}" data-index="{{ item.index | plus: 1 }}">
+                {%- endunless -%}
                 <a class="cart-item__remove btn btn--icon text-current tap-target js-remove-item" href="{{ item.url_to_remove }}" data-index="{{ item.index | plus: 1 }}" aria-label="{{- 'cart.items.remove' | t -}}"{% if settings.preload_links %} data-no-instant{% endif %}>
                   {% render 'icon-trash' %}
                 </a>
@@ -204,7 +225,11 @@
               <div class="text-theme-light text-sm mb-2 md:hidden">
                 {{ 'cart.items.total' | t }}
               </div>
-              {%- if variant_price_reduced or item.original_line_price != item.final_line_price -%}
+              {%- if item_is_free -%}
+                <strong class="price__current">
+                  FREE
+                </strong>
+              {%- elsif variant_price_reduced or item.original_line_price != item.final_line_price -%}
                 <dl class="m-0 flex md:block">
                   <dt class="visually-hidden">
                     {{- 'products.product.price.sale_price' | t -}}

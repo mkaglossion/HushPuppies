@@ -18,14 +18,18 @@ if (!customElements.get('cart-items')) {
 
       this.cartDrawer = document.getElementById('cart-drawer');
       this.itemStatus = document.getElementById('cart-line-item-status');
-      this.currentTotalItemCount = Array.from(this.querySelectorAll('[name="updates[]"]')).reduce(
-        (total, quantityInput) => total + parseInt(quantityInput.value, 10),
+      this.currentTotalItemCount = Array.from(this.querySelectorAll('.cart-item')).reduce(
+        (total, item) => {
+          const quantityInput = item.querySelector('.qty-input__input');
+          return total + Number(quantityInput ? quantityInput.value : item.dataset.quantity || 0);
+        },
         0
       );
 
       this.currentQuantities = [];
       this.querySelectorAll('.cart-item').forEach((item) => {
-        this.currentQuantities[item.dataset.variantId] = Number(item.querySelector('.qty-input__input').value);
+        const quantityInput = item.querySelector('.qty-input__input');
+        this.currentQuantities[item.dataset.variantId] = Number(quantityInput ? quantityInput.value : item.dataset.quantity || 0);
       });
 
       this.addEventListener('click', this.handleClick.bind(this));
@@ -47,6 +51,7 @@ if (!customElements.get('cart-items')) {
      * @param {object} evt - Event object.
      */
     handleChange(evt) {
+      if (!evt.target.matches('[name="updates[]"]')) return;
       this.updateQuantity(evt.target.dataset.index, evt.target.value, document.activeElement.name);
     }
 
@@ -171,8 +176,10 @@ if (!customElements.get('cart-items')) {
         }));
 
         const input = document.getElementById(`quantity-${line}`);
-        input.value = input.dataset.initialValue;
-        input.closest('quantity-input').currentQty = input.dataset.initialValue;
+        if (input) {
+          input.value = input.dataset.initialValue;
+          input.closest('quantity-input').currentQty = input.dataset.initialValue;
+        }
       } finally {
         this.classList.remove('pointer-events-none');
 
