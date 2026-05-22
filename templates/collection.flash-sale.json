@@ -130,6 +130,7 @@
         "promo-strip-text",
         "promo-strip-discount"
       ],
+      "disabled": true,
       "settings": {
         "section_height": "medium",
         "color_scheme": "3",
@@ -200,6 +201,7 @@
         "collection-list-collection-7",
         "collection-list-collection-8"
       ],
+      "disabled": true,
       "settings": {
         "title": "Our collections",
         "heading_align": "text-start",
