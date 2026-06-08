@@ -33,7 +33,7 @@
         "text_JDxFcV"
       ],
       "custom_css": [
-        ".section-template--21126281920702__image_banner_iteTKb {margin-top: 50px !important; margin-bottom: 50px !important;}"
+        ".image-banner {margin-bottom: 60px !important;}"
       ],
       "name": "Image banner",
       "settings": {
