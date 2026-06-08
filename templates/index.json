@@ -32,9 +32,13 @@
         "heading_Tw4QpG",
         "text_JDxFcV"
       ],
-      "disabled": true,
+      "custom_css": [
+        ".section-template--21126281920702__image_banner_iteTKb {margin-top: 50px !important; margin-bottom: 50px !important;}"
+      ],
       "name": "Image banner",
       "settings": {
+        "image_desktop": "shopify://shop_images/OWN_WEB_DESKTOP.jpg",
+        "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_1.jpg",
         "url": "",
         "height_mode": "auto",
         "fixed_height_desktop": 600,
@@ -47,7 +51,7 @@
         "full_width": true,
         "transparent_content_color": "#ffffff",
         "tint_color": "#000000",
-        "tint_opacity": 40,
+        "tint_opacity": 0,
         "prevent_animation": false
       }
     },
