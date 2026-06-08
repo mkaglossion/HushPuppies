@@ -39,7 +39,7 @@
       "settings": {
         "image_desktop": "shopify://shop_images/OWN_WEB_DESKTOP.jpg",
         "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_1.jpg",
-        "url": "",
+        "url": "shopify://collections/kids-30-off",
         "height_mode": "auto",
         "fixed_height_desktop": 600,
         "fixed_height_mobile": 350,
