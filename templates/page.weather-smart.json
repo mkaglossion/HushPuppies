@@ -32,12 +32,16 @@
     },
     "feature_collection_2_6wUb6M": {
       "type": "feature-collection-2",
+      "custom_css": [
+        "h2 {font-size: 4rem; width: 100%; margin-left: 40px;}",
+        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; margin: 0px; }}"
+      ],
       "name": "Featured Collection V2",
       "settings": {
         "title": "Top picks",
         "heading_align": "text-center",
-        "show_view_all": true,
-        "collection": "",
+        "show_view_all": false,
+        "collection": "weather-smart-collection",
         "products_to_show": 8,
         "grid_gap": 16,
         "mobile_cards_per_view": "1",
