@@ -54,11 +54,51 @@
         "card_border_color": "#e9e9e9",
         "card_border_hover_color": "#dcdcdc"
       }
+    },
+    "video_9FzH6p": {
+      "type": "video",
+      "name": "Video",
+      "settings": {
+        "video_shopify": "shopify://files/videos/DEEP COMFORT.mp4",
+        "video_external": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_description": "",
+        "video_size": "lg",
+        "video_autoplay": true,
+        "text_align": "text-center",
+        "color_scheme": "1"
+      }
+    },
+    "feature_collection_2_LPqGjt": {
+      "type": "feature-collection-2",
+      "name": "Featured Collection V2",
+      "settings": {
+        "title": "",
+        "heading_align": "text-start",
+        "show_view_all": false,
+        "collection": "deepcomfort",
+        "products_to_show": 8,
+        "grid_gap": 16,
+        "mobile_cards_per_view": "1",
+        "show_desktop_arrows": true,
+        "desktop_arrow_style": "sample",
+        "desktop_arrow_position": "outside",
+        "desktop_arrow_size": 48,
+        "setwidth": "container",
+        "image_ratio": "1",
+        "image_fit": "contain",
+        "section_bg_color": "#f6f6f7",
+        "card_bg_color": "#ffffff",
+        "media_bg_color": "#ffffff",
+        "card_border_color": "#e9e9e9",
+        "card_border_hover_color": "#dcdcdc"
+      }
     }
   },
   "order": [
     "main",
     "video_ppJe88",
-    "feature_collection_2_YYtWjB"
+    "feature_collection_2_YYtWjB",
+    "video_9FzH6p",
+    "feature_collection_2_LPqGjt"
   ]
 }
