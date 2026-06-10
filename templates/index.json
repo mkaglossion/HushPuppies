@@ -11,73 +11,6 @@
   "sections": {
     "image_banner_iteTKb": {
       "type": "image-banner",
-      "blocks": {
-        "heading_Tw4QpG": {
-          "type": "heading",
-          "settings": {
-            "heading": "",
-            "heading_size": "h1",
-            "heading_h1": false
-          }
-        },
-        "text_JDxFcV": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "enlarge_text": true
-          }
-        }
-      },
-      "block_order": [
-        "heading_Tw4QpG",
-        "text_JDxFcV"
-      ],
-      "custom_css": [
-        ".image-banner {margin-bottom: 60px !important;}"
-      ],
-      "name": "Image banner",
-      "settings": {
-        "image_desktop": "shopify://shop_images/OWN_WEB_DESKTOP.jpg",
-        "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_1.jpg",
-        "url": "shopify://collections/kids-30-off",
-        "height_mode": "auto",
-        "fixed_height_desktop": 600,
-        "fixed_height_mobile": 350,
-        "overlay_position": "justify-center items-center",
-        "overlay_text_align": "text-center",
-        "mob_center_text": false,
-        "mobile_stacked": false,
-        "color_scheme": "white",
-        "full_width": true,
-        "transparent_content_color": "#ffffff",
-        "tint_color": "#000000",
-        "tint_opacity": 0,
-        "prevent_animation": false
-      }
-    },
-    "image_banner_3Epg8n": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_fQ8yEJ": {
-          "type": "heading",
-          "settings": {
-            "heading": "",
-            "heading_size": "h1",
-            "heading_h1": false
-          }
-        },
-        "text_DWqi9V": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "enlarge_text": true
-          }
-        }
-      },
-      "block_order": [
-        "heading_fQ8yEJ",
-        "text_DWqi9V"
-      ],
       "custom_css": [
         ".image-banner {margin-bottom: 60px !important;}"
       ],
@@ -1468,6 +1401,45 @@
         "color_scheme": "none",
         "button_style": "btn btn--secondary"
       }
+    },
+    "video_4hifKW": {
+      "type": "video",
+      "name": "Video",
+      "settings": {
+        "video_shopify": "shopify://files/videos/WEATHERSMART.mp4",
+        "video_external": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_description": "",
+        "video_size": "lg",
+        "video_autoplay": true,
+        "text_align": "text-center",
+        "color_scheme": "1"
+      }
+    },
+    "feature_collection_2_GBPyca": {
+      "type": "feature-collection-2",
+      "custom_css": [],
+      "name": "Featured Collection V2",
+      "settings": {
+        "title": "",
+        "heading_align": "text-start",
+        "show_view_all": true,
+        "collection": "weather-smart-collection",
+        "products_to_show": 8,
+        "grid_gap": 16,
+        "mobile_cards_per_view": "1",
+        "show_desktop_arrows": true,
+        "desktop_arrow_style": "sample",
+        "desktop_arrow_position": "outside",
+        "desktop_arrow_size": 48,
+        "setwidth": "container",
+        "image_ratio": "1",
+        "image_fit": "contain",
+        "section_bg_color": "#f6f6f7",
+        "card_bg_color": "#ffffff",
+        "media_bg_color": "#ffffff",
+        "card_border_color": "#e9e9e9",
+        "card_border_hover_color": "#dcdcdc"
+      }
     }
   },
   "order": [
@@ -1480,7 +1452,6 @@
     "feature_collection_2_6cwA33",
     "media_grid_2_NcUXVA",
     "media_grid_2_jfpgcy",
-    "image_banner_3Epg8n",
     "8920e5de-3c38-4881-9157-068a30f16121",
     "aab03c2f-0b18-4a62-9280-a2026f9819a7",
     "e831b750-ff21-4703-99e1-64199126c484",
@@ -1492,6 +1463,8 @@
     "ff1b6812-c849-43f7-a4b7-6244fdb1f8d7",
     "badaf8ee-9f48-44d6-8bb1-2853448d1112",
     "7ff2d165-a729-4f5c-a6dc-805d6957f606",
-    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39"
+    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39",
+    "video_4hifKW",
+    "feature_collection_2_GBPyca"
   ]
 }
