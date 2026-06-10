@@ -16,9 +16,62 @@
         "show_page_title": true,
         "heading_align": "text-center"
       }
+    },
+    "video_KTCMjJ": {
+      "type": "video",
+      "blocks": {
+        "heading_cgHa7b": {
+          "type": "heading",
+          "settings": {
+            "heading": "FitEasy +",
+            "heading_size": "h1",
+            "heading_h1": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_cgHa7b"
+      ],
+      "name": "Video",
+      "settings": {
+        "video_shopify": "shopify://files/videos/FITEASY.mp4",
+        "video_external": "",
+        "video_description": "",
+        "video_size": "md",
+        "video_autoplay": true,
+        "text_align": "text-center",
+        "color_scheme": "default"
+      }
+    },
+    "feature_collection_2_BMdtxi": {
+      "type": "feature-collection-2",
+      "name": "Featured Collection V2",
+      "settings": {
+        "title": "",
+        "heading_align": "text-start",
+        "show_view_all": true,
+        "collection": "fiteasy",
+        "products_to_show": 24,
+        "grid_gap": 16,
+        "mobile_cards_per_view": "1",
+        "show_desktop_arrows": true,
+        "desktop_arrow_style": "sample",
+        "desktop_arrow_position": "outside",
+        "desktop_arrow_size": 48,
+        "setwidth": "container-fluid",
+        "image_ratio": "natural",
+        "image_fit": "contain",
+        "section_bg_color": "#ffffff",
+        "card_bg_color": "#ffffff",
+        "media_bg_color": "#ffffff",
+        "card_border_color": "#e9e9e9",
+        "card_border_hover_color": "#dcdcdc"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "video_KTCMjJ",
+    "feature_collection_2_BMdtxi"
   ]
 }
