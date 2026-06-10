@@ -38,7 +38,7 @@
         "text_align": "text-center",
         "mob_center_text": true,
         "wide": true,
-        "color_scheme": "1",
+        "color_scheme": "none",
         "full_width": true,
         "prevent_animation": false
       }
@@ -53,7 +53,7 @@
         "video_size": "lg",
         "video_autoplay": true,
         "text_align": "text-center",
-        "color_scheme": "1"
+        "color_scheme": "default"
       }
     },
     "feature_collection_2_6wUb6M": {
