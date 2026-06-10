@@ -52,7 +52,7 @@
         "heading_align": "text-center",
         "show_view_all": false,
         "collection": "weather-smart-collection",
-        "products_to_show": 8,
+        "products_to_show": 24,
         "grid_gap": 16,
         "mobile_cards_per_view": "1",
         "show_desktop_arrows": true,
