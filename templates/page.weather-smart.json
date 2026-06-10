@@ -17,6 +17,32 @@
         "heading_align": "text-center"
       }
     },
+    "rich_text_WXx6ey": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_DPqdVp": {
+          "type": "heading",
+          "settings": {
+            "heading": "Weather smart",
+            "heading_size": "h0",
+            "heading_h1": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_DPqdVp"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "text_position": "justify-center",
+        "text_align": "text-center",
+        "mob_center_text": true,
+        "wide": true,
+        "color_scheme": "1",
+        "full_width": true,
+        "prevent_animation": false
+      }
+    },
     "video_wpLxBQ": {
       "type": "video",
       "name": "Video",
@@ -59,6 +85,7 @@
   },
   "order": [
     "main",
+    "rich_text_WXx6ey",
     "video_wpLxBQ",
     "feature_collection_2_6wUb6M"
   ]
