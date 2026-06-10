@@ -22,19 +22,6 @@
         "color_scheme": "default"
       }
     },
-    "video_JfcWXt": {
-      "type": "video",
-      "name": "Video",
-      "settings": {
-        "video_shopify": "shopify://files/videos/WEATHERSMART.mp4",
-        "video_external": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_description": "",
-        "video_size": "lg",
-        "video_autoplay": true,
-        "text_align": "text-center",
-        "color_scheme": "1"
-      }
-    },
     "collection-products": {
       "type": "main-collection-products",
       "settings": {
@@ -60,7 +47,6 @@
   },
   "order": [
     "collection-banner",
-    "video_JfcWXt",
     "collection-products"
   ]
 }
