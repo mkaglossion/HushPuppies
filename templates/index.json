@@ -55,6 +55,52 @@
         "prevent_animation": false
       }
     },
+    "image_banner_3Epg8n": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_fQ8yEJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1",
+            "heading_h1": false
+          }
+        },
+        "text_DWqi9V": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "enlarge_text": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_fQ8yEJ",
+        "text_DWqi9V"
+      ],
+      "custom_css": [
+        ".image-banner {margin-bottom: 60px !important;}"
+      ],
+      "name": "Image banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/OWN_WEB_DESKTOP.jpg",
+        "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_1.jpg",
+        "url": "shopify://collections/kids-30-off",
+        "height_mode": "auto",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "overlay_position": "justify-center items-center",
+        "overlay_text_align": "text-center",
+        "mob_center_text": false,
+        "mobile_stacked": false,
+        "color_scheme": "white",
+        "full_width": true,
+        "transparent_content_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0,
+        "prevent_animation": false
+      }
+    },
     "slideshow_fHqWxE": {
       "type": "slideshow",
       "blocks": {
@@ -1434,6 +1480,7 @@
     "feature_collection_2_6cwA33",
     "media_grid_2_NcUXVA",
     "media_grid_2_jfpgcy",
+    "image_banner_3Epg8n",
     "8920e5de-3c38-4881-9157-068a30f16121",
     "aab03c2f-0b18-4a62-9280-a2026f9819a7",
     "e831b750-ff21-4703-99e1-64199126c484",
