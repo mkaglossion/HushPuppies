@@ -49,7 +49,7 @@
         "desktop_arrow_style": "sample",
         "desktop_arrow_position": "outside",
         "desktop_arrow_size": 48,
-        "setwidth": "container",
+        "setwidth": "container-fluid",
         "image_ratio": "1",
         "image_fit": "contain",
         "section_bg_color": "#ffffff",
