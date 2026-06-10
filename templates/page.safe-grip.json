@@ -16,9 +16,70 @@
         "show_page_title": true,
         "heading_align": "text-center"
       }
+    },
+    "video_FVitW3": {
+      "type": "video",
+      "blocks": {
+        "heading_4Ecgm6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Safe Grip",
+            "heading_size": "h1",
+            "heading_h1": true
+          }
+        },
+        "text_RbUn8B": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "enlarge_text": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_4Ecgm6",
+        "text_RbUn8B"
+      ],
+      "name": "Video",
+      "settings": {
+        "video_shopify": "shopify://files/videos/SAFEGRIP.mp4",
+        "video_external": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_description": "",
+        "video_size": "lg",
+        "video_autoplay": true,
+        "text_align": "text-center",
+        "color_scheme": "default"
+      }
+    },
+    "feature_collection_2_X6wkmq": {
+      "type": "feature-collection-2",
+      "name": "Featured Collection V2",
+      "settings": {
+        "title": "",
+        "heading_align": "text-start",
+        "show_view_all": false,
+        "collection": "safegrip",
+        "products_to_show": 24,
+        "grid_gap": 16,
+        "mobile_cards_per_view": "1",
+        "show_desktop_arrows": true,
+        "desktop_arrow_style": "sample",
+        "desktop_arrow_position": "outside",
+        "desktop_arrow_size": 48,
+        "setwidth": "container-fluid",
+        "image_ratio": "natural",
+        "image_fit": "contain",
+        "section_bg_color": "#ffffff",
+        "card_bg_color": "#ffffff",
+        "media_bg_color": "#ffffff",
+        "card_border_color": "#e9e9e9",
+        "card_border_hover_color": "#dcdcdc"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "video_FVitW3",
+    "feature_collection_2_X6wkmq"
   ]
 }
