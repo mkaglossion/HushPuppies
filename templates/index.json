@@ -1315,95 +1315,9 @@
         "button_style": "btn--secondary"
       }
     },
-    "7ff2d165-a729-4f5c-a6dc-805d6957f606": {
-      "type": "faq",
-      "blocks": {
-        "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-0": {
-          "type": "category",
-          "settings": {
-            "text": "Shipping"
-          }
-        },
-        "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-1": {
-          "type": "question",
-          "settings": {
-            "icon": "map_pin",
-            "heading": "What countries do you ship to?",
-            "text": "<p>We currently ship to the United States, Canada, Australia and the UK. To enquire about shipping to a different destination, please contact us.</p>"
-          }
-        },
-        "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-2": {
-          "type": "question",
-          "settings": {
-            "icon": "calendar",
-            "heading": "How long will it take to receive my order?",
-            "text": "<p>Standard shipping normally takes 3-5 days. Next day shipping is available on all domestic orders (for an additional charge). International shipping times depend on the products and destination (estimated at checkout).</p>"
-          }
-        },
-        "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-3": {
-          "type": "category",
-          "settings": {
-            "text": "Returns and Refunds"
-          }
-        },
-        "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-4": {
-          "type": "question",
-          "settings": {
-            "icon": "return",
-            "heading": "How do I return a product?",
-            "text": "<p>Items must be returned within 30 days after receiving your order. Items must be returned in the same condition in which they were received, be unworn/unused, have any tags still attached, and include all the original packaging.</p>"
-          }
-        },
-        "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-5": {
-          "type": "question",
-          "settings": {
-            "icon": "dollar_sign",
-            "heading": "How long will it take to receive my refund?",
-            "text": "<p>Refunds are processed within 7 days from when we receive the item(s).</p>"
-          }
-        }
-      },
-      "block_order": [
-        "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-0",
-        "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-1",
-        "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-2",
-        "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-3",
-        "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-4",
-        "template--17646024294688__7ff2d165-a729-4f5c-a6dc-805d6957f606-16751794779331fd75-5"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "Help & Advice",
-        "heading_align": "text-center",
-        "color_scheme": "1",
-        "full_width": true
-      }
-    },
-    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "title": "Featured products for you",
-        "heading_align": "text-start",
-        "show_view_all": true,
-        "collection": "",
-        "layout": "carousel",
-        "card_size_mobile": "small",
-        "card_size": "small",
-        "products_to_show": 8,
-        "show_highlight_products": false,
-        "show_promo_info": false,
-        "image_ratio": "1",
-        "promo_title": "Promotion title",
-        "content": "<p>Promotion text</p>",
-        "link_url": "",
-        "button_label": "Button",
-        "color_scheme": "none",
-        "button_style": "btn btn--secondary"
-      }
-    },
     "video_4hifKW": {
       "type": "video",
+      "disabled": true,
       "name": "Video",
       "settings": {
         "video_shopify": "shopify://files/videos/WEATHERSMART.mp4",
@@ -1417,6 +1331,7 @@
     },
     "feature_collection_2_F8nW8w": {
       "type": "feature-collection-2",
+      "disabled": true,
       "custom_css": [],
       "name": "Featured Collection V2",
       "settings": {
@@ -1443,6 +1358,7 @@
     },
     "video_zkrPid": {
       "type": "video",
+      "disabled": true,
       "name": "Video",
       "settings": {
         "video_shopify": "shopify://files/videos/DEEP COMFORT.mp4",
@@ -1456,6 +1372,7 @@
     },
     "feature_collection_2_eFj8Jr": {
       "type": "feature-collection-2",
+      "disabled": true,
       "custom_css": [],
       "name": "Featured Collection V2",
       "settings": {
@@ -1479,6 +1396,20 @@
         "card_border_color": "#e9e9e9",
         "card_border_hover_color": "#dcdcdc"
       }
+    },
+    "video_WPKpAy": {
+      "type": "video",
+      "disabled": true,
+      "name": "Video",
+      "settings": {
+        "video_shopify": "shopify://files/videos/DEEP COMFORT.mp4",
+        "video_external": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_description": "",
+        "video_size": "lg",
+        "video_autoplay": true,
+        "text_align": "text-center",
+        "color_scheme": "1"
+      }
     }
   },
   "order": [
@@ -1501,11 +1432,10 @@
     "44b64c8e-4ea7-4c35-96f3-42d82b3c2069",
     "ff1b6812-c849-43f7-a4b7-6244fdb1f8d7",
     "badaf8ee-9f48-44d6-8bb1-2853448d1112",
-    "7ff2d165-a729-4f5c-a6dc-805d6957f606",
-    "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39",
     "video_4hifKW",
     "feature_collection_2_F8nW8w",
     "video_zkrPid",
-    "feature_collection_2_eFj8Jr"
+    "feature_collection_2_eFj8Jr",
+    "video_WPKpAy"
   ]
 }
