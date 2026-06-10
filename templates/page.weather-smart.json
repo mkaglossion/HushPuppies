@@ -17,34 +17,21 @@
         "heading_align": "text-center"
       }
     },
-    "rich_text_WXx6ey": {
-      "type": "rich-text",
+    "video_wpLxBQ": {
+      "type": "video",
       "blocks": {
-        "heading_DPqdVp": {
+        "heading_7M8W4k": {
           "type": "heading",
           "settings": {
-            "heading": "Weather smart",
-            "heading_size": "h0",
+            "heading": "WEATHER SMART",
+            "heading_size": "h1",
             "heading_h1": false
           }
         }
       },
       "block_order": [
-        "heading_DPqdVp"
+        "heading_7M8W4k"
       ],
-      "name": "Rich text",
-      "settings": {
-        "text_position": "justify-center",
-        "text_align": "text-center",
-        "mob_center_text": true,
-        "wide": true,
-        "color_scheme": "none",
-        "full_width": true,
-        "prevent_animation": false
-      }
-    },
-    "video_wpLxBQ": {
-      "type": "video",
       "name": "Video",
       "settings": {
         "video_shopify": "shopify://files/videos/WEATHERSMART.mp4",
@@ -85,7 +72,6 @@
   },
   "order": [
     "main",
-    "rich_text_WXx6ey",
     "video_wpLxBQ",
     "feature_collection_2_6wUb6M"
   ]
