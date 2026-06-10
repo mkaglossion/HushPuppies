@@ -1415,30 +1415,43 @@
         "color_scheme": "1"
       }
     },
-    "feature_collection_2_GBPyca": {
+    "feature_collection_2_F8nW8w": {
       "type": "feature-collection-2",
       "custom_css": [],
       "name": "Featured Collection V2",
       "settings": {
         "title": "",
         "heading_align": "text-start",
-        "show_view_all": true,
+        "show_view_all": false,
         "collection": "weather-smart-collection",
-        "products_to_show": 8,
+        "products_to_show": 12,
         "grid_gap": 16,
-        "mobile_cards_per_view": "1",
+        "mobile_cards_per_view": "2",
         "show_desktop_arrows": true,
         "desktop_arrow_style": "sample",
         "desktop_arrow_position": "outside",
         "desktop_arrow_size": 48,
-        "setwidth": "container",
+        "setwidth": "container-fluid",
         "image_ratio": "1",
         "image_fit": "contain",
-        "section_bg_color": "#f6f6f7",
+        "section_bg_color": "#ffffff",
         "card_bg_color": "#ffffff",
         "media_bg_color": "#ffffff",
         "card_border_color": "#e9e9e9",
         "card_border_hover_color": "#dcdcdc"
+      }
+    },
+    "video_zkrPid": {
+      "type": "video",
+      "name": "Video",
+      "settings": {
+        "video_shopify": "shopify://files/videos/DEEP COMFORT.mp4",
+        "video_external": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_description": "",
+        "video_size": "lg",
+        "video_autoplay": true,
+        "text_align": "text-center",
+        "color_scheme": "1"
       }
     }
   },
@@ -1465,6 +1478,7 @@
     "7ff2d165-a729-4f5c-a6dc-805d6957f606",
     "a997f7ce-68e5-41c1-b2d6-9e0b87e5cc39",
     "video_4hifKW",
-    "feature_collection_2_GBPyca"
+    "feature_collection_2_F8nW8w",
+    "video_zkrPid"
   ]
 }
