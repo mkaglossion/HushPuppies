@@ -176,9 +176,9 @@
         "slide_ezE6Ck": {
           "type": "slide",
           "settings": {
-            "image_desktop": "shopify://shop_images/OWN_WEB_BANNER_SEPT_bags_2.jpg",
-            "image_mobile": "shopify://shop_images/OWN_WEB_BANNER_MOBILE_SEPT_bags2.jpg",
-            "url": "shopify://collections/bags",
+            "image_desktop": "shopify://shop_images/OWN_WEB_-_DESKTOP.jpg",
+            "image_mobile": "shopify://shop_images/OWN_WEB_-_MOBILE.jpg",
+            "url": "shopify://collections/bts-backpacks",
             "overlay_position": "justify-center items-center",
             "overlay_text_align": "text-center",
             "mob_center_text": false,
