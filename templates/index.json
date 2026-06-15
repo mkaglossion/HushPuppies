@@ -37,6 +37,40 @@
     "slideshow_fHqWxE": {
       "type": "slideshow",
       "blocks": {
+        "slide_ezE6Ck": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/OWN_WEB_-_DESKTOP.jpg",
+            "image_mobile": "shopify://shop_images/OWN_WEB_-_MOBILE.jpg",
+            "url": "shopify://collections/bts-backpacks",
+            "overlay_position": "justify-center items-center",
+            "overlay_text_align": "text-center",
+            "mob_center_text": false,
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h0",
+            "heading_h1": false,
+            "text": "",
+            "enlarge_text": false,
+            "button_1_label": "",
+            "button_1_link": "",
+            "button_1_style": "btn btn--primary",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": "btn btn--primary",
+            "transparent_content_color": "#ffffff",
+            "countdown_show": false,
+            "countdown_end_date": "",
+            "countdown_end_time": "",
+            "countdown_end_text": "",
+            "enlarge_end_text": false,
+            "countdown_hide_on_end": false,
+            "use_custom_colors": false,
+            "count_color": "#ffffff",
+            "bg_color": "#070707",
+            "bg_grad": ""
+          }
+        },
         "slide_QfzgqC": {
           "type": "slide",
           "settings": {
@@ -172,48 +206,14 @@
             "bg_color": "#070707",
             "bg_grad": ""
           }
-        },
-        "slide_ezE6Ck": {
-          "type": "slide",
-          "settings": {
-            "image_desktop": "shopify://shop_images/OWN_WEB_-_DESKTOP.jpg",
-            "image_mobile": "shopify://shop_images/OWN_WEB_-_MOBILE.jpg",
-            "url": "shopify://collections/bts-backpacks",
-            "overlay_position": "justify-center items-center",
-            "overlay_text_align": "text-center",
-            "mob_center_text": false,
-            "subheading": "",
-            "heading": "",
-            "heading_size": "h0",
-            "heading_h1": false,
-            "text": "",
-            "enlarge_text": false,
-            "button_1_label": "",
-            "button_1_link": "",
-            "button_1_style": "btn btn--primary",
-            "button_2_label": "",
-            "button_2_link": "",
-            "button_2_style": "btn btn--primary",
-            "transparent_content_color": "#ffffff",
-            "countdown_show": false,
-            "countdown_end_date": "",
-            "countdown_end_time": "",
-            "countdown_end_text": "",
-            "enlarge_end_text": false,
-            "countdown_hide_on_end": false,
-            "use_custom_colors": false,
-            "count_color": "#ffffff",
-            "bg_color": "#070707",
-            "bg_grad": ""
-          }
         }
       },
       "block_order": [
+        "slide_ezE6Ck",
         "slide_QfzgqC",
         "slide_EVQnfP",
         "slide_UNkcHG",
-        "slide_3mUVNK",
-        "slide_ezE6Ck"
+        "slide_3mUVNK"
       ],
       "name": "Slideshow",
       "settings": {
