@@ -540,6 +540,29 @@
         "card_border_hover_color": "#dcdcdc"
       }
     },
+    "image_banner_Ww9pLR": {
+      "type": "image-banner",
+      "custom_css": [],
+      "name": "Image banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/OWN_WEB_BANNER_bags_b25c6321-22a3-4cfa-b4e2-a26791f3f535.jpg",
+        "image_mobile": "shopify://shop_images/OWN_WEB_BANNER_MOBILE_bag.jpg",
+        "url": "shopify://collections/bags",
+        "height_mode": "auto",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "overlay_position": "justify-center items-center",
+        "overlay_text_align": "text-center",
+        "mob_center_text": false,
+        "mobile_stacked": false,
+        "color_scheme": "white",
+        "full_width": true,
+        "transparent_content_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0,
+        "prevent_animation": false
+      }
+    },
     "media_grid_2_NcUXVA": {
       "type": "media-grid-2",
       "blocks": {
@@ -1420,6 +1443,7 @@
     "multi_column_2_rkYjL8",
     "2b6638e0-7b54-4420-a891-39abab8a2a2b",
     "feature_collection_2_6cwA33",
+    "image_banner_Ww9pLR",
     "media_grid_2_NcUXVA",
     "media_grid_2_jfpgcy",
     "8920e5de-3c38-4881-9157-068a30f16121",
