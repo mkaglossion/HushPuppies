@@ -143,6 +143,11 @@
         "type": "shopify://apps/cartbot/blocks/cartbot-script-append/f7a44e3b-3901-4412-9d5a-3db0980a9db0",
         "disabled": false,
         "settings": {}
+      },
+      "5784066569132941777": {
+        "type": "shopify://apps/s-store-locator/blocks/embed-app/e7003487-cc51-4321-9488-2c47c07a5b17",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
