@@ -115,7 +115,7 @@
               endfor
             -%}
             <summary>
-              <div class="flex justify-between items-center">
+              <span class="flex justify-between items-center">
                 <span class="flex-auto font-bold active-filters-header">
                   {%- if filter_count > 0 -%}
                     {{ 'products.filtering.applied_filter_count' | t: count: filter_count }}
@@ -130,7 +130,7 @@
                     {% render 'icon-chevron-down' %}
                   {%- endif -%}
                 </span>
-              </div>
+              </span>
             </summary>
             <div class="disclosure__panel has-motion">
               <div class="disclosure__content">
@@ -169,18 +169,18 @@
             {% if section.settings.enable_sorting %}
               <details-disclosure class="md:hidden no-js-visible">
                 <details class="filter disclosure" id="filter-sort" data-type="sort"{% if section.settings.expand_filters %} open{% endif %}>
-                  <summary class="filter__toggle">
-                    <div class="flex justify-between items-center">
-                      <span class="flex-auto font-bold">{{- 'products.sorting.sort_by_label' | t -}}</span>
-                      <span class="disclosure__toggle">
-                        {%- if settings.disclosure_toggle == 'plus' -%}
-                          {% render 'icon-plus' %}
-                        {%- else -%}
-                          {% render 'icon-chevron-down' %}
-                        {%- endif -%}
-                      </span>
-                    </div>
-                  </summary>
+                   <summary class="filter__toggle">
+                     <span class="flex justify-between items-center">
+                       <span class="flex-auto font-bold">{{- 'products.sorting.sort_by_label' | t -}}</span>
+                       <span class="disclosure__toggle">
+                         {%- if settings.disclosure_toggle == 'plus' -%}
+                           {% render 'icon-plus' %}
+                         {%- else -%}
+                           {% render 'icon-chevron-down' %}
+                         {%- endif -%}
+                       </span>
+                     </span>
+                   </summary>
                   <div class="disclosure__panel has-motion">
                     <div class="disclosure__content">
                       <div class="filter__content">
@@ -315,18 +315,18 @@
             {%- if selectable_filter_count > 0 -%}
               <details-disclosure>
                 <details class="filter disclosure" id="filter-{{ filter.param_name | escape }}" data-type="{{ filter.type }}"{% if section.settings.expand_filters %} open{% endif %}>
-                  <summary class="filter__toggle">
-                    <div class="flex justify-between items-center">
-                      <span class="flex-auto font-bold">{{ filter.label | escape }}</span>
-                      <span class="disclosure__toggle">
-                        {%- if settings.disclosure_toggle == 'plus' -%}
-                          {% render 'icon-plus' %}
-                        {%- else -%}
-                          {% render 'icon-chevron-down' %}
-                        {%- endif -%}
-                      </span>
-                    </div>
-                  </summary>
+                   <summary class="filter__toggle">
+                     <span class="flex justify-between items-center">
+                       <span class="flex-auto font-bold">{{ filter.label | escape }}</span>
+                       <span class="disclosure__toggle">
+                         {%- if settings.disclosure_toggle == 'plus' -%}
+                           {% render 'icon-plus' %}
+                         {%- else -%}
+                           {% render 'icon-chevron-down' %}
+                         {%- endif -%}
+                       </span>
+                     </span>
+                   </summary>
                   <div class="disclosure__panel has-motion">
                     <div class="disclosure__content">
                       <div class="filter__content">

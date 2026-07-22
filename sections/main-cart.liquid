@@ -62,7 +62,7 @@
             <details-disclosure class="block mt-6">
               <details class="cart-note-disclosure disclosure disclosure--row">
                 <summary>
-                  <div class="flex justify-between items-center">
+                  <span class="flex justify-between items-center">
                     <span class="js-show-note">
                       {%- if cart.note == blank -%}
                         {{- 'cart.note.add' | t -}}
@@ -77,7 +77,7 @@
                         {% render 'icon-chevron-down' %}
                       {%- endif -%}
                     </span>
-                  </div>
+                  </span>
                 </summary>
                 <div class="disclosure__panel has-motion">
                   <div class="disclosure__content">

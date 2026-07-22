@@ -230,12 +230,12 @@
                         endfor
                       -%}
 
-                      <details{% if mega_nav %} class="js-mega-nav" {{ mega_nav.shopify_attributes }}{% endif %}>
-                        <summary class="main-nav__item--toggle relative js-nav-hover js-toggle">
-                          <a class="main-nav__item main-nav__item--primary main-nav__item-content{% if link.current %} is-active{% endif %}{% if featured_links contains link_title_downcase %} main-nav__link--featured{% endif %}" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
-                            {{ link.title | escape }}{% render 'icon-chevron-down' %}
-                          </a>
-                        </summary>
+                       <details{% if mega_nav %} class="js-mega-nav" {{ mega_nav.shopify_attributes }}{% endif %}>
+                         <summary class="main-nav__item--toggle relative js-nav-hover js-toggle">
+                           <a class="main-nav__item main-nav__item--primary main-nav__item-content{% if link.current %} is-active{% endif %}{% if featured_links contains link_title_downcase %} main-nav__link--featured{% endif %}" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
+                             {{ link.title | escape }}{% render 'icon-chevron-down' %}
+                           </a>
+                         </summary>
                         {%- liquid
                           assign child_nav_classes = ""
                           assign grandchild_nav_classes = ""
@@ -396,32 +396,32 @@
                                   {%- else -%}
                                     <nav-menu {% if mega_nav %}class="js-mega-nav"{% endif %}>
                                       <details open>
-                                        <summary class="child-nav__item--toggle main-nav__item--toggle relative{% if mega_nav %} js-no-toggle-md{% if mega_nav_has_columns and mega_nav.settings.show_underline == false %} nav__item--no-underline{% endif %}{% if mega_nav.type == "sidebar" %} js-sidebar-hover{% if forloop.first %} is-visible{% endif %}{% endif %}{% endif %}">
-                                          <div class="main-nav__item-content{% if mega_nav.settings.collection_images != 'none' %} child-nav__collection-image w-full{% endif %}">
-                                            {%- if collection_image -%}
-                                              {%- liquid
-                                                assign alt_text = child_link.title | escape
-                                                if mega_nav.settings.collection_use_product_image
-                                                  assign collection_image_object = collections[child_link.object.handle].all_products.first
-                                                else
-                                                  assign collection_image_object = child_link.object
-                                                endif
-                                              -%}
-                                              <div class="main-nav__collection-image{% if settings.blend_collection_images %} image-blend {% endif %}{% if mega_nav.settings.collection_circle_image %} main-nav__collection-image-circle{% endif %} main-nav__collection-image--flex main-nav__collection-image--{{ mega_nav.settings.collection_images }} media relative{% if mega_nav and mega_nav.type == "pills" %} md:hidden{% endif %}">
-                                                {% render 'image',
-                                                  image: collection_image_object,
-                                                  src_width: collection_image_size_large,
-                                                  srcset_2x: true,
-                                                  class: "img-fit",
-                                                  alt_text: alt_text
-                                                %}
-                                              </div>
-                                            {%- endif -%}
-                                            <a class="child-nav__item main-nav__item main-nav__item-content{% if child_link.current %} is-active{% endif %}{% if featured_links contains child_link_title_downcase %} main-nav__link--featured{% endif %}" href="{{ child_link.url }}"{% if settings.preload_links %} data-no-instant{% endif %}>
-                                              {{- child_link.title | escape -}}{% render 'icon-chevron-down' %}
-                                            </a>
-                                          </div>
-                                        </summary>
+                                         <summary class="child-nav__item--toggle main-nav__item--toggle relative{% if mega_nav %} js-no-toggle-md{% if mega_nav_has_columns and mega_nav.settings.show_underline == false %} nav__item--no-underline{% endif %}{% if mega_nav.type == "sidebar" %} js-sidebar-hover{% if forloop.first %} is-visible{% endif %}{% endif %}{% endif %}">
+                                           <div class="main-nav__item-content{% if mega_nav.settings.collection_images != 'none' %} child-nav__collection-image w-full{% endif %}">
+                                             {%- if collection_image -%}
+                                               {%- liquid
+                                                 assign alt_text = child_link.title | escape
+                                                 if mega_nav.settings.collection_use_product_image
+                                                   assign collection_image_object = collections[child_link.object.handle].all_products.first
+                                                 else
+                                                   assign collection_image_object = child_link.object
+                                                 endif
+                                               -%}
+                                               <div class="main-nav__collection-image{% if settings.blend_collection_images %} image-blend {% endif %}{% if mega_nav.settings.circle_image %} main-nav__collection-image-circle{% endif %} main-nav__collection-image--flex main-nav__collection-image--{{ mega_nav.settings.collection_images }} media relative{% if mega_nav and mega_nav.type == "pills" %} md:hidden{% endif %}">
+                                                 {% render 'image',
+                                                   image: collection_image_object,
+                                                   src_width: collection_image_size_large,
+                                                   srcset_2x: true,
+                                                   class: "img-fit",
+                                                   alt_text: alt_text
+                                                 %}
+                                               </div>
+                                             {%- endif -%}
+                                             <a class="child-nav__item main-nav__item main-nav__item-content{% if child_link.current %} is-active{% endif %}{% if featured_links contains child_link_title_downcase %} main-nav__link--featured{% endif %}" href="{{ child_link.url }}"{% if settings.preload_links %} data-no-instant{% endif %}>
+                                               {{- child_link.title | escape -}}{% render 'icon-chevron-down' %}
+                                             </a>
+                                           </div>
+                                         </summary>
 
                                         <div class="disclosure__panel{% if collection_image and mega_nav and mega_nav.type == "pills" %} main-nav__image-container{% endif %} has-motion">
                                           {%- if collection_image and mega_nav and mega_nav.type == "pills" -%}

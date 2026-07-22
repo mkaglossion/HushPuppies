@@ -181,18 +181,18 @@
                 {%- if block.settings.style == 'collapsible' and prevent_tab_render == false -%}
                   <details-disclosure>
                     <details class="disclosure disclosure--row"{% if first_tab_rendered == false and block.settings.open_first %} open{% endif %}>
-                      <summary>
-                        <div class="flex justify-between items-center" data-dynamic-variant-content="{{ section.id }}-{{ block.id }}-{{ forloop.index }}-summary">
-                          <h2 class="disclosure__title h5 mb-0">{{ title }}</h2>
-                          <span class="disclosure__toggle">
-                            {%- if settings.disclosure_toggle == 'plus' -%}
-                              {% render 'icon-plus' %}
-                            {%- else -%}
-                              {% render 'icon-chevron-down' %}
-                            {%- endif -%}
-                          </span>
-                        </div>
-                      </summary>
+                       <summary>
+                         <span class="flex justify-between items-center" data-dynamic-variant-content="{{ section.id }}-{{ block.id }}-{{ forloop.index }}-summary">
+                           <span class="disclosure__title h5 mb-0">{{ title }}</span>
+                           <span class="disclosure__toggle">
+                             {%- if settings.disclosure_toggle == 'plus' -%}
+                               {% render 'icon-plus' %}
+                             {%- else -%}
+                               {% render 'icon-chevron-down' %}
+                             {%- endif -%}
+                           </span>
+                         </span>
+                       </summary>
                       <div class="disclosure__panel has-motion">
                         <div class="disclosure__content{% unless i == "4" %} rte product-description{% endunless %}" data-dynamic-variant-content="{{ section.id }}-{{ block.id }}-{{ forloop.index }}-content">
                           {%- if forloop.first and block.settings.show_description -%}

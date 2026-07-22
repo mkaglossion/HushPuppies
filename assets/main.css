@@ -2803,16 +2803,16 @@ details-disclosure + details-disclosure .disclosure--row {
   transition: height 0.3s cubic-bezier(0.2, 0.6, 0.4, 1);
 }
 
-.disclosure__toggle {
+.disclosure__icon {
   margin-inline-start: calc(3 * var(--space-unit));
 }
-.disclosure__toggle > .icon {
+.disclosure__icon > .icon {
   display: block;
   width: 20px;
   height: 20px;
 }
 
-.disclosure[open]:not(.is-closing) .disclosure__toggle > .icon {
+.disclosure[open]:not(.is-closing) .disclosure__icon > .icon {
   transform: scaleY(-1);
 }
 .disclosure[open]:not(.is-closing) .v-line {

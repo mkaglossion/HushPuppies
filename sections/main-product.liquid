@@ -500,23 +500,23 @@
             {%- if block.settings.text != blank or block.settings.page.content != blank -%}
               <details-disclosure {{ block.shopify_attributes }}>
                 <details class="disclosure disclosure--row"{% if block.settings.open %} open{% endif %}>
-                  <summary>
-                    <div class="flex justify-between items-center" data-dynamic-product-content="{{ section.id }}-{{ block.id }}-summary">
-                      <h2 class="disclosure__title product-info__disclosure font-body font-bold text-body flex flex-auto items-center mb-0">
-                        {%- if block.settings.icon != 'none' -%}
-                          {% render 'icon', icon: block.settings.icon, width: 22, height: 22 %}
-                        {%- endif -%}
-                        {{- block.settings.heading | default: block.settings.page.title -}}
-                      </h2>
-                      <span class="disclosure__toggle">
-                        {%- if settings.disclosure_toggle == 'plus' -%}
-                          {% render 'icon-plus' %}
-                        {%- else -%}
-                          {% render 'icon-chevron-down' %}
-                        {%- endif -%}
-                      </span>
-                    </div>
-                  </summary>
+                   <summary>
+                     <span class="flex justify-between items-center" data-dynamic-product-content="{{ section.id }}-{{ block.id }}-{{ forloop.index }}-summary">
+                       <span class="disclosure__title product-info__disclosure font-body font-bold text-body flex flex-auto items-center mb-0">
+                         {%- if block.settings.icon != 'none' -%}
+                           {% render 'icon', icon: block.settings.icon, width: 22, height: 22 %}
+                         {%- endif -%}
+                         {{- block.settings.heading | default: block.settings.page.title -}}
+                       </span>
+                       <span class="disclosure__toggle">
+                         {%- if settings.disclosure_toggle == 'plus' -%}
+                           {% render 'icon-plus' %}
+                         {%- else -%}
+                           {% render 'icon-chevron-down' %}
+                         {%- endif -%}
+                       </span>
+                     </span>
+                   </summary>
                   <div class="disclosure__panel has-motion">
                     <div class="disclosure__content rte" data-dynamic-product-content="{{ section.id }}-{{ block.id }}-content">
                       {{ block.settings.text }}
@@ -716,23 +716,23 @@
             {%- if block.settings.show_as_collapsible_content -%}
               <details-disclosure {{ block.shopify_attributes }}>
                 <details class="disclosure disclosure--row"{% if block.settings.open %} open{% endif %}>
-                  <summary>
-                    <div class="flex justify-between items-center" data-dynamic-product-content="{{ section.id }}-{{ block.id }}-summary">
-                      <h2 class="disclosure__title product-info__disclosure font-body font-bold text-body flex flex-auto items-center mb-0">
-                        {%- if block.settings.icon != 'none' -%}
-                          {% render 'icon', icon: block.settings.icon, width: 22, height: 22 %}
-                        {%- endif -%}
-                        {{ 'products.product.description' | t }}
-                      </h2>
-                      <span class="disclosure__toggle">
-                          {%- if settings.disclosure_toggle == 'plus' -%}
-                            {% render 'icon-plus' %}
-                          {%- else -%}
-                            {% render 'icon-chevron-down' %}
-                          {%- endif -%}
-                        </span>
-                    </div>
-                  </summary>
+                   <summary>
+                     <span class="flex justify-between items-center" data-dynamic-product-content="{{ section.id }}-{{ block.id }}-{{ forloop.index }}-summary">
+                       <span class="disclosure__title product-info__disclosure font-body font-bold text-body flex flex-auto items-center mb-0">
+                         {%- if block.settings.icon != 'none' -%}
+                           {% render 'icon', icon: block.settings.icon, width: 22, height: 22 %}
+                         {%- endif -%}
+                         {{ 'products.product.description' | t }}
+                       </span>
+                       <span class="disclosure__toggle">
+                           {%- if settings.disclosure_toggle == 'plus' -%}
+                             {% render 'icon-plus' %}
+                           {%- else -%}
+                             {% render 'icon-chevron-down' %}
+                           {%- endif -%}
+                       </span>
+                     </span>
+                   </summary>
                   <div class="disclosure__panel has-motion">
                     <div class="disclosure__content rte" data-dynamic-product-content="{{ section.id }}-{{ block.id }}-content">
                       {{ product.description }}
