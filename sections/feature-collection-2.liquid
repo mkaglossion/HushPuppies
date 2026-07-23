@@ -61,7 +61,6 @@
   #shopify-section-{{ section.id }} .fc2-viewport {
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding-bottom: 8px;
@@ -124,6 +123,35 @@
     width: 100%;
     height: auto;
     object-fit: contain;
+  }
+
+  /* Hover image swap */
+  #shopify-section-{{ section.id }} .fc2-media .fc2-media__primary,
+  #shopify-section-{{ section.id }} .fc2-media .fc2-media__hover {
+    transition: opacity 0.35s ease;
+  }
+
+  #shopify-section-{{ section.id }} .fc2-media .fc2-media__hover {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+  }
+
+  #shopify-section-{{ section.id }} .fc2-media .fc2-media__hover img,
+  #shopify-section-{{ section.id }} .fc2-media .fc2-media__hover .media {
+    width: 100%;
+    height: 100%;
+    object-fit: {% if image_ratio_natural %}contain{% else %}{{ section.settings.image_fit }}{% endif %};
+  }
+
+  @media (hover: hover) {
+    #shopify-section-{{ section.id }} .fc2-card:hover .fc2-media__primary {
+      opacity: 0;
+    }
+
+    #shopify-section-{{ section.id }} .fc2-card:hover .fc2-media__hover {
+      opacity: 1;
+    }
   }
 
   @media (hover: hover) {
@@ -327,6 +355,10 @@
   }
 
   @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .fc2-viewport {
+      scroll-snap-type: x mandatory;
+    }
+
     #shopify-section-{{ section.id }} .fc2-nav {
       display: none !important;
     }
@@ -383,16 +415,32 @@
                 <a href="{{ product.url }}" class="fc2-card" aria-label="{{ product.title | escape }}">
                   <div class="fc2-media{% if image_ratio_natural %} fc2-media--natural{% endif %}">
                     {%- if product.featured_media != blank -%}
-                      {% render 'image',
-                        image: product.featured_media.preview_image,
-                        widths: '360, 540, 700, 900, 1200',
-                        src_width: 700,
-                        sizes: fc2_image_sizes,
-                        class: image_class,
-                        section_index: section.index
-                      %}
+                      <div class="fc2-media__primary">
+                        {% render 'image',
+                          image: product.featured_media.preview_image,
+                          widths: '360, 540, 700, 900, 1200',
+                          src_width: 700,
+                          sizes: fc2_image_sizes,
+                          class: image_class,
+                          section_index: section.index
+                        %}
+                      </div>
                     {%- else -%}
-                      {{ 'product-1' | placeholder_svg_tag: 'media__placeholder img-fit' }}
+                      <div class="fc2-media__primary">
+                        {{ 'product-1' | placeholder_svg_tag: 'media__placeholder img-fit' }}
+                      </div>
+                    {%- endif -%}
+                    {%- if product.media.size > 1 and product.media[1] != blank -%}
+                      <div class="fc2-media__hover">
+                        {% render 'image',
+                          image: product.media[1].preview_image,
+                          widths: '360, 540, 700, 900, 1200',
+                          src_width: 700,
+                          sizes: fc2_image_sizes,
+                          class: image_class,
+                          section_index: section.index
+                        %}
+                      </div>
                     {%- endif -%}
                   </div>
                 </a>
@@ -563,146 +611,39 @@
     }
 
     function enableDragToScroll(container) {
-      var pointerDown = false;
-      var dragging = false;
-      var suppressClick = false;
-      var activePointerId = null;
-      var startX = 0;
-      var startY = 0;
-      var startScrollLeft = 0;
-      var startPageIndex = 0;
-      var lastDx = 0;
+      // Only enable drag-to-scroll on touch devices (mobile/tablet)
+      // On desktop, native scroll and anchor clicks work without interference
+      if (!('ontouchstart' in window) && !navigator.maxTouchPoints) return;
 
-      function onPointerDown(event) {
-        if (event.pointerType === 'mouse' && event.button !== 0) return;
-        pointerDown = true;
-        dragging = false;
-        activePointerId = event.pointerId;
-        startX = event.clientX;
-        startY = event.clientY;
-        startScrollLeft = container.scrollLeft;
-        if (!pageAnchors.length) buildPageAnchors();
-        startPageIndex = getClosestPageIndexByLeft(startScrollLeft);
-        lastDx = 0;
-        if (container.setPointerCapture) {
-          try { container.setPointerCapture(event.pointerId); } catch (e) {}
-        }
-      }
+      var touchStartX = 0;
+      var touchStartScrollLeft = 0;
+      var isDragging = false;
 
-      function onPointerMove(event) {
-        if (!pointerDown) return;
+      container.addEventListener('touchstart', function(event) {
+        if (!event.touches || !event.touches.length) return;
+        touchStartX = event.touches[0].clientX;
+        touchStartScrollLeft = container.scrollLeft;
+        isDragging = false;
+      }, { passive: true });
 
-        var dx = event.clientX - startX;
-        var dy = event.clientY - startY;
-        lastDx = dx;
+      container.addEventListener('touchmove', function(event) {
+        if (!event.touches || !event.touches.length) return;
+        var dx = event.touches[0].clientX - touchStartX;
 
-        if (!dragging) {
+        if (!isDragging) {
           if (Math.abs(dx) < 6) return;
-          if (Math.abs(dx) <= Math.abs(dy)) return;
-          dragging = true;
-          suppressClick = true;
+          isDragging = true;
           container.classList.add('is-dragging');
         }
 
-        container.scrollLeft = startScrollLeft - dx;
+        container.scrollLeft = touchStartScrollLeft - dx;
         if (event.cancelable) event.preventDefault();
-      }
+      }, { passive: false });
 
-      function onPointerUp() {
-        if (!pointerDown && !dragging) return;
-        pointerDown = false;
-        if (dragging) {
-          container.classList.remove('is-dragging');
-        }
-        if (activePointerId !== null && container.releasePointerCapture) {
-          try { container.releasePointerCapture(activePointerId); } catch (e) {}
-        }
-        activePointerId = null;
-
-        if (!pageAnchors.length) buildPageAnchors();
-        var nearest = pageAnchors[0] || 0;
-        var minDistance = Infinity;
-        var currentLeft = container.scrollLeft;
-        var isMobile = window.matchMedia('(max-width: 768px)').matches;
-        var movedByScroll = currentLeft - startScrollLeft;
-
-        if (isMobile && pageAnchors.length > 1) {
-          var swipeThreshold = 14;
-          var deltaPage = 0;
-
-          if (Math.abs(movedByScroll) >= swipeThreshold) {
-            deltaPage = movedByScroll > 0 ? 1 : -1;
-          } else if (Math.abs(lastDx) >= swipeThreshold) {
-            deltaPage = lastDx < 0 ? 1 : -1;
-          }
-
-          if (deltaPage !== 0) {
-            scrollToPage(startPageIndex + deltaPage);
-            dragging = false;
-            return;
-          }
-        }
-
-        pageAnchors.forEach(function(anchor) {
-          var distance = Math.abs(anchor - currentLeft);
-          if (distance < minDistance) {
-            minDistance = distance;
-            nearest = anchor;
-          }
-        });
-        container.scrollTo({ left: nearest, behavior: 'smooth' });
-        dragging = false;
-      }
-
-      function onClickCapture(event) {
-        if (!suppressClick) return;
-        event.preventDefault();
-        event.stopPropagation();
-        suppressClick = false;
-      }
-
-      container.addEventListener('pointerdown', onPointerDown);
-      container.addEventListener('pointermove', onPointerMove, { passive: false });
-      container.addEventListener('pointerup', onPointerUp);
-      container.addEventListener('pointercancel', onPointerUp);
-      container.addEventListener('mouseleave', onPointerUp);
-      container.addEventListener('click', onClickCapture, true);
-
-      if (!window.PointerEvent) {
-        var touchStartX = 0;
-        var touchStartY = 0;
-        var touchStartPageIndex = 0;
-        var touchStartScrollLeft = 0;
-
-        container.addEventListener('touchstart', function(event) {
-          if (!event.touches || !event.touches.length) return;
-          if (!pageAnchors.length) buildPageAnchors();
-          touchStartX = event.touches[0].clientX;
-          touchStartY = event.touches[0].clientY;
-          touchStartPageIndex = getClosestPageIndexByLeft(container.scrollLeft);
-          touchStartScrollLeft = container.scrollLeft;
-        }, { passive: true });
-
-        container.addEventListener('touchend', function(event) {
-          if (!event.changedTouches || !event.changedTouches.length) return;
-          var dx = event.changedTouches[0].clientX - touchStartX;
-          var dy = event.changedTouches[0].clientY - touchStartY;
-          var moved = container.scrollLeft - touchStartScrollLeft;
-          var threshold = 14;
-
-          if (Math.abs(dx) <= Math.abs(dy)) {
-            setActiveDot();
-            return;
-          }
-
-          if (Math.abs(moved) >= threshold || Math.abs(dx) >= threshold) {
-            var deltaPage = moved > 0 || dx < 0 ? 1 : -1;
-            scrollToPage(touchStartPageIndex + deltaPage);
-          } else {
-            scrollToPage(touchStartPageIndex);
-          }
-        }, { passive: true });
-      }
+      container.addEventListener('touchend', function() {
+        container.classList.remove('is-dragging');
+        // CSS snap handles automatic page alignment — no custom snap logic needed
+      }, { passive: true });
     }
 
     buildPageAnchors();
@@ -720,12 +661,23 @@
       });
     }
     viewport.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize);
+
     enableDragToScroll(viewport);
     setActiveDot();
+
+    // Fallback: ensure clicks on product cards navigate to the product page
+    viewport.addEventListener('click', function(e) {
+      var link = e.target.closest('a[href]');
+      if (link && link.getAttribute('href')) {
+        var href = link.getAttribute('href');
+        if (href && href !== '#') {
+          window.location.href = href;
+        }
+      }
+    });
+
   })();
 </script>
-
 {% schema %}
 {
   "name": "Featured Collection V2",
