@@ -144,14 +144,26 @@
     object-fit: {% if image_ratio_natural %}contain{% else %}{{ section.settings.image_fit }}{% endif %};
   }
 
-  @media (hover: hover) {
-    #shopify-section-{{ section.id }} .fc2-card:hover .fc2-media__primary {
-      opacity: 0;
-    }
+  /* Hover image swap — works on both desktop hover and mobile tap (via .fc2-hovered class toggled by JS) */
+  #shopify-section-{{ section.id }} .fc2-card:hover .fc2-media__primary,
+  #shopify-section-{{ section.id }} .fc2-card.fc2-hovered .fc2-media__primary {
+    opacity: 0;
+  }
 
-    #shopify-section-{{ section.id }} .fc2-card:hover .fc2-media__hover {
-      opacity: 1;
-    }
+  #shopify-section-{{ section.id }} .fc2-card:hover .fc2-media__hover,
+  #shopify-section-{{ section.id }} .fc2-card.fc2-hovered .fc2-media__hover {
+    opacity: 1;
+  }
+
+  /* Suppress hover swap while user is dragging/scrollin on mobile */
+  #shopify-section-{{ section.id }} .fc2-viewport.is-dragging .fc2-card:hover .fc2-media__primary,
+  #shopify-section-{{ section.id }} .fc2-viewport.is-dragging .fc2-card.fc2-hovered .fc2-media__primary {
+    opacity: 1;
+  }
+
+  #shopify-section-{{ section.id }} .fc2-viewport.is-dragging .fc2-card:hover .fc2-media__hover,
+  #shopify-section-{{ section.id }} .fc2-viewport.is-dragging .fc2-card.fc2-hovered .fc2-media__hover {
+    opacity: 0;
   }
 
   @media (hover: hover) {
@@ -179,11 +191,14 @@
     background: transparent;
     opacity: 0.7;
     padding: 0;
+    color: #000;
+    -webkit-tap-highlight-color: transparent;
   }
 
   #shopify-section-{{ section.id }} .fc2-dot.is-active {
-    background: currentColor;
+    background: #000;
     opacity: 1;
+    color: #000;
   }
 
   #shopify-section-{{ section.id }} .fc2-nav {
@@ -487,7 +502,7 @@
     var slides = Array.prototype.slice.call(sectionRoot.querySelectorAll('[data-fc2-slide]'));
     if (!slides.length) return;
     var rafToken = null;
-    var pageAnchors = [];
+    var isScrolling = false;
 
     function getSlidesPerPage() {
       if (window.matchMedia('(min-width: 1024px)').matches) return 4;
@@ -505,46 +520,39 @@
       return ((pageIndex % pageCount) + pageCount) % pageCount;
     }
 
-    function buildPageAnchors() {
-      var perPage = getSlidesPerPage();
-      var pageCount = getPageCount();
-      var maxScrollLeft = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
-      pageAnchors = [];
-
-      for (var page = 0; page < pageCount; page++) {
-        var targetSlideIndex = Math.min(page * perPage, slides.length - 1);
-        var anchor = slides[targetSlideIndex] ? slides[targetSlideIndex].offsetLeft : 0;
-        pageAnchors.push(Math.min(anchor, maxScrollLeft));
-      }
-    }
-
     function getCurrentPageIndex() {
-      if (!pageAnchors.length) return 0;
+      if (!slides.length) return 0;
       var scrollLeft = viewport.scrollLeft;
-      return getClosestPageIndexByLeft(scrollLeft);
-    }
+      var viewportWidth = viewport.clientWidth;
+      var perPage = getSlidesPerPage();
+      var bestIndex = 0;
+      var bestOverlap = 0;
 
-    function getClosestPageIndexByLeft(scrollLeft) {
-      if (!pageAnchors.length) return 0;
-      var activePage = 0;
-      var minDistance = Infinity;
-
-      pageAnchors.forEach(function(anchor, pageIndex) {
-        var distance = Math.abs(anchor - scrollLeft);
-        if (distance < minDistance) {
-          minDistance = distance;
-          activePage = pageIndex;
+      slides.forEach(function(slide, index) {
+        var slideStart = slide.offsetLeft;
+        var slideEnd = slideStart + slide.offsetWidth;
+        var visibleStart = Math.max(scrollLeft, slideStart);
+        var visibleEnd = Math.min(scrollLeft + viewportWidth, slideEnd);
+        var overlap = Math.max(0, visibleEnd - visibleStart);
+        if (overlap > bestOverlap) {
+          bestOverlap = overlap;
+          bestIndex = index;
         }
       });
 
-      return activePage;
+      return Math.floor(bestIndex / perPage);
     }
 
     function scrollToPage(pageIndex) {
       var safePageIndex = normalizePageIndex(pageIndex);
-      if (!pageAnchors.length) buildPageAnchors();
-      if (typeof pageAnchors[safePageIndex] === 'number') {
-        viewport.scrollTo({ left: pageAnchors[safePageIndex], behavior: 'smooth' });
+      var perPage = getSlidesPerPage();
+      var targetSlideIndex = Math.min(safePageIndex * perPage, slides.length - 1);
+      var targetSlide = slides[targetSlideIndex];
+      if (targetSlide) {
+        isScrolling = true;
+        viewport.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
+        // Reset flag after scroll animation completes
+        setTimeout(function() { isScrolling = false; }, 400);
       }
     }
 
@@ -571,15 +579,14 @@
         navWrap.style.display = pageCount > 1 ? '' : 'none';
       }
 
-      if (showDesktopArrows && prevBtn) prevBtn.disabled = false;
-      if (showDesktopArrows && nextBtn) nextBtn.disabled = false;
+      if (showDesktopArrows && prevBtn) prevBtn.disabled = pageCount <= 1;
+      if (showDesktopArrows && nextBtn) nextBtn.disabled = pageCount <= 1;
     }
 
     function setActiveDot() {
       var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('[data-fc2-dot]'));
       if (!dots.length) return;
 
-      if (!pageAnchors.length) buildPageAnchors();
       var currentPage = getCurrentPageIndex();
 
       dots.forEach(function(dot, index) {
@@ -596,7 +603,6 @@
     function onResize() {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function() {
-        buildPageAnchors();
         buildDots();
         setActiveDot();
       }, 120);
@@ -611,43 +617,98 @@
     }
 
     function enableDragToScroll(container) {
-      // Only enable drag-to-scroll on touch devices (mobile/tablet)
-      // On desktop, native scroll and anchor clicks work without interference
       if (!('ontouchstart' in window) && !navigator.maxTouchPoints) return;
 
       var touchStartX = 0;
+      var touchStartY = 0;
       var touchStartScrollLeft = 0;
       var isDragging = false;
+      var isHorizontalSwipe = false;
+      var lastTouchX = 0;
+      var lastTouchTime = 0;
+      var velocity = 0;
+      var momentumInterval = null;
+
+      function stopMomentum() {
+        if (momentumInterval) {
+          cancelAnimationFrame(momentumInterval);
+          momentumInterval = null;
+        }
+      }
 
       container.addEventListener('touchstart', function(event) {
         if (!event.touches || !event.touches.length) return;
+        stopMomentum();
         touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+        lastTouchX = touchStartX;
+        lastTouchTime = Date.now();
         touchStartScrollLeft = container.scrollLeft;
         isDragging = false;
+        isHorizontalSwipe = false;
+        velocity = 0;
       }, { passive: true });
 
       container.addEventListener('touchmove', function(event) {
         if (!event.touches || !event.touches.length) return;
-        var dx = event.touches[0].clientX - touchStartX;
+        var currentX = event.touches[0].clientX;
+        var currentY = event.touches[0].clientY;
+        var dx = currentX - touchStartX;
+        var dy = currentY - touchStartY;
 
-        if (!isDragging) {
-          if (Math.abs(dx) < 6) return;
+        if (!isHorizontalSwipe) {
+          if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+          if (Math.abs(dy) > Math.abs(dx) * 1.5) return;
+          isHorizontalSwipe = true;
           isDragging = true;
           container.classList.add('is-dragging');
+          if (event.cancelable) event.preventDefault();
         }
 
-        container.scrollLeft = touchStartScrollLeft - dx;
-        if (event.cancelable) event.preventDefault();
+        if (isHorizontalSwipe) {
+          var now = Date.now();
+          var timeDelta = now - lastTouchTime;
+          if (timeDelta > 0) {
+            velocity = (currentX - lastTouchX) / timeDelta;
+          }
+          lastTouchX = currentX;
+          lastTouchTime = now;
+
+          container.scrollLeft = touchStartScrollLeft - (currentX - touchStartX);
+          if (event.cancelable) event.preventDefault();
+        }
       }, { passive: false });
 
       container.addEventListener('touchend', function() {
         container.classList.remove('is-dragging');
-        // CSS snap handles automatic page alignment — no custom snap logic needed
+
+        if (!isHorizontalSwipe) return;
+
+        var momentumVelocity = Math.min(Math.max(velocity * 8, -3), 3);
+        var friction = 0.95;
+        var minVelocity = 0.02;
+
+        function applyMomentum() {
+          if (Math.abs(momentumVelocity) < minVelocity) {
+            stopMomentum();
+            return;
+          }
+          container.scrollLeft -= momentumVelocity * 16;
+          momentumVelocity *= friction;
+          momentumInterval = requestAnimationFrame(applyMomentum);
+        }
+
+        if (Math.abs(momentumVelocity) >= minVelocity) {
+          momentumInterval = requestAnimationFrame(applyMomentum);
+        }
       }, { passive: true });
     }
 
-    buildPageAnchors();
+    // Initial setup
     buildDots();
+    setActiveDot();
+
+    // Desktop arrow buttons
     if (showDesktopArrows && prevBtn) {
       prevBtn.addEventListener('click', function() {
         var currentPage = getCurrentPageIndex();
@@ -660,21 +721,47 @@
         scrollToPage(currentPage + 1);
       });
     }
+
+    // Scroll tracking
     viewport.addEventListener('scroll', onScroll, { passive: true });
 
-    enableDragToScroll(viewport);
-    setActiveDot();
-
-    // Fallback: ensure clicks on product cards navigate to the product page
-    viewport.addEventListener('click', function(e) {
-      var link = e.target.closest('a[href]');
-      if (link && link.getAttribute('href')) {
-        var href = link.getAttribute('href');
-        if (href && href !== '#') {
-          window.location.href = href;
-        }
+    // Snap to nearest page on scroll end (desktop & mobile)
+    viewport.addEventListener('scrollend', function() {
+      if (isScrolling) return;
+      var perPage = getSlidesPerPage();
+      var currentPage = getCurrentPageIndex();
+      var targetSlideIndex = Math.min(currentPage * perPage, slides.length - 1);
+      var targetSlide = slides[targetSlideIndex];
+      if (targetSlide) {
+        viewport.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
       }
-    });
+    }, { passive: true });
+
+    // Enable drag-to-scroll on touch devices
+    enableDragToScroll(viewport);
+
+    // Resize handler
+    window.addEventListener('resize', onResize, { passive: true });
+
+    // Card hover effect on mobile — toggle .fc2-hovered class on touch
+    var hoveredCard = null;
+    function clearHovered() {
+      if (hoveredCard) {
+        hoveredCard.classList.remove('fc2-hovered');
+        hoveredCard = null;
+      }
+    }
+
+    sectionRoot.addEventListener('touchstart', function(e) {
+      var card = e.target.closest('.fc2-card');
+      if (!card) return;
+      clearHovered();
+      hoveredCard = card;
+      card.classList.add('fc2-hovered');
+    }, { passive: true });
+
+    sectionRoot.addEventListener('touchend', clearHovered, { passive: true });
+    sectionRoot.addEventListener('touchcancel', clearHovered, { passive: true });
 
   })();
 </script>
