@@ -107,6 +107,7 @@
         },
         "slide_QfzgqC": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image_desktop": "shopify://shop_images/MAY_DTI-_LITTLE_HUSHIES_SMSI_banner.jpg",
             "image_mobile": "shopify://shop_images/MAY_DTI-_LITTLE_HUSHIES_SMSI_mobile.jpg",
