@@ -90,8 +90,7 @@
           "type": "newsletter",
           "settings": {
             "heading": "Join us on the bright side.",
-            "text": "<p><strong>Sign up for our email list.</strong></p><p></p><p>You'll be the first to know about the latest styles and promotions.</p><p><a href=\"https://hush-puppies-philippines.myshopify.com/pages/privacy-policy\"><span style=\"text-decoration:underline\">Privacy Policy</span></a></p>",
-            "collapse_mobile": true
+            "text": "<p><strong>Sign up for our email list.</strong></p><p></p><p>You'll be the first to know about the latest styles and promotions.</p><p><a href=\"https://hush-puppies-philippines.myshopify.com/pages/privacy-policy\"><span style=\"text-decoration:underline\">Privacy Policy</span></a></p>"
           }
         }
       },
@@ -106,17 +105,16 @@
       ],
       "settings": {
         "show_back_to_top": true,
-        "show_payment_icons": true,
-        "show_powered_by": false,
-        "enable_country_selector": false,
-        "enable_language_selector": false,
-        "show_copyright_text": true,
-        "copyright_text": "© 2026 Hush Puppies Philippines.                            All Rights Reserved.",
-        "copyright_text_align": "text-center",
-        "copyright_text_size": 15,
-        "secondary_menu": "",
         "bg_color": "#ffffff",
-        "text_color": "#000000"
+        "text_color": "#000000",
+        "show_copyright_text": true,
+        "copyright_text": "",
+        "copyright_text_size": 15,
+        "copyright_text_align": "text-center",
+        "show_powered_by": false,
+        "show_payment_icons": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false
       }
     }
   },
