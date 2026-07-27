@@ -520,10 +520,10 @@
       ],
       "name": "Featured Collection V2",
       "settings": {
-        "title": "Top picks",
+        "title": "Rainy Season Ready",
         "heading_align": "text-start",
         "show_view_all": true,
-        "collection": "best-value-packs",
+        "collection": "waterproof",
         "products_to_show": 12,
         "grid_gap": 16,
         "mobile_cards_per_view": "2",
