@@ -101,12 +101,17 @@
         "link-list-2",
         "newsletter"
       ],
+      "custom_css": [],
       "settings": {
         "show_back_to_top": true,
-        "show_payment_icons": false,
+        "show_payment_icons": true,
         "show_powered_by": false,
         "enable_country_selector": false,
         "enable_language_selector": false,
+        "show_copyright_text": true,
+        "copyright_text": "© Hush Puppies Philippines. All Rights Reserved.",
+        "copyright_text_align": "text-center",
+        "copyright_text_size": 15,
         "secondary_menu": "",
         "bg_color": "#ffffff",
         "text_color": "#000000"
