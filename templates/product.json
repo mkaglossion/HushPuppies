@@ -14,9 +14,10 @@
       "blocks": {
         "vendor-sku": {
           "type": "vendor-sku",
+          "disabled": true,
           "settings": {
-            "show_vendor": true,
-            "show_sku": true,
+            "show_vendor": false,
+            "show_sku": false,
             "show_barcode": false
           }
         },
