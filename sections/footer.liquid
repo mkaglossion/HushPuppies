@@ -11,6 +11,11 @@
     --text-color: {{ section.settings.text_color.rgb }};
     --copyright-text-size: {{ section.settings.copyright_text_size | default: 12 }}px;
   }
+  {%- if section.settings.copyright_text_bold -%}
+    .footer-col-copyright {
+      font-weight: bold;
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 {%- if section.settings.show_back_to_top -%}
@@ -165,106 +170,68 @@
       {%- if section.settings.show_copyright_text -%}
         <div>
           {%- if section.settings.copyright_text != blank -%}
-            <span class="footer-col-copyright">{{ section.settings.copyright_text | escape }}</span>
+            {%- assign copyright_year = 'now' | date: '%Y' -%}
+            {%- assign dynamic_text = section.settings.copyright_text | replace: '[year]', copyright_year | replace: '[shop_name]', shop.name -%}
+            <span class="footer-col-copyright {% if section.settings.copyright_text_bold %}font-bold{% endif %}" style="font-size: {{ section.settings.copyright_text_size }}px;">
+              {{ dynamic_text }}
+            </span>
           {%- else -%}
-            <span class="footer-col-copyright">{{ 'sections.footer.copyright_html' | t: year: copyright_year, shop_url: routes.root_url, shop_name: shop.name }}</span>
+            {%- assign copyright_year = 'now' | date: '%Y' -%}
+            <div class="footer-col-copyright">
+              <span class="footer-col-copyright__line1{% if section.settings.copyright_text_bold %} font-bold{% endif %}" style="font-size: {{ section.settings.copyright_text_size }}px;">
+                &copy; {{ copyright_year }} {{ shop.name }}
+              </span>
+              {%- if section.settings.show_all_rights_reserved -%}
+                <br>
+                <span class="footer-col-copyright__line2{% if section.settings.copyright_text_bold %} font-bold{% endif %}" style="font-size: {{ section.settings.copyright_text_size }}px;">
+                  All Rights Reserved.
+                </span>
+              {%- endif -%}
+            </div>
           {%- endif -%}
-          {% if section.settings.show_powered_by %}
-            <span>{{ powered_by_link }}</span>
-          {% endif %}
         </div>
       {%- endif -%}
-      {%- if section.settings.secondary_menu != blank -%}
-        <div>
-          <ul class="footer-sublinks flex flex-wrap gap-x-theme" role="list">
-            {% for link in section.settings.secondary_menu.links %}
-              <li class="footer-sublinks__item">
-                <a href="{{ link.url }}">{{ link.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
+
+      {%- if section.settings.show_powered_by -%}
+        <div class="footer__powered-by{% if section.settings.copyright_text_align == 'text-center' %} text-center{% elsif section.settings.copyright_text_align == 'text-end' %} text-end{% endif %}" style="font-size: {{ section.settings.copyright_text_size }}px;">
+          <span class="footer-col-copyright {% if section.settings.powered_by_bold %}font-bold{% endif %}">
+            {{ 'layout.footer.powered_by' | t }}
+          </span>
         </div>
       {%- endif -%}
     </div>
   </div>
 </footer>
 
-{% javascript %}
-  customElements.whenDefined('details-disclosure').then(() => {
-    class FooterMenu extends DetailsDisclosure {
-      constructor() {
-        super();
-        this.reset(false);
-        window.addEventListener('on:breakpoint-change', this.reset.bind(this));
-      }
-
-      reset() {
-        const isLargeScreen = window.matchMedia(theme.mediaQueries.md).matches;
-        const isConfirmNewsletter = !isLargeScreen &&
-          (window.location.hash === "#footer-signup_form" && this.querySelector('#footer-signup_form') !== null);
-
-        this.disclosure.open = isLargeScreen || isConfirmNewsletter;
-
-        if (isLargeScreen) {
-          this.toggle.setAttribute('tabindex', '-1');
-        } else {
-          this.toggle.removeAttribute('tabindex');
-        }
-      }
-    }
-
-    customElements.define('footer-menu', FooterMenu);
-  });
-{% endjavascript %}
-
 {% schema %}
 {
   "name": "Footer",
-  "class": "cc-footer",
   "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
     {
       "type": "checkbox",
       "id": "show_back_to_top",
-      "label": "Show 'Back to top'",
+      "label": "Show back to top button",
       "default": true
     },
     {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "Show payment icons",
-      "default": true
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f8f8f8"
     },
     {
-      "type": "checkbox",
-      "id": "show_powered_by",
-      "label": "Show 'Powered by Shopify'",
-      "default": true
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#111111"
     },
     {
       "type": "header",
-      "content": "Country/Region selector",
-      "info": "To add a country/region, go to your [payment settings](/admin/settings/payments)"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_country_selector",
-      "label": "Enable country/region selector",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Language selector",
-      "info": "To add a language, go to your [language settings](/admin/settings/languages)"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_language_selector",
-      "label": "Enable language selector",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Copyright"
+      "content": "Copyright Text"
     },
     {
       "type": "checkbox",
@@ -275,13 +242,38 @@
     {
       "type": "text",
       "id": "copyright_text",
-      "label": "Copyright text",
-      "info": "Leave blank to use the default copyright text with shop name and year."
+      "label": "Custom copyright text",
+      "info": "Use [year] for current year and [shop_name] for store name. Leave blank to show default format with shop name.",
+      "default": "© [year] [shop_name]"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_all_rights_reserved",
+      "label": "Show 'All Rights Reserved'",
+      "default": true,
+      "info": "Only visible when custom copyright text is blank."
+    },
+    {
+      "type": "checkbox",
+      "id": "copyright_text_bold",
+      "label": "Bold copyright text",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "copyright_text_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "label": "Copyright text size",
+      "default": 12,
+      "unit": "px"
     },
     {
       "type": "select",
       "id": "copyright_text_align",
       "label": "Copyright text alignment",
+      "default": "text-start",
       "options": [
         {
           "value": "text-start",
@@ -295,74 +287,51 @@
           "value": "text-end",
           "label": "Right"
         }
-      ],
-      "default": "text-center"
-    },
-    {
-      "type": "range",
-      "id": "copyright_text_size",
-      "label": "Copyright text size",
-      "min": 12,
-      "max": 24,
-      "unit": "px",
-      "step": 1,
-      "default": 12
-    },
-    {
-      "type": "header",
-      "content": "Secondary menu"
-    },
-    {
-      "type": "link_list",
-      "id": "secondary_menu",
-      "label": "Secondary menu",
-      "info": "This menu won't show dropdown items."
-    },
-    {
-      "type": "header",
-      "content": "Style"
-    },
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background color",
-      "default": "#f4f4f4"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text color",
-      "default": "#070707"
-    }
-  ],
-  "max_blocks": 4,
-  "blocks": [
-    {
-      "type": "@app"
-    },
-    {
-      "type": "link_list",
-      "name": "Footer menu",
-      "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "label": "Heading (required)",
-          "default": "Footer links"
-        },
-        {
-          "type": "link_list",
-          "id": "menu",
-          "label": "Menu",
-          "info": "This menu won't show dropdown items.",
-          "default": "footer"
-        }
       ]
     },
     {
+      "type": "header",
+      "content": "Powered By"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_powered_by",
+      "label": "Show 'Powered by Shopify'",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "powered_by_bold",
+      "label": "Bold 'Powered by Shopify' text",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Payment and localization"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "label": "Show country selector",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "label": "Show language selector",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
       "type": "text",
-      "name": "Image, Text and Socials",
-      "limit": 3,
+      "name": "Text",
       "settings": [
         {
           "type": "image_picker",
@@ -372,53 +341,30 @@
         {
           "type": "range",
           "id": "image_width",
-          "min": 50,
+          "min": 20,
           "max": 300,
           "step": 10,
           "unit": "px",
-          "label": "Maximum image width",
-          "default": 150
+          "label": "Image width",
+          "default": 120
         },
         {
           "type": "text",
           "id": "heading",
           "label": "Heading",
-          "default": "Talk about your store"
+          "default": "About us"
         },
         {
           "type": "richtext",
           "id": "text",
           "label": "Text",
-          "default": "<p>Share store details, promotions, or brand content with your customers.</p>"
-        },
-        {
-          "type": "text",
-          "id": "button_label",
-          "label": "Button label"
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "Button link"
-        },
-        {
-          "type": "checkbox",
-          "id": "enable_follow_on_shop",
-          "default": false,
-          "label": "Enable Follow on Shop",
-          "info": "To allow customers to follow your store on the Shop app from your storefront, Shop Pay must be enabled. [Learn more](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_social",
-          "label": "Show social media links",
-          "info": "Add links to your social media accounts in theme settings.",
-          "default": false
+          "default": "<p>Add your own text content and links here.</p>"
         },
         {
           "type": "select",
           "id": "text_align",
-          "label": "Content alignment",
+          "label": "Text alignment",
+          "default": "text-start",
           "options": [
             {
               "value": "text-start",
@@ -432,39 +378,72 @@
               "value": "text-end",
               "label": "Right"
             }
-          ],
-          "default": "text-start"
+          ]
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social",
+          "label": "Show social media links",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_follow_on_shop",
+          "label": "Enable Follow on Shop button",
+          "info": "The Follow on Shop button appears for products that have Shop Pay installed. [Learn more](https://help.shopify.com/en/manual/online-store/themes/customizing-themes/follow-on-shop)",
+          "default": true
         }
       ]
     },
     {
       "type": "newsletter",
-      "name": "Email signup",
+      "name": "Newsletter",
       "limit": 1,
       "settings": [
         {
           "type": "text",
           "id": "heading",
           "label": "Heading",
-          "default": "Newsletter"
+          "default": "Sign up for our newsletter"
         },
         {
           "type": "richtext",
           "id": "text",
           "label": "Text",
-          "default": "<p>Sign up for exclusive offers, original stories, events and more.</p>"
-        },
-        {
-          "type": "paragraph",
-          "content": "Customers who subscribe will have their email address added to the \"accepts marketing\" [customer list](/admin/customers?query=&accepts_marketing=1)"
-        },
-        {
-          "type": "checkbox",
-          "id": "collapse_mobile",
-          "label": "Show as collapsible content on mobile",
-          "default": true
+          "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
         }
       ]
+    },
+    {
+      "type": "link_list",
+      "name": "Link list",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Quick links"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "info": "This menu won't show dropdown items."
+        }
+      ]
+    },
+    {
+      "type": "@app"
     }
   ]
 }
