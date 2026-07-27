@@ -105,18 +105,10 @@
     {%- if discount > 0 -%}
       {%- liquid
         if settings.sale_label_type == 'percent'
-          if variant or has_only_default_variant or has_only_one_variant
-            assign sale_label_text = 'products.product.percent_reduction' | t: amount: discount
-          else
-            assign sale_label_text = 'products.product.percent_reduction_up_to' | t: amount: discount
-          endif
+          assign sale_label_text = 'products.product.percent_reduction' | t: amount: discount
         elsif settings.sale_label_type == 'money'
           assign discount_money = discount | money
-          if variant or has_only_default_variant or has_only_one_variant
-            assign sale_label_text = 'products.product.value_reduction_html' | t: amount: discount_money
-          else
-            assign sale_label_text = 'products.product.value_reduction_up_to_html' | t: amount: discount_money
-          endif
+          assign sale_label_text = 'products.product.value_reduction_html' | t: amount: discount_money
         else
           assign sale_label_text = 'products.product.sale' | t
         endif

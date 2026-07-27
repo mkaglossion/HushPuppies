@@ -107,6 +107,7 @@
         },
         "slide_QfzgqC": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image_desktop": "shopify://shop_images/MAY_DTI-_LITTLE_HUSHIES_SMSI_banner.jpg",
             "image_mobile": "shopify://shop_images/MAY_DTI-_LITTLE_HUSHIES_SMSI_mobile.jpg",
@@ -519,10 +520,10 @@
       ],
       "name": "Featured Collection V2",
       "settings": {
-        "title": "Top picks",
+        "title": "Rain-Ready Comfort",
         "heading_align": "text-start",
-        "show_view_all": false,
-        "collection": "best-value-packs",
+        "show_view_all": true,
+        "collection": "waterproof",
         "products_to_show": 12,
         "grid_gap": 16,
         "mobile_cards_per_view": "2",
@@ -724,8 +725,8 @@
         "media_y8Tr4C": {
           "type": "media",
           "settings": {
-            "image": "shopify://shop_images/HPF10538KHK_BOBBYMESSENGERBAG_KHAKIWeb_1.jpg",
-            "link_url": "shopify://products/bobby-messenger-mens-bag-khaki",
+            "image": "shopify://shop_images/HPF50493GRY_JOLLYSLINGBAG_GREYWeb_1.jpg",
+            "link_url": "shopify://products/jolly-sling-mens-bag-grey",
             "subheading": "",
             "title": "",
             "heading_size": "h4",
