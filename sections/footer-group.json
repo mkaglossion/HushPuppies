@@ -101,7 +101,9 @@
         "link-list-2",
         "newsletter"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".footer__content-bottom-wrapper,.footer__column {display: flex !important; flex-direction: column !important; align-items: center !important; gap: 12px !important;}"
+      ],
       "settings": {
         "show_back_to_top": true,
         "show_payment_icons": true,
@@ -109,7 +111,7 @@
         "enable_country_selector": false,
         "enable_language_selector": false,
         "show_copyright_text": true,
-        "copyright_text": "© Hush Puppies Philippines. All Rights Reserved.",
+        "copyright_text": "© 2026 Hush Puppies Philippines.                            All Rights Reserved.",
         "copyright_text_align": "text-center",
         "copyright_text_size": 15,
         "secondary_menu": "",
