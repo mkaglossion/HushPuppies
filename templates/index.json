@@ -585,6 +585,23 @@
             "tint_opacity": 0
           }
         },
+        "media_ftTWCU": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/HPLBPF251204-02_ERATOTE_OLIVEOW_1.jpg",
+            "link_url": "shopify://products/era-tote-womens-bag-olive",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
         "media_T3jkCD": {
           "type": "media",
           "settings": {
@@ -635,31 +652,14 @@
             "tint_color": "#000000",
             "tint_opacity": 0
           }
-        },
-        "media_ftTWCU": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/HPLBPFB250706-02_CLEOKNITTOTE_TANWeb_1.jpg",
-            "link_url": "shopify://products/cleo-knit-tote-womens-bag-tan",
-            "subheading": "",
-            "title": "",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
         }
       },
       "block_order": [
         "media_PkwVUG",
+        "media_ftTWCU",
         "media_T3jkCD",
         "media_bUJaBa",
-        "media_bMTphH",
-        "media_ftTWCU"
+        "media_bMTphH"
       ],
       "name": "Media grid featured V2",
       "settings": {
