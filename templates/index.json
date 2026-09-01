@@ -14,10 +14,10 @@
       "custom_css": [
         ".image-banner {margin-bottom: 60px !important;}"
       ],
-      "name": "Image banner",
+      "name": "Monthly Banner",
       "settings": {
-        "image_desktop": "shopify://shop_images/OWN_WEB_-_DESKTOP_a1ae1285-b915-4c3d-b12b-a3ff0d9830f1.jpg",
-        "image_mobile": "shopify://shop_images/OWN_WEB_-_MOBILE_adf846e9-d855-4a03-9741-02ee62f6f24a.jpg",
+        "image_desktop": "shopify://shop_images/OWN_WEB_DESKTOP_96f419b8-9a0d-4700-a751-e0583eb29b63.jpg",
+        "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE.jpg",
         "url": "shopify://collections/weather-smart-collection",
         "height_mode": "auto",
         "fixed_height_desktop": 600,
