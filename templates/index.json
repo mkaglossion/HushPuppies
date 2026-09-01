@@ -40,8 +40,8 @@
         "slide_3mUVNK": {
           "type": "slide",
           "settings": {
-            "image_desktop": "shopify://shop_images/BEST_VALUE_OWN_WEB_DESKTOP.jpg",
-            "image_mobile": "shopify://shop_images/BEST_VALUE_OWN_WEB_MOBILE.jpg",
+            "image_desktop": "shopify://shop_images/OWN_WEB_DESKTOP_VALUE.jpg",
+            "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_VALUE.jpg",
             "url": "shopify://collections/best-value-packs",
             "overlay_position": "justify-center items-center",
             "overlay_text_align": "text-center",
