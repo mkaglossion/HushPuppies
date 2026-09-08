@@ -661,7 +661,7 @@
         "media_bUJaBa",
         "media_bMTphH"
       ],
-      "name": "Media grid featured V2",
+      "name": "Women - Media grid featured V2",
       "settings": {
         "title": "",
         "heading_align": "text-start",
@@ -693,6 +693,23 @@
             "image": "shopify://shop_images/MENS_BAGS_243a5015-352d-453b-903c-883ab8910ac6.jpg",
             "image_mobile": "shopify://shop_images/BAGS_BANNER-_MENS_258580d2-b4f2-4f12-ab46-c18e78f7fe8c.jpg",
             "link_url": "shopify://products/anderson-sling-mens-bag-black",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_QhAL3f": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/HPF50519KHK_BENSONMESSENGERBAG_KHAKIWeb_1.jpg",
+            "link_url": "shopify://products/zariah-messenger-mens-bag-black-copy",
             "subheading": "",
             "title": "",
             "heading_size": "h4",
@@ -755,33 +772,16 @@
             "tint_color": "#000000",
             "tint_opacity": 0
           }
-        },
-        "media_QhAL3f": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/HPF50519KHK_BENSONMESSENGERBAG_KHAKIWeb_1.jpg",
-            "link_url": "shopify://products/zariah-messenger-mens-bag-black-copy",
-            "subheading": "",
-            "title": "",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
         }
       },
       "block_order": [
         "media_x6cdkn",
+        "media_QhAL3f",
         "media_4wC39y",
         "media_y8Tr4C",
-        "media_AJ3Xyz",
-        "media_QhAL3f"
+        "media_AJ3Xyz"
       ],
-      "name": "Media grid featured V2",
+      "name": "Men - Media grid featured V2",
       "settings": {
         "title": "",
         "heading_align": "text-start",
