@@ -14,11 +14,11 @@
       "custom_css": [
         ".image-banner {margin-bottom: 60px !important;}"
       ],
-      "name": "Image banner",
+      "name": "Monthly Banner",
       "settings": {
-        "image_desktop": "shopify://shop_images/OWN_WEB_DESKTOP.jpg",
-        "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_1.jpg",
-        "url": "shopify://collections/kids-30-off",
+        "image_desktop": "shopify://shop_images/OWN_WEB_DESKTOP_96f419b8-9a0d-4700-a751-e0583eb29b63.jpg",
+        "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE.jpg",
+        "url": "shopify://collections/weather-smart-collection",
         "height_mode": "auto",
         "fixed_height_desktop": 600,
         "fixed_height_mobile": 350,
@@ -37,6 +37,40 @@
     "slideshow_fHqWxE": {
       "type": "slideshow",
       "blocks": {
+        "slide_3mUVNK": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/OWN_WEB_DESKTOP_VALUE.jpg",
+            "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_VALUE.jpg",
+            "url": "shopify://collections/best-value-packs",
+            "overlay_position": "justify-center items-center",
+            "overlay_text_align": "text-center",
+            "mob_center_text": false,
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h0",
+            "heading_h1": false,
+            "text": "",
+            "enlarge_text": false,
+            "button_1_label": "",
+            "button_1_link": "",
+            "button_1_style": "btn btn--primary",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": "btn btn--primary",
+            "transparent_content_color": "#ffffff",
+            "countdown_show": false,
+            "countdown_end_date": "",
+            "countdown_end_time": "",
+            "countdown_end_text": "",
+            "enlarge_end_text": false,
+            "countdown_hide_on_end": false,
+            "use_custom_colors": false,
+            "count_color": "#ffffff",
+            "bg_color": "#070707",
+            "bg_grad": ""
+          }
+        },
         "slide_EVQnfP": {
           "type": "slide",
           "settings": {
@@ -173,48 +207,14 @@
             "bg_color": "#070707",
             "bg_grad": ""
           }
-        },
-        "slide_3mUVNK": {
-          "type": "slide",
-          "settings": {
-            "image_desktop": "shopify://shop_images/VALUE_PACK_OWN_WEB_DESKTOP.jpg",
-            "image_mobile": "shopify://shop_images/VALUE_PACK_OWN_WEB_MOBILE.jpg",
-            "url": "shopify://collections/best-value-packs",
-            "overlay_position": "justify-center items-center",
-            "overlay_text_align": "text-center",
-            "mob_center_text": false,
-            "subheading": "",
-            "heading": "",
-            "heading_size": "h0",
-            "heading_h1": false,
-            "text": "",
-            "enlarge_text": false,
-            "button_1_label": "",
-            "button_1_link": "",
-            "button_1_style": "btn btn--primary",
-            "button_2_label": "",
-            "button_2_link": "",
-            "button_2_style": "btn btn--primary",
-            "transparent_content_color": "#ffffff",
-            "countdown_show": false,
-            "countdown_end_date": "",
-            "countdown_end_time": "",
-            "countdown_end_text": "",
-            "enlarge_end_text": false,
-            "countdown_hide_on_end": false,
-            "use_custom_colors": false,
-            "count_color": "#ffffff",
-            "bg_color": "#070707",
-            "bg_grad": ""
-          }
         }
       },
       "block_order": [
+        "slide_3mUVNK",
         "slide_EVQnfP",
         "slide_ezE6Ck",
         "slide_QfzgqC",
-        "slide_UNkcHG",
-        "slide_3mUVNK"
+        "slide_UNkcHG"
       ],
       "name": "Slideshow",
       "settings": {
@@ -585,6 +585,23 @@
             "tint_opacity": 0
           }
         },
+        "media_ftTWCU": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/HPLBPF251204-02_ERATOTE_OLIVEOW_1.jpg",
+            "link_url": "shopify://products/era-tote-womens-bag-olive",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
         "media_T3jkCD": {
           "type": "media",
           "settings": {
@@ -635,33 +652,16 @@
             "tint_color": "#000000",
             "tint_opacity": 0
           }
-        },
-        "media_ftTWCU": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/HPLBPFB250706-02_CLEOKNITTOTE_TANWeb_1.jpg",
-            "link_url": "shopify://products/cleo-knit-tote-womens-bag-tan",
-            "subheading": "",
-            "title": "",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
         }
       },
       "block_order": [
         "media_PkwVUG",
+        "media_ftTWCU",
         "media_T3jkCD",
         "media_bUJaBa",
-        "media_bMTphH",
-        "media_ftTWCU"
+        "media_bMTphH"
       ],
-      "name": "Media grid featured V2",
+      "name": "Women - Media grid featured V2",
       "settings": {
         "title": "",
         "heading_align": "text-start",
@@ -693,6 +693,23 @@
             "image": "shopify://shop_images/MENS_BAGS_243a5015-352d-453b-903c-883ab8910ac6.jpg",
             "image_mobile": "shopify://shop_images/BAGS_BANNER-_MENS_258580d2-b4f2-4f12-ab46-c18e78f7fe8c.jpg",
             "link_url": "shopify://products/anderson-sling-mens-bag-black",
+            "subheading": "",
+            "title": "",
+            "heading_size": "h4",
+            "button_label": "",
+            "button_link": "",
+            "overlay_position": "justify-start items-end",
+            "text_alignment": "text-start",
+            "button_style": "btn btn--primary",
+            "tint_color": "#000000",
+            "tint_opacity": 0
+          }
+        },
+        "media_QhAL3f": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/HPF50519KHK_BENSONMESSENGERBAG_KHAKIWeb_1.jpg",
+            "link_url": "shopify://products/zariah-messenger-mens-bag-black-copy",
             "subheading": "",
             "title": "",
             "heading_size": "h4",
@@ -755,33 +772,16 @@
             "tint_color": "#000000",
             "tint_opacity": 0
           }
-        },
-        "media_QhAL3f": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/HPF50517BLK_ADRIANSLINGBAG_BLACKWeb_1.jpg",
-            "link_url": "shopify://products/adrian-sling-mens-bag-black",
-            "subheading": "",
-            "title": "",
-            "heading_size": "h4",
-            "button_label": "",
-            "button_link": "",
-            "overlay_position": "justify-start items-end",
-            "text_alignment": "text-start",
-            "button_style": "btn btn--primary",
-            "tint_color": "#000000",
-            "tint_opacity": 0
-          }
         }
       },
       "block_order": [
         "media_x6cdkn",
+        "media_QhAL3f",
         "media_4wC39y",
         "media_y8Tr4C",
-        "media_AJ3Xyz",
-        "media_QhAL3f"
+        "media_AJ3Xyz"
       ],
-      "name": "Media grid featured V2",
+      "name": "Men - Media grid featured V2",
       "settings": {
         "title": "",
         "heading_align": "text-start",
