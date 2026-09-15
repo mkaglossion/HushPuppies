@@ -209,17 +209,7 @@
                               assign image_class = image_class | append: " img-fit"
                             endif
                           -%}
-                          {% render 'image-desktop-and-mobile',
-                            desktop_image: block.settings.image | default: block.settings.image_mobile,
-                            mobile_image: block.settings.image_mobile,
-                            src_width_desktop: 700,
-                            widths_desktop: '460, 700, 860, 1296',
-                            src_width_mobile: 460,
-                            widths_mobile: '360, 460, 700',
-                            sizes: sizes,
-                            class: image_class,
-                            block: block
-                          %}
+                          {% render 'image-desktop-and-mobile', desktop_image: block.settings.image, default: block.settings.image_mobile, mobile_image: block.settings.image_mobile, src_width_desktop: 700, widths_desktop: '460, 700, 860, 1296', src_width_mobile: 460, widths_mobile: '360, 460, 700', sizes: sizes, class: image_class, block: block %}
                         {%- endif -%}
                       {%- else -%}
                         {%- liquid
@@ -558,3 +548,28 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'image-desktop-and-mobile',
+                                desktop_image: block.settings.image | default: block.settings.image_mobile,
+                                mobile_image: block.settings.image_mobile,
+                                src_width_desktop: 700,
+                                widths_desktop: '460, 700, 860, 1296',
+                                src_width_mobile: 460,
+                                widths_mobile: '360, 460, 700',
+                                sizes: sizes,
+                                class: image_class,
+                                block: block
+                              %}
+  to: "{% render 'image-desktop-and-mobile', desktop_image: block.settings.image,
+    default: block.settings.image_mobile, mobile_image: block.settings.image_mobile,
+    src_width_desktop: 700, widths_desktop: '460, 700, 860, 1296', src_width_mobile:
+    460, widths_mobile: '360, 460, 700', sizes: sizes, class: image_class, block:
+    block %}"
+  position: 9572..9895
+{% endcomment %}
