@@ -455,7 +455,7 @@
       ],
       "settings": {
         "enable_sticky": true,
-        "mobile_menu_position": "burger-right",
+        "mobile_menu_position": "burger-left",
         "logo_text": "",
         "logo_type_scale": "2",
         "logo": "shopify://shop_images/HP_Logo_Vert_Large_2019_TM_33593f33-07ec-4b6d-bb96-92c74728f290.png",
@@ -464,7 +464,7 @@
         "logo_center": true,
         "enable_search": true,
         "minimise_search_mobile": true,
-        "minimise_search_desktop": true,
+        "minimise_search_desktop": false,
         "menu": "mega-menu",
         "menu_center": true,
         "repeat_links": false,
