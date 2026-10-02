@@ -14,10 +14,35 @@
       "custom_css": [
         ".image-banner {margin-bottom: 60px !important;}"
       ],
-      "name": "Monthly Banner",
+      "name": "September Banner",
       "settings": {
         "image_desktop": "shopify://shop_images/OWN_WEB_DESKTOP_96f419b8-9a0d-4700-a751-e0583eb29b63.jpg",
         "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE.jpg",
+        "url": "shopify://collections/weather-smart-collection",
+        "height_mode": "auto",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "overlay_position": "justify-center items-center",
+        "overlay_text_align": "text-center",
+        "mob_center_text": false,
+        "mobile_stacked": false,
+        "color_scheme": "white",
+        "full_width": true,
+        "transparent_content_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0,
+        "prevent_animation": false
+      }
+    },
+    "image_banner_RB6r7V": {
+      "type": "image-banner",
+      "custom_css": [
+        ".image-banner {margin-bottom: 60px !important;}"
+      ],
+      "name": "November Banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/OWN_WEB_-_DESKTOP_45b8bcac-cc5a-4352-8b2d-933aefa33ac4.jpg",
+        "image_mobile": "shopify://shop_images/OWN_WEB_-_MOBILE_fede107e-0511-44c9-b88b-a7ce6fa9afb3.jpg",
         "url": "shopify://collections/weather-smart-collection",
         "height_mode": "auto",
         "fixed_height_desktop": 600,
@@ -483,33 +508,6 @@
         "image_ratio": "natural",
         "color_scheme": "none",
         "button_style": "btn btn--secondary"
-      }
-    },
-    "2b6638e0-7b54-4420-a891-39abab8a2a2b": {
-      "type": "featured-collection",
-      "disabled": true,
-      "custom_css": [
-        "h2 {font-size: 4rem; width: 100%;}",
-        "@media (max-width: 640px) {h2 {text-align: center !important; font-size: 3rem; }}"
-      ],
-      "settings": {
-        "title": "TOP PICKS",
-        "heading_align": "text-start",
-        "show_view_all": false,
-        "collection": "all-products",
-        "layout": "grid",
-        "card_size_mobile": "small",
-        "card_size": "small",
-        "products_to_show": 5,
-        "show_highlight_products": false,
-        "show_promo_info": false,
-        "image_ratio": "1",
-        "promo_title": "A headline to grab attention",
-        "content": "",
-        "link_url": "",
-        "button_label": "Button",
-        "color_scheme": "2",
-        "button_style": "link"
       }
     },
     "feature_collection_2_6cwA33": {
@@ -1438,11 +1436,11 @@
   },
   "order": [
     "image_banner_iteTKb",
+    "image_banner_RB6r7V",
     "slideshow_fHqWxE",
     "b7c18b78-f517-4220-a6c6-ff4ab88b41ff",
     "2cfe881f-8ca3-4df7-95e4-f5b39015d791",
     "multi_column_2_rkYjL8",
-    "2b6638e0-7b54-4420-a891-39abab8a2a2b",
     "feature_collection_2_6cwA33",
     "image_banner_Ww9pLR",
     "media_grid_2_NcUXVA",
