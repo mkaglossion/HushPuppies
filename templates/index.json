@@ -36,6 +36,7 @@
     },
     "image_banner_RB6r7V": {
       "type": "image-banner",
+      "disabled": true,
       "custom_css": [
         ".image-banner {margin-bottom: 60px !important;}"
       ],
