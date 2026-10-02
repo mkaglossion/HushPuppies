@@ -37,12 +37,11 @@
     "slideshow_fHqWxE": {
       "type": "slideshow",
       "blocks": {
-        "slide_3mUVNK": {
+        "slide_ezE6Ck": {
           "type": "slide",
           "settings": {
-            "image_desktop": "shopify://shop_images/OWN_WEB_DESKTOP_VALUE.jpg",
-            "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_VALUE.jpg",
-            "url": "shopify://collections/best-value-packs",
+            "image_desktop": "shopify://shop_images/RAPHAELA.png",
+            "url": "shopify://collections/weather-smart-collection",
             "overlay_position": "justify-center items-center",
             "overlay_text_align": "text-center",
             "mob_center_text": false,
@@ -74,43 +73,8 @@
         "slide_EVQnfP": {
           "type": "slide",
           "settings": {
-            "image_desktop": "shopify://shop_images/OWN_WEB_BANNER_JUNE_c3a2c1d8-5e34-451b-9447-536519e6cc31.jpg",
-            "image_mobile": "shopify://shop_images/OWN_WEB_BANNER_MOBILE_JUNE_88ae0ba9-e82f-4b32-94a4-7f4242f8b800.jpg",
-            "url": "shopify://collections/all-back-to-school-shoes",
-            "overlay_position": "justify-center items-center",
-            "overlay_text_align": "text-center",
-            "mob_center_text": false,
-            "subheading": "",
-            "heading": "",
-            "heading_size": "h0",
-            "heading_h1": false,
-            "text": "",
-            "enlarge_text": false,
-            "button_1_label": "",
-            "button_1_link": "",
-            "button_1_style": "btn btn--primary",
-            "button_2_label": "",
-            "button_2_link": "",
-            "button_2_style": "btn btn--primary",
-            "transparent_content_color": "#ffffff",
-            "countdown_show": false,
-            "countdown_end_date": "",
-            "countdown_end_time": "",
-            "countdown_end_text": "",
-            "enlarge_end_text": false,
-            "countdown_hide_on_end": false,
-            "use_custom_colors": false,
-            "count_color": "#ffffff",
-            "bg_color": "#070707",
-            "bg_grad": ""
-          }
-        },
-        "slide_ezE6Ck": {
-          "type": "slide",
-          "settings": {
-            "image_desktop": "shopify://shop_images/OWN_WEB_-_DESKTOP.jpg",
-            "image_mobile": "shopify://shop_images/OWN_WEB_-_MOBILE.jpg",
-            "url": "shopify://collections/bts-backpacks",
+            "image_desktop": "shopify://shop_images/TABITHA.png",
+            "url": "shopify://collections/deepcomfort",
             "overlay_position": "justify-center items-center",
             "overlay_text_align": "text-center",
             "mob_center_text": false,
@@ -141,11 +105,9 @@
         },
         "slide_QfzgqC": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "image_desktop": "shopify://shop_images/MAY_DTI-_LITTLE_HUSHIES_SMSI_banner.jpg",
-            "image_mobile": "shopify://shop_images/MAY_DTI-_LITTLE_HUSHIES_SMSI_mobile.jpg",
-            "url": "shopify://collections/bag-regular",
+            "image_desktop": "shopify://shop_images/NUNZIO.png",
+            "url": "shopify://collections/deepcomfort",
             "overlay_position": "justify-center items-center",
             "overlay_text_align": "text-center",
             "mob_center_text": false,
@@ -177,9 +139,41 @@
         "slide_UNkcHG": {
           "type": "slide",
           "settings": {
-            "image_desktop": "shopify://shop_images/OWN_WEB_BANNER_MARCH_bags.jpg",
-            "image_mobile": "shopify://shop_images/OWN_WEB_BANNER_MOBILE_MARCH_bag.jpg",
-            "url": "shopify://collections/cadeytote-bags",
+            "image_desktop": "shopify://shop_images/REBECCA.png",
+            "url": "shopify://collections/orthoheal",
+            "overlay_position": "justify-center items-center",
+            "overlay_text_align": "text-center",
+            "mob_center_text": false,
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h0",
+            "heading_h1": false,
+            "text": "",
+            "enlarge_text": false,
+            "button_1_label": "",
+            "button_1_link": "",
+            "button_1_style": "btn btn--primary",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": "btn btn--primary",
+            "transparent_content_color": "#ffffff",
+            "countdown_show": false,
+            "countdown_end_date": "",
+            "countdown_end_time": "",
+            "countdown_end_text": "",
+            "enlarge_end_text": false,
+            "countdown_hide_on_end": false,
+            "use_custom_colors": false,
+            "count_color": "#ffffff",
+            "bg_color": "#070707",
+            "bg_grad": ""
+          }
+        },
+        "slide_3mUVNK": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/TIMOTHY.png",
+            "url": "shopify://collections/best-value-packs",
             "overlay_position": "justify-center items-center",
             "overlay_text_align": "text-center",
             "mob_center_text": false,
@@ -210,11 +204,11 @@
         }
       },
       "block_order": [
-        "slide_3mUVNK",
-        "slide_EVQnfP",
         "slide_ezE6Ck",
+        "slide_EVQnfP",
         "slide_QfzgqC",
-        "slide_UNkcHG"
+        "slide_UNkcHG",
+        "slide_3mUVNK"
       ],
       "name": "Slideshow",
       "settings": {
