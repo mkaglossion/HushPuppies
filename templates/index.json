@@ -11,6 +11,7 @@
   "sections": {
     "image_banner_iteTKb": {
       "type": "image-banner",
+      "disabled": true,
       "custom_css": [
         ".image-banner {margin-bottom: 60px !important;}"
       ],
@@ -18,7 +19,7 @@
       "settings": {
         "image_desktop": "shopify://shop_images/OWN_WEB_DESKTOP_96f419b8-9a0d-4700-a751-e0583eb29b63.jpg",
         "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE.jpg",
-        "url": "shopify://collections/weather-smart-collection",
+        "url": "shopify://products/advance-cap-toe-mens-shoes-cognac-leather",
         "height_mode": "auto",
         "fixed_height_desktop": 600,
         "fixed_height_mobile": 350,
